@@ -88,6 +88,122 @@
     <Content Include="admin\assets\js\todolist.js" />
     <Content Include="admin\assets\js\vendor.bundle.base.js" />
     <Content Include="admin\index.aspx" />
+    <Content Include="user\assets\css\animate.css" />
+    <Content Include="user\assets\css\bootstrap.min.css" />
+    <Content Include="user\assets\css\chosen-sprite%402x.png" />
+    <Content Include="user\assets\css\chosen-sprite.png" />
+    <Content Include="user\assets\css\chosen.min.css" />
+    <Content Include="user\assets\css\font-awesome.min.css" />
+    <Content Include="user\assets\css\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="user\assets\css\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="user\assets\css\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="user\assets\css\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="user\assets\css\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="user\assets\css\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="user\assets\css\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="user\assets\css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="user\assets\css\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="user\assets\css\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="user\assets\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="user\assets\css\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="user\assets\css\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="user\assets\css\ionicons.min.css" />
+    <Content Include="user\assets\css\jquery-ui.css" />
+    <Content Include="user\assets\css\magnific-popup.css" />
+    <Content Include="user\assets\css\meanmenu.min.css" />
+    <Content Include="user\assets\css\owl.carousel.min.css" />
+    <Content Include="user\assets\css\owl.video.play.png" />
+    <Content Include="user\assets\css\responsive.css" />
+    <Content Include="user\assets\css\simple-line-icons.css" />
+    <Content Include="user\assets\css\slick.css" />
+    <Content Include="user\assets\css\style.css" />
+    <Content Include="user\assets\fonts\fontawesome-webfont3295.svg" />
+    <Content Include="user\assets\fonts\ionicons28b5.svg" />
+    <Content Include="user\assets\fonts\Simple-Line-Iconsb26c.svg" />
+    <Content Include="user\assets\img\banner\about-us.jpg" />
+    <Content Include="user\assets\img\banner\banner-1.jpg" />
+    <Content Include="user\assets\img\banner\banner-2.jpg" />
+    <Content Include="user\assets\img\banner\banner-3.jpg" />
+    <Content Include="user\assets\img\banner\banner-4.jpg" />
+    <Content Include="user\assets\img\banner\banner-49.jpg" />
+    <Content Include="user\assets\img\banner\banner-5.jpg" />
+    <Content Include="user\assets\img\banner\banner-6.jpg" />
+    <Content Include="user\assets\img\banner\banner-7.jpg" />
+    <Content Include="user\assets\img\banner\banner-8.jpg" />
+    <Content Include="user\assets\img\blog\blog-1.jpg" />
+    <Content Include="user\assets\img\blog\blog-2.jpg" />
+    <Content Include="user\assets\img\blog\blog-3.jpg" />
+    <Content Include="user\assets\img\blog\blog-4.jpg" />
+    <Content Include="user\assets\img\blog\blog-5.jpg" />
+    <Content Include="user\assets\img\blog\blog-6.jpg" />
+    <Content Include="user\assets\img\blog\blog-comment1.png" />
+    <Content Include="user\assets\img\blog\blog-comment2.png" />
+    <Content Include="user\assets\img\blog\blog-dec-img1.jpg" />
+    <Content Include="user\assets\img\blog\blog-details1.jpg" />
+    <Content Include="user\assets\img\blog\blog-details2.jpg" />
+    <Content Include="user\assets\img\blog\blog-details3.jpg" />
+    <Content Include="user\assets\img\brand-logo\logo-1.png" />
+    <Content Include="user\assets\img\brand-logo\logo-2.png" />
+    <Content Include="user\assets\img\brand-logo\logo-3.png" />
+    <Content Include="user\assets\img\brand-logo\logo-4.png" />
+    <Content Include="user\assets\img\brand-logo\logo-5.png" />
+    <Content Include="user\assets\img\cart\cart-1.jpg" />
+    <Content Include="user\assets\img\cart\cart-2.jpg" />
+    <Content Include="user\assets\img\cart\cart-3.jpg" />
+    <Content Include="user\assets\img\cart\cart-4.jpg" />
+    <Content Include="user\assets\img\cart\cart-5.jpg" />
+    <Content Include="user\assets\img\client\1.png" />
+    <Content Include="user\assets\img\client\2.png" />
+    <Content Include="user\assets\img\client\3.png" />
+    <Content Include="user\assets\img\favicon.png" />
+    <Content Include="user\assets\img\icon-img\cart.png" />
+    <Content Include="user\assets\img\icon-img\non-veg.png" />
+    <Content Include="user\assets\img\icon-img\payment.png" />
+    <Content Include="user\assets\img\icon-img\pdf.png" />
+    <Content Include="user\assets\img\icon-img\select.png" />
+    <Content Include="user\assets\img\icon-img\shop.png" />
+    <Content Include="user\assets\img\icon-img\veg.png" />
+    <Content Include="user\assets\img\logo\footer-logo.png" />
+    <Content Include="user\assets\img\logo\logo.png" />
+    <Content Include="user\assets\img\product-details\product-detalis-l1.jpg" />
+    <Content Include="user\assets\img\product-details\product-detalis-l2.jpg" />
+    <Content Include="user\assets\img\product-details\product-detalis-l3.jpg" />
+    <Content Include="user\assets\img\product-details\product-detalis-l4.jpg" />
+    <Content Include="user\assets\img\product-details\product-detalis-s1.jpg" />
+    <Content Include="user\assets\img\product-details\product-detalis-s2.jpg" />
+    <Content Include="user\assets\img\product-details\product-detalis-s3.jpg" />
+    <Content Include="user\assets\img\product-details\product-detalis-s4.jpg" />
+    <Content Include="user\assets\img\product-details\product-detalis-s5.jpg" />
+    <Content Include="user\assets\img\product\product-1.jpg" />
+    <Content Include="user\assets\img\product\product-10.jpg" />
+    <Content Include="user\assets\img\product\product-2.jpg" />
+    <Content Include="user\assets\img\product\product-3.jpg" />
+    <Content Include="user\assets\img\product\product-4.jpg" />
+    <Content Include="user\assets\img\product\product-5.jpg" />
+    <Content Include="user\assets\img\product\product-6.jpg" />
+    <Content Include="user\assets\img\product\product-7.jpg" />
+    <Content Include="user\assets\img\product\product-8.jpg" />
+    <Content Include="user\assets\img\product\product-9.jpg" />
+    <Content Include="user\assets\img\slider\slider-1.jpg" />
+    <Content Include="user\assets\img\slider\slider-2.jpg" />
+    <Content Include="user\assets\img\slider\slider-3.jpg" />
+    <Content Include="user\assets\img\team\team-1.jpg" />
+    <Content Include="user\assets\img\team\team-2.jpg" />
+    <Content Include="user\assets\img\team\team-3.jpg" />
+    <Content Include="user\assets\img\team\team-4.jpg" />
+    <Content Include="user\assets\js\ajax-mail.js" />
+    <Content Include="user\assets\js\bootstrap.min.js" />
+    <Content Include="user\assets\js\custom.js" />
+    <Content Include="user\assets\js\imagesloaded.pkgd.min.js" />
+    <Content Include="user\assets\js\isotope.pkgd.min.js" />
+    <Content Include="user\assets\js\main.js" />
+    <Content Include="user\assets\js\owl.carousel.min.js" />
+    <Content Include="user\assets\js\plugins.js" />
+    <Content Include="user\assets\js\popper.js" />
+    <Content Include="user\assets\js\sweetalert.min.js" />
+    <Content Include="user\assets\js\vendor\jquery-1.12.0.min.js" />
+    <Content Include="user\assets\js\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="user\images\bg\1.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +261,18 @@
     <Content Include="admin\fonts\Roboto\Roboto-Thin.ttf" />
     <Content Include="admin\fonts\Roboto\Roboto-Thin.woff" />
     <Content Include="admin\fonts\Roboto\Roboto-Thin.woff2" />
+    <Content Include="user\assets\fonts\fontawesome-webfont3295.eot" />
+    <Content Include="user\assets\fonts\fontawesome-webfont3295.ttf" />
+    <Content Include="user\assets\fonts\fontawesome-webfont3295.woff" />
+    <Content Include="user\assets\fonts\fontawesome-webfont3295.woff2" />
+    <Content Include="user\assets\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="user\assets\fonts\ionicons28b5.eot" />
+    <Content Include="user\assets\fonts\ionicons28b5.ttf" />
+    <Content Include="user\assets\fonts\ionicons28b5.woff" />
+    <Content Include="user\assets\fonts\Simple-Line-Iconsb26c.eot" />
+    <Content Include="user\assets\fonts\Simple-Line-Iconsb26c.ttf" />
+    <Content Include="user\assets\fonts\Simple-Line-Iconsb26c.woff" />
+    <Content Include="user\assets\fonts\Simple-Line-Iconsb26c.woff2" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -153,7 +281,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="media\banner\" />
+    <Folder Include="media\dish\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
