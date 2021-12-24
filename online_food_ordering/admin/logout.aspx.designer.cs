@@ -11,7 +11,7 @@ namespace online_food_ordering.admin
 {
 
 
-    public partial class index
+    public partial class logout
     {
     }
 }
