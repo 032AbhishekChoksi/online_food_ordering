@@ -31,7 +31,7 @@
               </div>
               <h4 class="font-weight-light" style="text-align: center;">Admin</h4>
               <h6 class="font-weight-light" style="margin-top: 10px;">Sign in to continue.</h6>
-              <form class="pt-3" id="f1" runat="server">
+              <form class="pt-3" id="f1" runat="server" method="post">
                 <div class="form-group">
                     <asp:TextBox ID="txtusername" runat="server" class="form-control form-control-lg" placeholder="Username" name="username"></asp:TextBox>
                 </div>
@@ -44,7 +44,7 @@
 
               </form>
               <div class="login_msg" id="error" runat="server"  style="margin-top:10px; display:none">
-                  <strong>"Please enter valid login details</strong>
+                  <strong>Please enter valid login details</strong>
               </div>
             </div>
           </div>

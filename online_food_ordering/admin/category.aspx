@@ -3,9 +3,8 @@
 	<div class="card">
 			<div class="card-body">
 			  <h1 class="grid_title">Category Master</h1>
-			  <a href="manage_category.php" class="add_link">Add Category</a>
+			  <a href="manage_category.aspx" class="add_link">Add Category</a>
 			  <div class="row grid_box">
-				
 				<div class="col-12">
 				  <div class="table-responsive">
 					  <asp:Repeater ID="r1" runat="server">
@@ -27,8 +26,8 @@
 							<td><%# Eval("category") %></td>
 							<td>
 								<a href="manage_category.aspx?id=<%# Eval("id") %>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
-								<% 
-								if((byte) Eval("status") == 1){
+								<%--<% 
+								if(Convert.ToBoolean(Eval("status")) == true){
 								%>
 								<a href="category.aspx?id=<%# Eval("id") %>"><label class="badge badge-danger hand_cursor">Active</label></a>
 								<% 
@@ -38,7 +37,7 @@
 								<% 
 								}
 								
-								%>
+								%>--%>
 								&nbsp;
 								<a href="category.aspx?id=<%# Eval("id") %>&type=delete"><label class="badge badge-danger delete_red hand_cursor">Delete</label></a>
 							</td>

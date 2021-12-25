@@ -89,9 +89,11 @@
     <Content Include="admin\assets\js\vendor.bundle.base.js" />
     <Content Include="admin\category.aspx" />
     <Content Include="admin\demo.aspx" />
+    <Content Include="admin\dish.aspx" />
     <Content Include="admin\index.aspx" />
     <Content Include="admin\login.aspx" />
     <Content Include="admin\logout.aspx" />
+    <Content Include="admin\manage_category.aspx" />
     <Content Include="admin\order.aspx" />
     <Content Include="user\assets\css\animate.css" />
     <Content Include="user\assets\css\bootstrap.min.css" />
@@ -226,12 +228,20 @@
     <Compile Include="admin\category.aspx.designer.cs">
       <DependentUpon>category.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\ClassAdmin.cs" />
     <Compile Include="admin\demo.aspx.cs">
       <DependentUpon>demo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\demo.aspx.designer.cs">
       <DependentUpon>demo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\dish.aspx.cs">
+      <DependentUpon>dish.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\dish.aspx.designer.cs">
+      <DependentUpon>dish.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -253,6 +263,13 @@
     </Compile>
     <Compile Include="admin\logout.aspx.designer.cs">
       <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manage_category.aspx.cs">
+      <DependentUpon>manage_category.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manage_category.aspx.designer.cs">
+      <DependentUpon>manage_category.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\order.aspx.cs">
       <DependentUpon>order.aspx</DependentUpon>
