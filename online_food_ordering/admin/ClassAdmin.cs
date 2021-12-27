@@ -17,6 +17,49 @@ namespace online_food_ordering.admin
         public static SqlDataAdapter adp = new SqlDataAdapter();
         public static DataTable dt = new DataTable();
 
+
+        public int DisplayAdminByUsernameAndPassword(string username,string password)
+        {
+            int i = 0;
+            try
+            {
+                
+                cmd = new SqlCommand("SP_Display_AdminByUsernameAndPassword");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@password", password);
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+                i = Convert.ToInt32(dt.Rows.Count.ToString());
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return i;
+        }
+        public DataTable DisplayCategory()
+        {
+            try
+            {
+                cmd = new SqlCommand("SP_Display_Category");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
         public DataTable DisplayCategoryById(int id)
         {
             try
@@ -106,6 +149,64 @@ namespace online_food_ordering.admin
                 cmd.Connection = con;
                 cmd.Parameters.AddWithValue("@category", category);
                 cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void RemoveCategory(int id)
+        {
+            try
+            {
+                cmd = new SqlCommand("SP_Remove_Category");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public DataTable DisplayDish()
+        {
+            try
+            {
+                cmd = new SqlCommand("SP_Display_Dish");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
+
+        public void UpdateCategory(int id,byte status)
+        {
+            try
+            {
+                cmd = new SqlCommand("SP_Update_CategoryStatus");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@status", status);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();

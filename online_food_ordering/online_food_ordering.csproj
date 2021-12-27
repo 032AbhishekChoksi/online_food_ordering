@@ -94,6 +94,7 @@
     <Content Include="admin\login.aspx" />
     <Content Include="admin\logout.aspx" />
     <Content Include="admin\manage_category.aspx" />
+    <Content Include="admin\manage_dish.aspx" />
     <Content Include="admin\order.aspx" />
     <Content Include="user\assets\css\animate.css" />
     <Content Include="user\assets\css\bootstrap.min.css" />
@@ -270,6 +271,13 @@
     </Compile>
     <Compile Include="admin\manage_category.aspx.designer.cs">
       <DependentUpon>manage_category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manage_dish.aspx.cs">
+      <DependentUpon>manage_dish.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manage_dish.aspx.designer.cs">
+      <DependentUpon>manage_dish.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\order.aspx.cs">
       <DependentUpon>order.aspx</DependentUpon>

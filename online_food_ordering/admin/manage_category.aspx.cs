@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,15 +11,10 @@ namespace online_food_ordering.admin
     public partial class manage_category : System.Web.UI.Page
     {
         ClassAdmin admin = new ClassAdmin();
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString);
+
         int id = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (con.State == ConnectionState.Open)
-            {
-                con.Close();
-            }
-            con.Open();
 
             if (Session["ADMIN_USER"] == null)
             {
@@ -47,7 +40,6 @@ namespace online_food_ordering.admin
         {
             string category = txtcategory.Text;
             DateTime added_on = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
-            string sql2 = null;
             int i = 0;
 
             if (id == 0)

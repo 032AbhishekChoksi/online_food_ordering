@@ -26,19 +26,16 @@
 							</HeaderTemplate>
 					<ItemTemplate>
 									<tr>
-										<td><?php echo $i ?></td>
-										<td><?php echo $row['category'] ?></td>
-										<td><?php echo $row['dish'] ?>&nbsp;(<?php echo strtoupper( $row['type']) ?>)</td>
-										<td><a target="_blank" href="<?php echo SITE_DISH_IMAGE . $row['image'] ?>"><img src="<?php echo SITE_DISH_IMAGE . $row['image'] ?>" /></a></td>
+										<td><%# Eval("id") %></td>
+										<td><%# Eval("category") %></td>
+										<td><%# Eval("dish") %>&nbsp;(<%# Eval("type").ToString().ToUpper() %>)</td>
+										<td><a target="_blank" href="<asp:Literal runat='server' Text='<%$ AppSettings:SERVER_DISH_IMAGE%>' /> <%# Eval("image") %>"><img src="<asp:Literal runat='server' Text='<%$ AppSettings:SERVER_DISH_IMAGE%>' /> <%# Eval("image") %>" /></a></td>
 										<td>
-											<?php
-											$dateStr = strtotime($row['added_on']);
-											echo date('d-m-Y', $dateStr);
-											?>
+											<%# Eval("added_on","{0:dd-MM-yyyy}") %>
 										</td>
 										<td>
-											<a href="manage_dish.php?id=<?php echo $row['id'] ?>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
-											<?php
+											<a href="manage_dish.aspx?id=<%# Eval("id") %>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
+											<%--<?php
 											if ($row['status'] == 1) {
 											?>
 												<a href="?id=<?php echo $row['id'] ?>&type=deactive"><label class="badge badge-danger hand_cursor">Active</label></a>
@@ -49,9 +46,8 @@
 											<?php
 											}
 
-											?>
+											?>--%>
 										</td>
-
 									</tr>
 							</ItemTemplate>
 					<FooterTemplate>

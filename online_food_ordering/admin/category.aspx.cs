@@ -12,28 +12,46 @@ namespace online_food_ordering.admin
 {
     public partial class category : System.Web.UI.Page
     {
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString);
+        ClassAdmin admin = new ClassAdmin();
+        int id = 0;
+        byte status = 1;
+        string type = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (con.State == ConnectionState.Open)
-            {
-                con.Close();
-            }
-            con.Open();
 
             if (Session["ADMIN_USER"] == null)
             {
                 Response.Redirect("login.aspx");
             }
 
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from category order by id";
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            r1.DataSource = dt;
+            if (Request.QueryString["id"] != null && Request.QueryString["type"] != null)
+            {
+                id = Convert.ToInt32(Request.QueryString["id"]);
+                type = Request.QueryString["type"].ToString();
+            }
+
+            if (IsPostBack) return;
+
+            if (id > 0 && type=="delete")
+            {
+                admin.RemoveCategory(id);
+                Response.Redirect("category.aspx");
+            }
+
+            if (id > 0 && type == "deactive")
+            {
+                status = 0;
+                admin.UpdateCategory(id,status);
+                Response.Redirect("category.aspx");
+            }
+            else if(id > 0 && type == "active")
+            {
+                status = 1;
+                admin.UpdateCategory(id, status);
+                Response.Redirect("category.aspx");
+            }
+
+            r1.DataSource = admin.DisplayCategory();
             r1.DataBind();
         }
     }
