@@ -41,13 +41,13 @@ namespace online_food_ordering.admin
             if (id > 0 && type == "deactive")
             {
                 status = 0;
-                admin.UpdateCategory(id,status);
+                admin.UpdateCategoryStatus(id,status);
                 Response.Redirect("category.aspx");
             }
             else if(id > 0 && type == "active")
             {
                 status = 1;
-                admin.UpdateCategory(id, status);
+                admin.UpdateCategoryStatus(id, status);
                 Response.Redirect("category.aspx");
             }
 

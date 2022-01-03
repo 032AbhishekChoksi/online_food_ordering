@@ -1,0 +1,226 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="user.master.cs" Inherits="online_food_ordering.user.user" %>
+
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title><?php echo FRONT_SITE_NAME; ?></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="assets/css/slick.css">
+	<link rel="stylesheet" href="assets/css/chosen.min.css">
+	<link rel="stylesheet" href="assets/css/ionicons.min.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/simple-line-icons.css">
+	<link rel="stylesheet" href="assets/css/jquery-ui.css">
+	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/responsive.css">
+	<script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script
+</head>
+		
+<body>
+	<!-- header start -->
+	<header class="header-area">
+		<div class="header-top black-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-md-4 col-12 col-sm-4">
+						<div class="welcome-area">
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-4 col-12 col-sm-4">
+							<div id="wallet_top_box">
+								<a href="wallet" style="color:#fff;">
+									Wallet Amt:- 0
+								</a>
+								
+							</div>
+						</div>
+					
+						<div class="col-lg-2 col-md-8 col-12 col-sm-8">
+							<div class="account-curr-lang-wrap f-right">
+								<ul>
+									<li class="top-hover"><a href="#">Setting <i class="ion-chevron-down"></i></a>
+										<ul>
+											<li><a href="profile">Profile </a></li>
+											<li><a href="order_history">Order History</a></li>
+											<li><a href="logout">Logout</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-middle">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-4 col-12 col-sm-4">
+						<div class="logo">
+							<a href="index">
+								<img alt="" src="assets/img/logo/logo.png">
+								<!-- <img alt="" src="./admin/assets/images/logo.png" style="height: 40px; width:134px"> -->
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-9 col-md-8 col-12 col-sm-8">
+						<div class="header-middle-right f-right">
+							<div class="header-login">
+								
+									<a href="login_register.aspx">
+									
+									<div class="header-icon-style">
+										<i class="icon-user icons"></i>
+									</div>
+									<div class="login-text-content">										
+										<%--<center>WELCOME<div style="color:#e02c2b;font-weight: bold;"> Abhishek</div></center>--%>
+											<p>Register <br> or <span>Sign in</span></p>										
+									</div>									
+									</a>
+							</div>
+							<div class="header-wishlist">
+								&nbsp;
+							</div>
+							<div class="header-cart">
+								<a href="#">
+									<div class="header-icon-style">
+										<i class="icon-handbag icons"></i>
+										<span class="count-style" id="totalCartDish"><?php echo $totalCartDish; ?></span>
+									</div>
+									<div class="cart-text">
+										<span class="digit">My Cart</span>
+										<span class="cart-digit-bold" id="totalPrice">
+											10 Rs
+		</span>
+									</div>
+								</a>
+								<%--<?php if ($totalPrice != 0) { ?>
+									<div class="shopping-cart-content">
+										<ul id="cart_ul">
+											<?php foreach ($cartArr as $key => $list) { ?>
+												<li class="single-shopping-cart" id="attr_<?php echo $key ?>">
+													<div class="shopping-cart-img">
+														<a href="javascript:void(0)"><img alt="" src="<?php echo SITE_DISH_IMAGE . $list['image'] ?>" style="width:100%;"></a>
+													</div>
+													<div class="shopping-cart-title">
+														<h4><a href="javascript:void(0)">
+																<?php echo $list['dish'] ?>
+															</a></h4>
+														<h6>Price: <?php echo $list['price'] ?> Rs</h6>
+														<h6>Qty: <?php echo $list['qty'] ?></h6>
+														<span><?php echo
+																$list['qty'] * $list['price']; ?> Rs</span>
+													</div>
+													<div class="shopping-cart-delete">
+														<a href="javascript:void(0)" onclick="delete_cart('<?php echo $key ?>')"><i class="ion ion-close"></i></a>
+													</div>
+												</li>
+											<?php } ?>
+										</ul>
+										<div class="shopping-cart-total">
+											<h4>Total : <span class="shop-total" id="shopTotal">
+													<?php echo $totalPrice ?> Rs
+												</span></h4>
+										</div>
+										<div class="shopping-cart-btn">
+											<a href="<?php echo FRONT_SITE_PATH ?>cart">view cart</a>
+											<a href="<?php echo FRONT_SITE_PATH ?>checkout">checkout</a>
+										</div>
+									</div>
+								<?php } ?>--%>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-bottom transparent-bar black-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-12">
+						<div class="main-menu">
+							<nav>
+								<ul>
+									<li><a href="shop.aspx">Shop</a></li>
+									<li><a href="about-us.aspx">About us</a></li>
+									<li><a href="contact-us.aspx">contact us</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- mobile-menu-area-start -->
+		<div class="mobile-menu-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="mobile-menu">
+							<nav id="mobile-menu-active">
+								<ul class="menu-overflow" id="nav">
+									<li><a href="shop">Shop</a></li>
+									<li><a href="about-us">About us</a></li>
+									<li><a href="contact-us">contact us</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- mobile-menu-area-end -->
+	</header>
+		<asp:ContentPlaceHolder ID="c2" runat="server"></asp:ContentPlaceHolder>
+<div class="footer-area black-bg-2 pt-70">
+			<div class="footer-bottom-area border-top-4">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-7">
+							<div class="copyright">
+								<p>Copyright © <a href="#">Billy.</a> . All Right Reserved.</p>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-5">
+							<div class="footer-social">
+								<ul>
+									<li><a href="#"><i class="ion-social-facebook"></i></a></li>
+									<li><a href="#"><i class="ion-social-twitter"></i></a></li>
+									<li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+									<li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
+									<li><a href="#"><i class="ion-social-rss"></i></a></li>
+									<li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- all js here -->
+		<script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
+		<script src="assets/js/popper.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/imagesloaded.pkgd.min.js"></script>
+		<script src="assets/js/isotope.pkgd.min.js"></script>
+		<script src="assets/js/ajax-mail.js"></script>
+		<script src="assets/js/owl.carousel.min.js"></script>
+		<script src="assets/js/plugins.js"></script>
+		<script src="assets/js/main.js"></script>
+		<%--<script>
+			var FRONT_SITE_PATH="<?php echo FRONT_SITE_PATH ?>";
+			var SITE_DISH_IMAGE="<?php echo SITE_DISH_IMAGE?>";
+		</script>--%>
+		<script src="assets/js/custom.js"></script>
+		<script src="assets/js/sweetalert.min.js"></script>
+	</body>
+</html>

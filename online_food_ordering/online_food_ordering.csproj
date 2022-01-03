@@ -87,6 +87,7 @@
     <Content Include="admin\assets\js\template.js" />
     <Content Include="admin\assets\js\todolist.js" />
     <Content Include="admin\assets\js\vendor.bundle.base.js" />
+    <Content Include="admin\banner.aspx" />
     <Content Include="admin\category.aspx" />
     <Content Include="admin\demo.aspx" />
     <Content Include="admin\dish.aspx" />
@@ -212,6 +213,8 @@
     <Content Include="user\assets\js\vendor\jquery-1.12.0.min.js" />
     <Content Include="user\assets\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="user\images\bg\1.jpg" />
+    <Content Include="user\login_register.aspx" />
+    <Content Include="user\login_register_submit.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +224,13 @@
     </Compile>
     <Compile Include="admin\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\banner.aspx.cs">
+      <DependentUpon>banner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\banner.aspx.designer.cs">
+      <DependentUpon>banner.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\category.aspx.cs">
       <DependentUpon>category.aspx</DependentUpon>
@@ -286,7 +296,29 @@
     <Compile Include="admin\order.aspx.designer.cs">
       <DependentUpon>order.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ClassRandom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="user\login_register.aspx.cs">
+      <DependentUpon>login_register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\login_register.aspx.designer.cs">
+      <DependentUpon>login_register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\login_register_submit.aspx.cs">
+      <DependentUpon>login_register_submit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\login_register_submit.aspx.designer.cs">
+      <DependentUpon>login_register_submit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\user.Master.cs">
+      <DependentUpon>user.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\user.Master.designer.cs">
+      <DependentUpon>user.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\admin.Master" />
@@ -339,6 +371,7 @@
     <Content Include="user\assets\fonts\Simple-Line-Iconsb26c.woff" />
     <Content Include="user\assets\fonts\Simple-Line-Iconsb26c.woff2" />
     <None Include="packages.config" />
+    <Content Include="user\user.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
