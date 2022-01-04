@@ -36,7 +36,7 @@ namespace online_food_ordering.admin
             {
                 dish_details_id = Convert.ToInt32(Request.QueryString["dish_details_id"]);
             }
-
+            if (IsPostBack) return;
             if (id > 0)
             {
                 foreach (DataRow dr in admin.DisplayDishById(id).Rows)
@@ -205,7 +205,7 @@ namespace online_food_ordering.admin
                         {
                             admin.UpdateDish(id, category_id, dish_name, dish_desc, type);
                         }
-
+                      
                         // Dish Detail Update
                         string[] attributeValues = Request.Form.GetValues("attribute");
                         string[] priceValues = Request.Form.GetValues("price");

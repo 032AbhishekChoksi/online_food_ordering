@@ -464,7 +464,7 @@ namespace online_food_ordering.admin
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.Parameters.AddWithValue("@attribute", attribute);
                 cmd.Parameters.AddWithValue("@price", price);
-                cmd.Parameters.AddWithValue("@status", id);
+                cmd.Parameters.AddWithValue("@status", status);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
