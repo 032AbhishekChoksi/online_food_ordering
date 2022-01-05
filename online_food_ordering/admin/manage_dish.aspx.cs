@@ -15,10 +15,16 @@ namespace online_food_ordering.admin
         ClassAdmin admin = new ClassAdmin();
         int id = 0;
         int dish_details_id = 0;
-        string image_status = "required";
         public int noofdishdetails = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.Title = "Manage Dish | Billy Admin Panel";
+           
+            if (Session["ADMIN_USER"] == null)
+            {
+                Response.Redirect("login.aspx");
+            }
+            
             if (!IsPostBack)
             {
                 ddtcategory_id.DataSource = admin.DisplayCategoryByStatus();
@@ -110,8 +116,7 @@ namespace online_food_ordering.admin
                     }
                     if (!isValidFile)
                     {
-                        Label1.ForeColor = System.Drawing.Color.Red;
-                        Label1.Text = "Invalid File. Please upload a File with extension " + string.Join(",", validFileTypes);
+                        Label1.Text = "Invalid File. Please upload a File with extension " + string.Join(", ", validFileTypes);
                         isimage_error = true;
                     }
                     else
@@ -164,9 +169,8 @@ namespace online_food_ordering.admin
                             }
                         }
                         if (!isValidFile)
-                        {
-                            Label1.ForeColor = System.Drawing.Color.Red;
-                            Label1.Text = "Invalid File. Please upload a File with extension " + string.Join(",", validFileTypes);
+                        {                            
+                            Label1.Text = "Invalid File. Please upload a File with extension " + string.Join(", ", validFileTypes);
                             isimage_error = true;
                         }
                         else

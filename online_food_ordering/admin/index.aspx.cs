@@ -11,6 +11,7 @@ namespace online_food_ordering.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.Title = "Dashboard | Billy Admin Panel";
         }
     }
 }

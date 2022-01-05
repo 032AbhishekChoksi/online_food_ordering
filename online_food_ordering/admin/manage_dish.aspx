@@ -38,7 +38,7 @@
 												ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))(.jpg|.JPG|.png|.PNG)$"
 												ControlToValidate="f1" class="error mt8">  
 											</asp:RegularExpressionValidator> --%>
-							<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+							<div class="error mt8"><asp:Label ID="Label1" runat="server"></asp:Label></div>
 						</div>
 
 

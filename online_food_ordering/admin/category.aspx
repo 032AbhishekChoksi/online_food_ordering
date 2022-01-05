@@ -35,7 +35,9 @@
 											</asp:HyperLink>
 											&nbsp;
 								<a href="category.aspx?id=<%# Eval("id") %>&type=delete">
-									<label class="badge badge-danger delete_red hand_cursor">Delete</label></a>
+									<label class="badge badge-danger delete_red hand_cursor">Delete</label>
+
+								</a>
 										</td>
 
 									</tr>

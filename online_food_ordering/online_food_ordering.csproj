@@ -94,6 +94,7 @@
     <Content Include="admin\index.aspx" />
     <Content Include="admin\login.aspx" />
     <Content Include="admin\logout.aspx" />
+    <Content Include="admin\manage_banner.aspx" />
     <Content Include="admin\manage_category.aspx" />
     <Content Include="admin\manage_dish.aspx" />
     <Content Include="admin\order.aspx" />
@@ -275,6 +276,13 @@
     <Compile Include="admin\logout.aspx.designer.cs">
       <DependentUpon>logout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\manage_banner.aspx.cs">
+      <DependentUpon>manage_banner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manage_banner.aspx.designer.cs">
+      <DependentUpon>manage_banner.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\manage_category.aspx.cs">
       <DependentUpon>manage_category.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -370,6 +378,10 @@
     <Content Include="user\assets\fonts\Simple-Line-Iconsb26c.ttf" />
     <Content Include="user\assets\fonts\Simple-Line-Iconsb26c.woff" />
     <Content Include="user\assets\fonts\Simple-Line-Iconsb26c.woff2" />
+    <Content Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </Content>
+    <Content Include="App_Data\online_food.bak" />
     <None Include="packages.config" />
     <Content Include="user\user.Master" />
     <None Include="Web.Debug.config">

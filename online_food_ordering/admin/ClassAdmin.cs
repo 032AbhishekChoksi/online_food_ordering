@@ -516,5 +516,142 @@ namespace online_food_ordering.admin
                 Console.WriteLine(ex.Message);
             }
         }
+        public DataTable DisplayBanner()
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_Banner");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
+
+        public DataTable DisplayBannerById(int id)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_BannerById");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
+
+        public void InsertBanner(string image, string heading, string sub_heading, string link, string link_text, int banner_order, DateTime added_on)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Insertion_Banner");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@image", image);
+                cmd.Parameters.AddWithValue("@heading", heading);
+                cmd.Parameters.AddWithValue("@sub_heading", sub_heading);
+                cmd.Parameters.AddWithValue("@link", link);
+                cmd.Parameters.AddWithValue("@link_text", link_text);
+                cmd.Parameters.AddWithValue("@banner_order", banner_order);
+                cmd.Parameters.AddWithValue("@added_on", added_on);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public string DisplayBannerImage(int id)
+        {
+            string url = string.Empty;
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_BannerImage");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                url = cmd.ExecuteScalar().ToString();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return url;
+        }
+        public void UpdateBannerImage(int id, string image, string heading, string sub_heading, string link, string link_text, int banner_order)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Update_BannerImage");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@image", image);
+                cmd.Parameters.AddWithValue("@heading", heading);
+                cmd.Parameters.AddWithValue("@sub_heading", sub_heading);
+                cmd.Parameters.AddWithValue("@link", link);
+                cmd.Parameters.AddWithValue("@link_text", link_text);
+                cmd.Parameters.AddWithValue("@banner_order", banner_order);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void UpdateBanner(int id, string heading, string sub_heading, string link, string link_text, int banner_order)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Update_Banner");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@heading", heading);
+                cmd.Parameters.AddWithValue("@sub_heading", sub_heading);
+                cmd.Parameters.AddWithValue("@link", link);
+                cmd.Parameters.AddWithValue("@link_text", link_text);
+                cmd.Parameters.AddWithValue("@banner_order", banner_order);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }

@@ -15,6 +15,8 @@ namespace online_food_ordering.admin
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.Title = "Order | Billy Admin Panel";
+
             if (con.State == ConnectionState.Open)
             {
                 con.Close();

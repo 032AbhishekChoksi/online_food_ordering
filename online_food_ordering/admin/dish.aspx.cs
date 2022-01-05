@@ -15,6 +15,8 @@ namespace online_food_ordering.admin
         string type = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.Title = "Dish | Billy Admin Panel";
+
             if (Session["ADMIN_USER"] == null)
             {
                 Response.Redirect("login.aspx");

@@ -15,6 +15,7 @@ namespace online_food_ordering.admin
         int id = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.Title = "Manage Category | Billy Admin Panel";
 
             if (Session["ADMIN_USER"] == null)
             {

@@ -12,7 +12,7 @@ namespace online_food_ordering.admin
         ClassAdmin admin = new ClassAdmin();
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            Page.Title = "Login | Billy Admin Panel";
         }
 
         protected void bttnsubmit_Click(object sender, EventArgs e)

@@ -20,7 +20,7 @@ namespace online_food_ordering.admin
             {
                 lblsession.Text = Session["ADMIN_USER"].ToString();
             }
-            Page.Title = ConfigurationSettings.AppSettings["SITE_NAME"];
+            
         }
     }
 }
