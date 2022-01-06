@@ -98,6 +98,7 @@
     <Content Include="admin\manage_category.aspx" />
     <Content Include="admin\manage_dish.aspx" />
     <Content Include="admin\order.aspx" />
+    <Content Include="admin\setting.aspx" />
     <Content Include="user\assets\css\animate.css" />
     <Content Include="user\assets\css\bootstrap.min.css" />
     <Content Include="user\assets\css\chosen-sprite%402x.png" />
@@ -303,6 +304,13 @@
     </Compile>
     <Compile Include="admin\order.aspx.designer.cs">
       <DependentUpon>order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\setting.aspx.cs">
+      <DependentUpon>setting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\setting.aspx.designer.cs">
+      <DependentUpon>setting.aspx</DependentUpon>
     </Compile>
     <Compile Include="ClassRandom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

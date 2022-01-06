@@ -653,5 +653,91 @@ namespace online_food_ordering.admin
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public void RemoveBanner(int id)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Remove_Banner");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public void UpdateBannerStatus(int id, byte status)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Update_BannerStatus");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@status", status);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public DataTable DisplaySettingById(int id)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_SettingById");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
+
+        public void UpdateSetting(int id,decimal cart_min_price,string cart_min_price_msg,string website_close,string website_close_msg,decimal wallet_amt, decimal referral_amt)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Update_Setting");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@cart_min_price", cart_min_price);
+                cmd.Parameters.AddWithValue("@cart_min_price_msg", cart_min_price_msg);
+                cmd.Parameters.AddWithValue("@website_close", website_close);                
+                cmd.Parameters.AddWithValue("@wallet_amt", wallet_amt);
+                cmd.Parameters.AddWithValue("@website_close_msg", website_close_msg);
+                cmd.Parameters.AddWithValue("@referral_amt", referral_amt);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }

@@ -29,10 +29,10 @@
 										<td><%# Eval("sub_heading") %></td>
 										<td>
 											<a href="manage_banner.aspx?id=<%# Eval("id") %>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
-											<asp:HyperLink ID="HyperLinkActive" runat="server" NavigateUrl='<%# string.Format("dish.aspx?id={0}&type=deactive",Eval("id")) %>' Visible='<%# Eval("status").ToString() != "False" ? true : false %>'>
+											<asp:HyperLink ID="HyperLinkActive" runat="server" NavigateUrl='<%# string.Format("banner.aspx?id={0}&type=deactive",Eval("id")) %>' Visible='<%# Eval("status").ToString() != "False" ? true : false %>'>
 												<asp:Label ID="lblactive" runat="server" class="badge badge-danger hand_cursor" Text="Active"></asp:Label>
 											</asp:HyperLink>
-											<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# string.Format("dish.aspx?id={0}&type=active",Eval("id")) %>' Visible='<%# Eval("status").ToString() != "True" ? true : false %>'>
+											<asp:HyperLink ID="HyperLinkDeActive" runat="server" NavigateUrl='<%# string.Format("banner.aspx?id={0}&type=active",Eval("id")) %>' Visible='<%# Eval("status").ToString() != "True" ? true : false %>'>
 												<asp:Label ID="lbldeactive" runat="server" class="badge badge-info hand_cursor" Text="Deactive"></asp:Label>
 											</asp:HyperLink>&nbsp;
 											<a href="banner.aspx?id=<%# Eval("id") %>&type=delete">
