@@ -37,7 +37,15 @@ namespace online_food_ordering.admin
 
         protected void bttnsubmit_Click(object sender, EventArgs e)
         {
+            decimal cart_min_price = Convert.ToDecimal(txtcart_min_price.Text);
+            string cart_min_price_msg = txtcart_min_price_msg.Text;
+            string website_close = ddtwebsite_close.SelectedItem.Value.ToString();
+            string website_close_msg = txtwebsite_close_msg.Text;
+            decimal wallet_amt = Convert.ToDecimal(txtwallet_amt.Text);
+            decimal referral_amt = Convert.ToDecimal(txtreferral_amt.Text);
 
+            admin.UpdateSetting(1, cart_min_price, cart_min_price_msg, website_close, website_close_msg, wallet_amt, referral_amt);
+            Response.Redirect("setting.aspx");
         }
     }
 }

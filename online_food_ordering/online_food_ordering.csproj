@@ -89,6 +89,7 @@
     <Content Include="admin\assets\js\vendor.bundle.base.js" />
     <Content Include="admin\banner.aspx" />
     <Content Include="admin\category.aspx" />
+    <Content Include="admin\delivery_boy.aspx" />
     <Content Include="admin\demo.aspx" />
     <Content Include="admin\dish.aspx" />
     <Content Include="admin\index.aspx" />
@@ -96,6 +97,7 @@
     <Content Include="admin\logout.aspx" />
     <Content Include="admin\manage_banner.aspx" />
     <Content Include="admin\manage_category.aspx" />
+    <Content Include="admin\manage_delivery_boy.aspx" />
     <Content Include="admin\manage_dish.aspx" />
     <Content Include="admin\order.aspx" />
     <Content Include="admin\setting.aspx" />
@@ -242,6 +244,13 @@
       <DependentUpon>category.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\ClassAdmin.cs" />
+    <Compile Include="admin\delivery_boy.aspx.cs">
+      <DependentUpon>delivery_boy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\delivery_boy.aspx.designer.cs">
+      <DependentUpon>delivery_boy.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\demo.aspx.cs">
       <DependentUpon>demo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -290,6 +299,13 @@
     </Compile>
     <Compile Include="admin\manage_category.aspx.designer.cs">
       <DependentUpon>manage_category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manage_delivery_boy.aspx.cs">
+      <DependentUpon>manage_delivery_boy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manage_delivery_boy.aspx.designer.cs">
+      <DependentUpon>manage_delivery_boy.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\manage_dish.aspx.cs">
       <DependentUpon>manage_dish.aspx</DependentUpon>

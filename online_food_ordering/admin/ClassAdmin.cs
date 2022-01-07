@@ -739,5 +739,107 @@ namespace online_food_ordering.admin
                 Console.WriteLine(ex.Message);
             }
         }
+        public DataTable DisplayDeliveryBoy()
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_DeliveryBoy");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
+        public DataTable DisplayDeliveyBoyById(int id)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_DeliveryBoyById");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
+        public DataTable DisplayDeliveyBoyByMobile(long mobile)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_DeliveyBoyByMobile");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@mobile", mobile);
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
+        public DataTable DisplayDeliveyBoyByMobileAndId(long mobile, int id)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_DeliveyBoyByMobileAndId");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@mobile", mobile);
+                cmd.Parameters.AddWithValue("@id", id);
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
+        public void InsertDeliveyBoy(string name,long mobile,string password, DateTime added_on)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Insertion_DeliveryBoy");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@mobile", mobile);
+                cmd.Parameters.AddWithValue("@password", password);
+                cmd.Parameters.AddWithValue("@added_on", added_on);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }

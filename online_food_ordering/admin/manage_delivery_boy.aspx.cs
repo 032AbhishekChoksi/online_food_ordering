@@ -8,20 +8,21 @@ using System.Web.UI.WebControls;
 
 namespace online_food_ordering.admin
 {
-    public partial class manage_category : System.Web.UI.Page
+    public partial class manage_delivery_boy : System.Web.UI.Page
     {
         ClassAdmin admin = new ClassAdmin();
         int id = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Page.Title = "Manage Category | Billy Admin Panel";
+            Page.Title = "Manage Delivey Boy | Billy Admin Panel";
 
             if (Session["ADMIN_USER"] == null)
             {
                 Response.Redirect("login.aspx");
             }
-
-            if(Request.QueryString["id"]!=null) { 
+            
+            if (Request.QueryString["id"] != null)
+            {
                 id = Convert.ToInt32(Request.QueryString["id"]);
             }
 
@@ -29,26 +30,30 @@ namespace online_food_ordering.admin
 
             if (id > 0)
             {
-                foreach (DataRow dr in admin.DisplayCategoryById(id).Rows)
+                foreach (DataRow dr in admin.DisplayDeliveyBoyById(id).Rows)
                 {
-                    txtcategory.Text = dr["category"].ToString();
+                    txtname.Text = dr["name"].ToString();
+                    txtmobile.Text = dr["mobile"].ToString();
+                    txtpassword.Text = dr["password"].ToString();
                 }
             }
         }
 
         protected void bttnsubmit_Click(object sender, EventArgs e)
         {
-            string category = txtcategory.Text;
+            string name = txtname.Text;
+            long mobile = Convert.ToInt64(txtmobile.Text);
+            string password = txtpassword.Text;
             DateTime added_on = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
             int i = 0;
 
             if (id == 0)
             {
-                i = Convert.ToInt32(admin.DisplayCategoryByCategory(category).Rows.Count.ToString());
+                i = Convert.ToInt32(admin.DisplayDeliveyBoyByMobile(mobile).Rows.Count.ToString());
             }
             else
             {
-                i = Convert.ToInt32(admin.DisplayCategoryByCategoryAndId(category, id).Rows.Count.ToString());
+                i = Convert.ToInt32(admin.DisplayDeliveyBoyByMobileAndId(mobile, id).Rows.Count.ToString());
             }
 
 
@@ -58,15 +63,15 @@ namespace online_food_ordering.admin
             }
             else
             {
-                if(id == 0)
+                if (id == 0)
                 {
-                    admin.InsertCategory(category,added_on);
-                    Response.Redirect("category.aspx");
+                    admin.InsertDeliveyBoy(name, mobile, password, added_on);
+                    Response.Redirect("delivery_boy.aspx");
                 }
                 else
                 {
-                    admin.UpdateCategory(category, id);
-                    Response.Redirect("category.aspx");
+                    //admin.UpdateDeliveyBoy(name, mobile, password, id);
+                    Response.Redirect("delivery_boy.aspx");
                 }
             }
         }
