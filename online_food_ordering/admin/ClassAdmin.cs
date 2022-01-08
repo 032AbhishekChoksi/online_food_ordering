@@ -841,5 +841,49 @@ namespace online_food_ordering.admin
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public void UpdateDeliveyBoy(string name, long mobile, string password,int id)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Update_DeliveryBoy");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@mobile", mobile);
+                cmd.Parameters.AddWithValue("@password", password);
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void UpdateDeliveryBoyStatus(int id, byte status)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Update_DeliveryBoyStatus");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@status", status);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }

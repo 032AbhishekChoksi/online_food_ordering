@@ -70,7 +70,7 @@ namespace online_food_ordering.admin
                 }
                 else
                 {
-                    //admin.UpdateDeliveyBoy(name, mobile, password, id);
+                    admin.UpdateDeliveyBoy(name, mobile, password, id);
                     Response.Redirect("delivery_boy.aspx");
                 }
             }
