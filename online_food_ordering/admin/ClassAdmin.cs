@@ -885,5 +885,153 @@ namespace online_food_ordering.admin
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public DataTable DisplayCouponCode() {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_CouponCode");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
+
+        public void InsertionCouponCode(string coupon_code, char coupon_type, decimal coupon_value, decimal cart_min_value, string expired_on, DateTime added_on)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Insertion_CouponCode");
+                cmd.CommandType= CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@coupon_code", coupon_code);
+                cmd.Parameters.AddWithValue("@coupon_type", coupon_type);
+                cmd.Parameters.AddWithValue("@coupon_value", coupon_value);
+                cmd.Parameters.AddWithValue("@cart_min_value", cart_min_value);
+                cmd.Parameters.AddWithValue("@expired_on", expired_on);
+                cmd.Parameters.AddWithValue("@added_on", added_on);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public DataTable DisplayCouponCodeById(int id)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_CouponCodeById");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
+        public void UpdateCouponCode(string coupon_code, char coupon_type, decimal coupon_value, decimal cart_min_value, string expired_on, DateTime added_on,int id)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Update_CouponCode");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@coupon_code", coupon_code);
+                cmd.Parameters.AddWithValue("@coupon_type", coupon_type);
+                cmd.Parameters.AddWithValue("@coupon_value", coupon_value);
+                cmd.Parameters.AddWithValue("@cart_min_value", cart_min_value);
+                cmd.Parameters.AddWithValue("@expired_on", expired_on);
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public DataTable DisplayCouponCodeByCode(string coupon_code)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_CouponCodeByCode");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@coupon_code", coupon_code);
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
+        public DataTable DisplayCouponCodeByCodeAndId(string coupon_code,int id)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_CouponCodeByCodeAndId");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@coupon_code", coupon_code);
+                cmd.Parameters.AddWithValue("@id", id);
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
+
+        public void UpdateCouponCodeStatus(int id, byte status)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Update_CouponCodeStatus");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@status", status);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }

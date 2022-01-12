@@ -38,7 +38,7 @@
 											<asp:HyperLink ID="HyperLinkActive" runat="server" NavigateUrl='<%# string.Format("dish.aspx?id={0}&type=deactive",Eval("id")) %>' Visible='<%# Eval("status").ToString() != "False" ? true : false %>'>
 									<asp:Label ID="lblactive" runat="server" class="badge badge-danger hand_cursor" Text="Active"></asp:Label>
 								</asp:HyperLink>
-											<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# string.Format("dish.aspx?id={0}&type=active",Eval("id")) %>' Visible='<%# Eval("status").ToString() != "True" ? true : false %>'>
+											<asp:HyperLink ID="HyperLinkDeactive" runat="server" NavigateUrl='<%# string.Format("dish.aspx?id={0}&type=active",Eval("id")) %>' Visible='<%# Eval("status").ToString() != "True" ? true : false %>'>
 												<asp:Label ID="lbldeactive" runat="server" class="badge badge-info hand_cursor" Text="Deactive"></asp:Label>
 											</asp:HyperLink>
 										</td>

@@ -89,6 +89,7 @@
     <Content Include="admin\assets\js\vendor.bundle.base.js" />
     <Content Include="admin\banner.aspx" />
     <Content Include="admin\category.aspx" />
+    <Content Include="admin\coupon_code.aspx" />
     <Content Include="admin\delivery_boy.aspx" />
     <Content Include="admin\demo.aspx" />
     <Content Include="admin\dish.aspx" />
@@ -97,6 +98,7 @@
     <Content Include="admin\logout.aspx" />
     <Content Include="admin\manage_banner.aspx" />
     <Content Include="admin\manage_category.aspx" />
+    <Content Include="admin\manage_coupon_code.aspx" />
     <Content Include="admin\manage_delivery_boy.aspx" />
     <Content Include="admin\manage_dish.aspx" />
     <Content Include="admin\order.aspx" />
@@ -244,6 +246,13 @@
       <DependentUpon>category.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\ClassAdmin.cs" />
+    <Compile Include="admin\coupon_code.aspx.cs">
+      <DependentUpon>coupon_code.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\coupon_code.aspx.designer.cs">
+      <DependentUpon>coupon_code.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\delivery_boy.aspx.cs">
       <DependentUpon>delivery_boy.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -299,6 +308,13 @@
     </Compile>
     <Compile Include="admin\manage_category.aspx.designer.cs">
       <DependentUpon>manage_category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manage_coupon_code.aspx.cs">
+      <DependentUpon>manage_coupon_code.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manage_coupon_code.aspx.designer.cs">
+      <DependentUpon>manage_coupon_code.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\manage_delivery_boy.aspx.cs">
       <DependentUpon>manage_delivery_boy.aspx</DependentUpon>
