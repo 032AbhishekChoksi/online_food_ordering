@@ -1033,5 +1033,24 @@ namespace online_food_ordering.admin
                 Console.WriteLine(ex.Message);
             }
         }
+        public DataTable DisplayUser()
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_User");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
     }
 }
