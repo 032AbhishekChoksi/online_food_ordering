@@ -19,8 +19,7 @@ namespace online_food_ordering.admin
             else
             {
                 lblsession.Text = Session["ADMIN_USER"].ToString();
-            }
-            
+            }            
         }
     }
 }

@@ -11,7 +11,11 @@ namespace online_food_ordering.user
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //if (Session["FOOD_USER_NAME"] != null)
+            //{
+            //    lblsession.Text = Session["ADMIN_USER"].ToString();
+            //}
+            
         }
     }
 }

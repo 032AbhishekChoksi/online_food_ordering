@@ -44,6 +44,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -106,6 +109,7 @@
     <Content Include="admin\send_coupon_code.aspx" />
     <Content Include="admin\user.aspx" />
     <Content Include="email_body\coupon.aspx" />
+    <Content Include="email_body\emailverify.html" />
     <Content Include="user\assets\css\animate.css" />
     <Content Include="user\assets\css\bootstrap.min.css" />
     <Content Include="user\assets\css\chosen-sprite%402x.png" />
@@ -371,6 +375,7 @@
     <Compile Include="admin\send_coupon_code.aspx.designer.cs">
       <DependentUpon>send_coupon_code.aspx</DependentUpon>
     </Compile>
+    <Compile Include="user\ClassUser.cs" />
     <Compile Include="user\login_register.aspx.cs">
       <DependentUpon>login_register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

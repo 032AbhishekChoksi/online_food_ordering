@@ -11,7 +11,7 @@ namespace online_food_ordering.user
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Page.Title = "Login or Registration | Billy";
         }
     }
 }

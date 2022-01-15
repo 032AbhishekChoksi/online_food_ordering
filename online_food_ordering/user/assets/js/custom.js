@@ -15,10 +15,12 @@ jQuery('#frmRegister').on('submit', function (e) {
 			
 			
 			if (data.status == 'error') {
+				jQuery('#' + data.field).css("color", "#e02c2b");
 				jQuery('#' + data.field).html(data.msg);
 				grecaptcha.reset();
 			}
 			if (data.status == 'success') {
+				jQuery('#' + data.field).css("color", "green");
 				jQuery('#' + data.field).html(data.msg);
 				jQuery('#frmRegister')[0].reset();
 				grecaptcha.reset();

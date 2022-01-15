@@ -49,7 +49,7 @@
                                             <button type="submit" id="register_submit"><span>Register</span></button>
                                         </div>
                                         <input type="hidden" name="type" value="register" />
-                                        <div id="form_msg" style="margin-top: 18px; margin-bottom: 3px; color: green;font: bolder;font-size: larger;"></div>
+                                        <div id="form_msg" style="margin-top: 18px; margin-bottom: 3px;font: bolder;font-size: larger;"></div>
                                     </form>
                                 </div>
                             </div>
@@ -60,5 +60,4 @@
         </div>
     </div>
 </div>
-
 </asp:Content>
