@@ -12,8 +12,8 @@
 									<table id="order-listing" class="table">
 										<thead>
 											<tr>
-												<th width="15%">S.No #</th>
-												<th width="55%">Category</th>
+												<th width="10%">S.No #</th>
+												<th width="60%">Category</th>
 												<th width="30%">Actions</th>
 											</tr>
 										</thead>

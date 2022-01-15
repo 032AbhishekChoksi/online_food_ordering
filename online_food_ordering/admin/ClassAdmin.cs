@@ -1052,5 +1052,25 @@ namespace online_food_ordering.admin
             }
             return dt;
         }
+        public void UpdateUserStatus(int id, byte status)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Update_UserStatus");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@status", status);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }

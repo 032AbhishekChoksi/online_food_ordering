@@ -104,6 +104,7 @@
     <Content Include="admin\order.aspx" />
     <Content Include="admin\setting.aspx" />
     <Content Include="admin\send_coupon_code.aspx" />
+    <Content Include="admin\user.aspx" />
     <Content Include="email_body\coupon.aspx" />
     <Content Include="user\assets\css\animate.css" />
     <Content Include="user\assets\css\bootstrap.min.css" />
@@ -345,6 +346,13 @@
     </Compile>
     <Compile Include="admin\setting.aspx.designer.cs">
       <DependentUpon>setting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\user.aspx.cs">
+      <DependentUpon>user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\user.aspx.designer.cs">
+      <DependentUpon>user.aspx</DependentUpon>
     </Compile>
     <Compile Include="ClassFunction.cs" />
     <Compile Include="ClassRandom.cs" />

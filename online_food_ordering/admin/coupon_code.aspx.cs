@@ -15,7 +15,7 @@ namespace online_food_ordering.admin
         string type = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Page.Title = "Coupon Cod | Billy Admin Panel";
+            Page.Title = "Coupon Code | Billy Admin Panel";
             
             if (Session["ADMIN_USER"] == null)
             {
