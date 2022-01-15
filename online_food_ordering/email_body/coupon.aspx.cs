@@ -11,13 +11,31 @@ namespace online_food_ordering.email_body
     public partial class coupon : System.Web.UI.Page
     {
         ClassAdmin admin = new ClassAdmin();
+        int id = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Coupon Code";
-            if (!Page.IsPostBack)
+            if (IsPostBack) return;
+            
+            if (Request.QueryString["id"] != null)
             {
-                r1.DataSource = admin.DisplayCouponCode();
-                r1.DataBind();
+                id = Convert.ToInt32(Request.QueryString["id"]);
+            }
+            if(id > 0)
+            { 
+                if (!Page.IsPostBack)
+                {
+                    r1.DataSource = admin.DisplayCouponCodeById(id);
+                    r1.DataBind();
+                }
+            }
+            else
+            {
+                if (!Page.IsPostBack)
+                {
+                    r1.DataSource = admin.DisplayCouponCode();
+                    r1.DataBind();
+                }
             }
 
         }

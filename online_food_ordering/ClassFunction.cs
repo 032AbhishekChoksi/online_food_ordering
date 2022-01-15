@@ -11,39 +11,30 @@ namespace online_food_ordering
         string message = string.Empty;
         public String sendEmail(string email, string html, string subject)
         {
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("EMAIL ID", "PASSWORD");
+            smtp.EnableSsl = true;
+            MailMessage msg = new MailMessage();
+            msg.Subject = subject;
+            msg.Body = html + "\n\n\nThanks & Regards.\nBilly Team";
+            msg.IsBodyHtml = true;
+            string toaddress = email;
+            msg.To.Add(toaddress);
+            string fromaddress = "Billy Admin <EMAIL ID>";
+            msg.From = new MailAddress(fromaddress);
             try
             {
+                smtp.Send(msg);
+                message = "email sent to " + email;
 
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new System.Net.NetworkCredential("Email ID", "PASSWORD");
-                smtp.EnableSsl = true;
-                MailMessage msg = new MailMessage();
-                msg.Subject = subject;
-                msg.Body = html + "\n\n\nThanks & Regards.\nBilly Team";
-                msg.IsBodyHtml = true;
-                string toaddress = email;
-                msg.To.Add(toaddress);
-                string fromaddress = "Billy Admin <Email ID>";
-                msg.From = new MailAddress(fromaddress);
-                try
-                {
-                    smtp.Send(msg);
-
-                }
-                catch (Exception ex)
-                {
-                    throw;
-                }
             }
-            catch
+            catch (Exception ex)
             {
-                message = "The specified string is not in the form required for an e-mail address";
+                message = ex.Message.ToString();
             }
-            message = "email sent to " + email;
-
             return message;
         }
     }

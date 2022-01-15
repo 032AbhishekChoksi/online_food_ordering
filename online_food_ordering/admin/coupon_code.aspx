@@ -26,8 +26,19 @@
 							<ItemTemplate>
 								<tr>
 									<td>
-										<div class="div_order_id"><a href="send_coupon_code.aspx?id=<%# Eval("id") %>">
-											<asp:Label ID="lblRowNumber" Text='<%# Container.ItemIndex + 1 %>' runat="server" /></a></div>
+										<asp:HyperLink ID="HyperLinkidactive" runat="server" NavigateUrl='<%# string.Format("send_coupon_code.aspx?id={0}",Eval("id")) %>' Visible='<%# Eval("status").ToString() != "False" ? true : false %>'>
+											<div class="div_order_id">
+												<asp:Label ID="lblRowNumber" Text='<%# Container.ItemIndex + 1 %>' runat="server" /></a>
+											</div>
+										</asp:HyperLink>
+										<asp:HyperLink ID="HyperLinkiddecative" runat="server" Visible='<%# Eval("status").ToString() != "True" ? true : false %>'>
+											<div class="div_order_id">
+												<asp:Label ID="lblRow" Text='<%# Container.ItemIndex + 1 %>' runat="server" /></a>
+											</div>
+										</asp:HyperLink>
+										<%--<div class="div_order_id"><a href="send_coupon_code.aspx?id=<%# Eval("id") %>">
+											<asp:Label ID="Label2" Text='<%# Container.ItemIndex + 1 %>' runat="server" /></a>
+										</div>--%>
 									</td>
 									<td>
 										<div><%# Eval("coupon_code") %> /
@@ -45,10 +56,10 @@
 									</td>
 									<td>
 										<a href="manage_coupon_code.aspx?id=<%# Eval("id") %>">
-											<label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
-											<asp:HyperLink ID="HyperLinkActive" runat="server" NavigateUrl='<%# string.Format("coupon_code.aspx?id={0}&type=deactive",Eval("id")) %>' Visible='<%# Eval("status").ToString() != "False" ? true : false %>'>
-												<asp:Label ID="lblactive" runat="server" class="badge badge-danger hand_cursor" Text="Active"></asp:Label>
-											</asp:HyperLink>
+										<label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
+										<asp:HyperLink ID="HyperLinkActive" runat="server" NavigateUrl='<%# string.Format("coupon_code.aspx?id={0}&type=deactive",Eval("id")) %>' Visible='<%# Eval("status").ToString() != "False" ? true : false %>'>
+											<asp:Label ID="lblactive" runat="server" class="badge badge-danger hand_cursor" Text="Active"></asp:Label>
+										</asp:HyperLink>
 										<asp:HyperLink ID="HyperLinkDeactive" runat="server" NavigateUrl='<%# string.Format("coupon_code.aspx?id={0}&type=active",Eval("id")) %>' Visible='<%# Eval("status").ToString() != "True" ? true : false %>'>
 											<asp:Label ID="lbldeactive" runat="server" class="badge badge-info hand_cursor" Text="Deactive"></asp:Label>
 										</asp:HyperLink>

@@ -14,14 +14,26 @@ namespace online_food_ordering
     {
         ClassAdmin admin = new ClassAdmin();
         ClassFunction function = new ClassFunction();
+        int id = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+           
+            
+            if (Request.QueryString["id"] != null)
+            {
+                id = Convert.ToInt32(Request.QueryString["id"]);
+            }
+            
+            if (id == 0 || id < 0)
+            {
+                Response.Redirect("coupon_code.aspx");
+            }
+
             if (!Page.IsPostBack)
             {
                 r1.DataSource = admin.DisplayUser();
                 r1.DataBind();
             }
-
         }
         private string HttpContent(string url)
         {
@@ -36,7 +48,7 @@ namespace online_food_ordering
         {
             
 
-            string emailHtml = HttpContent("https://localhost:44350/email_body/coupon.aspx");
+            string emailHtml = HttpContent("https://localhost:44350/email_body/coupon.aspx?id="+id+"");
             string value = "";
             foreach (RepeaterItem item in r1.Items)
             {

@@ -23,7 +23,9 @@
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <tr>
-                                        <td><asp:Label ID="lblRowNumber" Text='<%# Container.ItemIndex + 1 %>' runat="server" /></td>
+                                        <td>
+                                            <asp:Label ID="lblRowNumber" Text='<%# Container.ItemIndex + 1 %>' runat="server" />
+                                        </td>
                                         <td><%# Eval("name") %></td>
                                         <td>
                                             <asp:CheckBox ID="rbt_details" runat="server" Text='<%# Eval("email") %>' ClientIDMode="Static" />
