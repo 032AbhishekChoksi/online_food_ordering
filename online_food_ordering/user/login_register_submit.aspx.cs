@@ -40,11 +40,18 @@ namespace online_food_ordering.user
                     {
                         string rand_str = ClassRandom.GetRandomPassword(20);
                         string referral_code = ClassRandom.GetRandomPassword(20);
-                        string from_referral_code = "";
-                        user.InsertUser(name, email, mobile, password, 0, 0, rand_str, referral_code, from_referral_code, added_on);
+                        string from_referral_code = String.Empty;
                         
-                        string html = System.Configuration.ConfigurationManager.AppSettings["FRONT_SITE_PATH"] + "verify?id=" + rand_str;
+                        // Insert record in Customer Table
+                        //user.InsertUser(name, email, mobile, password, 0, 0, rand_str, referral_code, from_referral_code, added_on);
+                       
+                        // Send Mail
+                        string cdate = DateTime.Now.Year.ToString();
+                        string rurl = System.Configuration.ConfigurationManager.AppSettings["FRONT_SITE_PATH"] + "verify.aspx?id=" + rand_str;
+                        string html = emailverificationbody(rurl, cdate);
                         fun.sendEmail(email, html, "Verify your Email ID");
+
+                        //response in json
                         json = js.Serialize(new { status = "success", msg = "Thank you for register. Please check your email id, to verify your account", field = "form_msg" });
                     }
                     else
@@ -73,6 +80,7 @@ namespace online_food_ordering.user
                 Context.Response.Write(js.Serialize(json).Replace("\"{", "'{").Replace("}\"", "}'"));
             }
         }
+        // ReCaptch Verification Method. It's return boolean value (true or false)
         public bool IsReCaptchValid()
         {
             var result = false;
@@ -92,6 +100,19 @@ namespace online_food_ordering.user
                 }
             }
             return result;
+        }
+        // Email Body data replace Method. It's retun string value which content whole html with dynamic data
+        private string emailverificationbody(string redirecturl, string currentyear)
+        {
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader(@"D:\project\online_food_ordering\online_food_ordering\email_body\emailverify.html"))
+            {
+                body = reader.ReadToEnd();
+            }
+            body = body.Replace("{redirecturl}", redirecturl);
+            body = body.Replace("{currentyear}", currentyear);
+
+            return body;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace online_food_ordering
             smtp.EnableSsl = true;
             MailMessage msg = new MailMessage();
             msg.Subject = subject;
-            msg.Body = html + "\n\n\nThanks & Regards.\nBilly Team";
+            msg.Body = html;
             msg.IsBodyHtml = true;
             string toaddress = email;
             msg.To.Add(toaddress);

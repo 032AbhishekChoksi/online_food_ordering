@@ -228,6 +228,7 @@
     <Content Include="user\images\bg\1.jpg" />
     <Content Include="user\login_register.aspx" />
     <Content Include="user\login_register_submit.aspx" />
+    <Content Include="user\verify.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -396,6 +397,13 @@
     </Compile>
     <Compile Include="user\user.Master.designer.cs">
       <DependentUpon>user.Master</DependentUpon>
+    </Compile>
+    <Compile Include="user\verify.aspx.cs">
+      <DependentUpon>verify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\verify.aspx.designer.cs">
+      <DependentUpon>verify.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

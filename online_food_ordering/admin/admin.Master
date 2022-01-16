@@ -6,8 +6,10 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>
-  </title>
+  <meta name = "keywords" content="Billy,Online food,food,food around me,Admin,restaurants near me now,nearby restaurants,places to eat near me,Billy,ordering " />
+  <meta name = "description" content="Billy,Online Food Ordering,Admin" />
+  <meta name = "author" content="Billy" />
+  <title></title>
   <!-- plugins:css -->
   <!-- https://pictogrammers.github.io/@mdi/font/1.0.62/ -->
   <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">

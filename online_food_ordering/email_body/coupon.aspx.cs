@@ -21,6 +21,7 @@ namespace online_food_ordering.email_body
             {
                 id = Convert.ToInt32(Request.QueryString["id"]);
             }
+
             if(id > 0)
             { 
                 if (!Page.IsPostBack)

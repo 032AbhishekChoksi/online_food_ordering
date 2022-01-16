@@ -1,11 +1,14 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="user.master.cs" Inherits="online_food_ordering.user.user" %>
 
 
-<!doctype html>
-<html class="no-js" lang="zxx">
+<!DOCTYPE html>
+<html lang="en">
 <head runat="server">
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name = "keywords" content="Billy,Online food,food,food around me,restaurants near me now,nearby restaurants,places to eat near me,Billy,ordering " />
+	<meta name = "description" content="Billy,Online Food Ordering" />
+	<meta name = "author" content="Billy" />
 	<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -185,7 +188,7 @@
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-sm-7">
 							<div class="copyright">
-								<p>Copyright © <a href="#">Billy.</a> . All Right Reserved.</p>
+								<p>Copyright &copy; <%: DateTime.Now.Year %> <a href="~/index.aspx" target="_blank">Billy</a>. All rights reserved.</p>
 							</div>
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-5">
