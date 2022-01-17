@@ -36,6 +36,7 @@ jQuery('#frmLogin').on('submit', function (e) {
 		url: 'login_register_submit.aspx',
 		type: 'post',
 		data: jQuery('#frmLogin').serialize(),
+		dataType: 'json',
 		success: function (result) {
 			jQuery('#form_login_msg').html('');
 			jQuery('#login_submit').attr('disabled', false);
@@ -48,6 +49,7 @@ jQuery('#frmLogin').on('submit', function (e) {
 			if (is_checkout == 'yes') {
 				window.location.href = 'checkout.aspx';
 			} else if (data.status == 'success') {
+				//alert("Login Successfully");
 				//jQuery('#form_login_msg').html(data.msg);
 				window.location.href = 'shop.aspx';
 			}

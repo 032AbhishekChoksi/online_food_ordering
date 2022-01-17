@@ -81,17 +81,47 @@ namespace online_food_ordering.user
                 string email = Request.Form["user_email"].ToString();
                 string password = Request.Form["user_password"].ToString();
                 string json = null;
-                int check = 0;
+                int check = user.DisplayUserByEmail(email).Rows.Count;
 
                 if (check > 0)
                 {
-                    json = js.Serialize(new { status = "error", msg = "Email id already registered" });
+                    foreach (DataRow dr in user.DisplayUserByEmail(email).Rows)
+                    {
+                        byte status = Convert.ToByte(dr["status"]);
+                        byte email_verify = Convert.ToByte(dr["email_verify"]);
+                        string dbpassword = dr["password"].ToString();
+                        if(email_verify == 1)
+                        {
+                            if(status == 1)
+                            {
+                                if(dbpassword.Equals(password))
+                                {
+                                    Session["FOOD_USER_ID"] = Convert.ToInt32(dr["id"]);
+                                    Session["FOOD_USER_NAME"] = dr["name"].ToString();
+                                    Session["FOOD_USER_EMAIL"] = dr["email"].ToString();
+                                    json = js.Serialize(new { status = "success", msg = "" });
+                                }
+                                else
+                                {
+                                    json = js.Serialize(new { status = "error", msg = "Please enter correct password" });
+                                }
+                            }
+                            else
+                            {
+                                json = js.Serialize(new { status = "error", msg = "Your account has been deactivated" });
+                            }
+                        }
+                        else
+                        {
+                            json = js.Serialize(new { status = "error", msg = "Please verify your email id" });
+                        }
+                    }
                 }
                 else
                 {
-                    json = js.Serialize(new { status = "success", msg = "" });
+                    json = js.Serialize(new { status = "error", msg = "Please enter valid email id" });
                 }
-                Context.Response.Write(js.Serialize(json).Replace("\"{", "'{").Replace("}\"", "}'"));
+                Context.Response.Write(js.Serialize(json));
             }
         }
         // ReCaptch Verification Method. It's return boolean value (true or false)
