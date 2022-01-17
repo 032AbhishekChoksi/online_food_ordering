@@ -114,5 +114,46 @@ namespace online_food_ordering.user
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public DataTable DisplayUserByRandomString(string rand_str)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_UserByRandomString");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@rand_str", rand_str);
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
+        public void UpdateUserEmailVerify(string rand_str, byte email_verify)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Update_UserEmailVerify");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@rand_str", rand_str);
+                cmd.Parameters.AddWithValue("@email_verify", email_verify);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
