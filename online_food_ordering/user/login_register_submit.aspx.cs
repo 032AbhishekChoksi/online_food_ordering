@@ -41,10 +41,10 @@ namespace online_food_ordering.user
                         string rand_str = ClassRandom.GetRandomPassword(20);
                         string referral_code = ClassRandom.GetRandomPassword(20);
                         string from_referral_code = String.Empty;
-                        
+
                         // Insert record in Customer Table
-                        //user.InsertUser(name, email, mobile, password, 0, 0, rand_str, referral_code, from_referral_code, added_on);
-                       
+                        user.InsertUser(name, email, mobile, password, 0, 0, rand_str, referral_code, from_referral_code, added_on);
+
                         // Send Mail
                         string cdate = DateTime.Now.Year.ToString();
                         string rurl = System.Configuration.ConfigurationManager.AppSettings["FRONT_SITE_PATH"] + "verify.aspx?id=" + rand_str;

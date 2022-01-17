@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="assets/css/bootstrap-datepicker.min.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link id="lnkstyle" runat="server" rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body class="sidebar-light">

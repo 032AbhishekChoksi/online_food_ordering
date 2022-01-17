@@ -13,12 +13,14 @@ namespace online_food_ordering.admin
         ClassAdmin admin = new ClassAdmin();
         protected void Page_Load(object sender, EventArgs e)
         {
+
             Page.Title = "Setting | Billy Admin Panel";
             
             if (Session["ADMIN_USER"] == null)
             {
                 Response.Redirect("login.aspx");
             }
+            
 
             if (IsPostBack) return;
             foreach (DataRow dr in admin.DisplaySettingById(1).Rows)
@@ -31,6 +33,9 @@ namespace online_food_ordering.admin
                 txtwebsite_close_msg.Text = dr["website_close_msg"].ToString();
                 txtwallet_amt.Text = dr["wallet_amt"].ToString();
                 txtreferral_amt.Text = dr["referral_amt"].ToString();
+                var valuecolor = dr["theme_color"].ToString().Trim(' ');
+                ddtthemecolor.Items.FindByValue(valuecolor).Selected = true;
+                themecolor(valuecolor);
             }
             
         }
@@ -43,9 +48,22 @@ namespace online_food_ordering.admin
             string website_close_msg = txtwebsite_close_msg.Text;
             decimal wallet_amt = Convert.ToDecimal(txtwallet_amt.Text);
             decimal referral_amt = Convert.ToDecimal(txtreferral_amt.Text);
+            string theme_color = ddtthemecolor.SelectedItem.Value.ToString();
 
-            admin.UpdateSetting(1, cart_min_price, cart_min_price_msg, website_close, website_close_msg, wallet_amt, referral_amt);
+            admin.UpdateSetting(1, cart_min_price, cart_min_price_msg, website_close, website_close_msg, wallet_amt, referral_amt,theme_color);
             Response.Redirect("setting.aspx");
+        }      
+
+        protected void ddtthemecolor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string tcolor = ddtthemecolor.SelectedItem.Value.ToString();
+            themecolor(tcolor);
+
+        }
+        private void themecolor(string v)
+        {
+            string color = ddtthemecolor.Items.FindByValue(v).Attributes.CssStyle.Value;
+            ddtthemecolor.Attributes.Add("style", color + "width:20%;color:white");
         }
     }
 }

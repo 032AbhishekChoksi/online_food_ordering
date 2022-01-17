@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,6 +14,10 @@ namespace online_food_ordering.admin
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Login | Billy Admin Panel";
+            foreach (DataRow dr in admin.DisplayThemeColor(1).Rows)
+            {
+               lnkstyle.Attributes["href"] = "assets/css/" + dr["theme_color"].ToString();
+            }
         }
 
         protected void bttnsubmit_Click(object sender, EventArgs e)

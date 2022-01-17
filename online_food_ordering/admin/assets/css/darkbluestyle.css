@@ -11010,8 +11010,8 @@ fieldset:disabled .wizard > .actions a,
 
 .btn-primary:hover, .wizard > .actions a:hover {
   color: #fff;
-  background-color: #461c55;
-  border-color: #3e194b;
+  background-color: #6fa8dc;
+  border-color: #6fa8dc;
 }
 
 .btn-primary:focus, .wizard > .actions a:focus, .btn-primary.focus, .wizard > .actions a.focus {
@@ -11028,7 +11028,7 @@ fieldset:disabled .wizard > .actions a,
 .show > .btn-primary.dropdown-toggle,
 .wizard > .actions .show > a.dropdown-toggle {
   color: #fff;
-  background-color: #3e194b;
+  background-color: #6fa8dc;
   border-color: #361542;
 }
 
@@ -14038,7 +14038,7 @@ a.badge:hover, a.badge:focus {
 
 a.badge-primary:hover, a.badge-primary:focus {
   color: #fff;
-  background-color: #3e194b;
+  background-color: #6fa8dc;
 }
 
 a.badge-primary:focus, a.badge-primary.focus {
@@ -15501,7 +15501,7 @@ button.bg-primary:hover,
 .settings-panel .color-tiles button.tiles.primary:hover,
 button.bg-primary:focus,
 .settings-panel .color-tiles button.tiles.primary:focus {
-  background-color: #3e194b !important;
+  background-color: #6fa8dc !important;
 }
 
 .bg-secondary {
@@ -27791,7 +27791,7 @@ div.tagsinput span.tag a {
 }
 
 .sidebar-light .sidebar .nav:not(.sub-menu) > .nav-item:hover > .nav-link {
-  background: #037FB0;
+  background: #6fa8dc
 }
 
 .sidebar-light .sidebar .nav:not(.sub-menu) > .nav-item:hover > .nav-link .menu-title,

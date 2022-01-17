@@ -71,7 +71,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\assets\css\bootstrap-datepicker.min.css" />
+    <Content Include="admin\assets\css\darkbluestyle.css" />
+    <Content Include="admin\assets\css\darkgreenstyle.css" />
+    <Content Include="admin\assets\css\darkpurplestyle.css" />
     <Content Include="admin\assets\css\dataTables.bootstrap4.css" />
+    <Content Include="admin\assets\css\lightbluestyle.css" />
+    <Content Include="admin\assets\css\lightgreenstyle.css" />
+    <Content Include="admin\assets\css\lightpurplestyle.css" />
     <Content Include="admin\assets\css\materialdesignicons.min.css" />
     <Content Include="admin\assets\css\style.css" />
     <Content Include="admin\assets\css\vendor.bundle.base.css" />

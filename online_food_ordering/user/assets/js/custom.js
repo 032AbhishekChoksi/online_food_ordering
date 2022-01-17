@@ -12,8 +12,6 @@ jQuery('#frmRegister').on('submit', function (e) {
 			jQuery('#register_submit').attr('disabled', false);
 			jQuery('#form_msg').html('');
 			var data = jQuery.parseJSON(result);
-			
-			
 			if (data.status == 'error') {
 				jQuery('#' + data.field).css("color", "#e02c2b");
 				jQuery('#' + data.field).html(data.msg);

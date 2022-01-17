@@ -714,7 +714,7 @@ namespace online_food_ordering.admin
             return dt;
         }
 
-        public void UpdateSetting(int id,decimal cart_min_price,string cart_min_price_msg,string website_close,string website_close_msg,decimal wallet_amt, decimal referral_amt)
+        public void UpdateSetting(int id,decimal cart_min_price,string cart_min_price_msg,string website_close,string website_close_msg,decimal wallet_amt,decimal referral_amt,string theme_color)
         {
             try
             {
@@ -729,6 +729,7 @@ namespace online_food_ordering.admin
                 cmd.Parameters.AddWithValue("@wallet_amt", wallet_amt);
                 cmd.Parameters.AddWithValue("@website_close_msg", website_close_msg);
                 cmd.Parameters.AddWithValue("@referral_amt", referral_amt);
+                cmd.Parameters.AddWithValue("@theme_color", theme_color);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -1071,6 +1072,29 @@ namespace online_food_ordering.admin
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+        public DataTable DisplayThemeColor(int id)
+        {
+            
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_ThemeColorBySetting");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                con.Open();
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
         }
     }
 }
