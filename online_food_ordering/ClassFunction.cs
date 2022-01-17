@@ -15,7 +15,7 @@ namespace online_food_ordering
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential("EMAIL ID", "PASSWORD");
+            smtp.Credentials = new System.Net.NetworkCredential("abhishekmeet032015@gmail.com", "bmiit032015");
             smtp.EnableSsl = true;
             MailMessage msg = new MailMessage();
             msg.Subject = subject;
@@ -23,7 +23,7 @@ namespace online_food_ordering
             msg.IsBodyHtml = true;
             string toaddress = email;
             msg.To.Add(toaddress);
-            string fromaddress = "Billy Admin <EMAIL ID>";
+            string fromaddress = "Billy Admin <abhishekmeet032015@gmail.com>";
             msg.From = new MailAddress(fromaddress);
             try
             {

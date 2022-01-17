@@ -39,7 +39,7 @@ namespace online_food_ordering.user
             return dt;
         }
 
-        public void InsertUser(string name,string email,long mobile,string password,byte status,byte email_verify,string rand_str,string referral_code,string from_referral_code,DateTime added_on)
+        public int InsertUser(string name,string email,long mobile,string password,byte status,byte email_verify,string rand_str,string referral_code,string from_referral_code,DateTime added_on)
         {
             try
             {
@@ -56,6 +56,53 @@ namespace online_food_ordering.user
                 cmd.Parameters.AddWithValue("@rand_str", rand_str);
                 cmd.Parameters.AddWithValue("@referral_code", referral_code);
                 cmd.Parameters.AddWithValue("@from_referral_code", from_referral_code);
+                cmd.Parameters.AddWithValue("@added_on", added_on);
+                cmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
+                con.Open();
+                cmd.ExecuteNonQuery();
+                id = Convert.ToInt32(cmd.Parameters["@id"].Value);
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return id;
+        }
+        public DataTable getSetting(int id)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Display_SettingById");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@id", id);
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
+        public void manageWallet(int user_id,decimal amt,string msg,string type,string payment_id,DateTime added_on)
+        {
+            try
+            {
+                con.Close();
+                cmd = new SqlCommand("SP_Insertion_Wallet");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@user_id", user_id);
+                cmd.Parameters.AddWithValue("@amt", amt);
+                cmd.Parameters.AddWithValue("@msg", msg);
+                cmd.Parameters.AddWithValue("@type", type);
+                cmd.Parameters.AddWithValue("@payment_id", payment_id);
                 cmd.Parameters.AddWithValue("@added_on", added_on);
                 con.Open();
                 cmd.ExecuteNonQuery();

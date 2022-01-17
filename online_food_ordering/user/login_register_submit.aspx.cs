@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -15,6 +16,8 @@ namespace online_food_ordering.user
     {
         ClassUser user = new ClassUser();
         ClassFunction fun = new ClassFunction();
+        int lastinsertedid = 0;
+        DateTime added_on = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
         protected void Page_Load(object sender, EventArgs e)
         {
             var js = new JavaScriptSerializer();
@@ -43,7 +46,18 @@ namespace online_food_ordering.user
                         string from_referral_code = String.Empty;
 
                         // Insert record in Customer Table
-                        user.InsertUser(name, email, mobile, password, 0, 0, rand_str, referral_code, from_referral_code, added_on);
+                        lastinsertedid = user.InsertUser(name, email, mobile, password, 0, 0, rand_str, referral_code, from_referral_code, added_on);
+
+                        // Get Amount in Wallet For First Time User Registration
+                        decimal wallet_amt = 0;
+                        foreach (DataRow dr in user.getSetting(1).Rows)
+                        {
+                            wallet_amt = Convert.ToDecimal(dr["wallet_amt"]);
+                        }
+                        if(wallet_amt > 0)
+                        {
+                            user.manageWallet(lastinsertedid, wallet_amt, "in", "Register",String.Empty,added_on);
+                        }
 
                         // Send Mail
                         string cdate = DateTime.Now.Year.ToString();
