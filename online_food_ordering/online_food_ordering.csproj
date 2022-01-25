@@ -374,6 +374,18 @@
     <Compile Include="email_body\coupon.aspx.designer.cs">
       <DependentUpon>coupon.aspx</DependentUpon>
     </Compile>
+    <Compile Include="model\Admin.cs" />
+    <Compile Include="model\Banner.cs" />
+    <Compile Include="model\Category.cs" />
+    <Compile Include="model\Contact_Us.cs" />
+    <Compile Include="model\Coupon_Code.cs" />
+    <Compile Include="model\Customer.cs" />
+    <Compile Include="model\Delivery_Boy.cs" />
+    <Compile Include="model\Dish.cs" />
+    <Compile Include="model\Dish_Cart.cs" />
+    <Compile Include="model\Dish_Details.cs" />
+    <Compile Include="model\Order_Detail.cs" />
+    <Compile Include="model\Order_Master.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="admin\send_coupon_code.aspx.cs">
       <DependentUpon>send_coupon_code.aspx</DependentUpon>
@@ -476,6 +488,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="dao\" />
     <Folder Include="media\banner\" />
     <Folder Include="media\dish\" />
   </ItemGroup>

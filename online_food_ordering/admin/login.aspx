@@ -12,14 +12,14 @@
   <meta name = "author" content="Billy" />
   <title>Food Ordering Admin Login</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="assets/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="~/admin/assets/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="~/admin/assets/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="~/admin/assets/css/bootstrap-datepicker.min.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link id="lnkstyle" runat="server" rel="stylesheet" href="assets/css/style.css">
+  <link id="lnkstyle" runat="server" rel="stylesheet" href="~/admin/assets/css/style.css">
 </head>
 
 <body class="sidebar-light">
