@@ -389,6 +389,7 @@
     <Compile Include="model\Order_Status.cs" />
     <Compile Include="model\Rating.cs" />
     <Compile Include="model\Setting.cs" />
+    <Compile Include="model\Wallet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="admin\send_coupon_code.aspx.cs">
       <DependentUpon>send_coupon_code.aspx</DependentUpon>
