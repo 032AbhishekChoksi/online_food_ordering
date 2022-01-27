@@ -1,4 +1,6 @@
-﻿using System;
+﻿using online_food_ordering.dao;
+using online_food_ordering.model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -11,7 +13,12 @@ namespace online_food_ordering.admin
     public partial class manage_category : System.Web.UI.Page
     {
         ClassAdmin admin = new ClassAdmin();
-        int id = 0;
+        private CategoryDAO categoryDAO;
+        private int id = 0;
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            categoryDAO = new CategoryDAO();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Manage Category | Billy Admin Panel";
@@ -29,10 +36,7 @@ namespace online_food_ordering.admin
 
             if (id > 0)
             {
-                foreach (DataRow dr in admin.DisplayCategoryById(id).Rows)
-                {
-                    txtcategory.Text = dr["category"].ToString();
-                }
+                FillRecords();
             }
         }
 
@@ -60,14 +64,68 @@ namespace online_food_ordering.admin
             {
                 if(id == 0)
                 {
-                    admin.InsertCategory(category,added_on);
-                    Response.Redirect("category.aspx");
+                    InsertRecords(category,added_on);
                 }
                 else
                 {
-                    admin.UpdateCategory(category, id);
-                    Response.Redirect("category.aspx");
+                    UpdateRecords(id, category);
                 }
+            }
+        }
+        private void InsertRecords(string p_category, DateTime p_added_on)
+        {
+            Category category = new Category();
+            try
+            { 
+                category = new Category(p_category,1,p_added_on);
+                int retVal = categoryDAO.InsertCategory(category);
+                if (retVal > 0)
+                {
+                    Response.Redirect("category.aspx", false);
+                }
+                else
+                {
+                    Response.Write("Not Inserted Category");
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Oops! error occured :" + ex.Message.ToString());
+            }
+        }
+        private void UpdateRecords(int p_id, string p_category)
+        {
+            Category category = new Category();
+            try
+            {
+                category.SetId(p_id);
+                category.SetCategory(p_category);
+                int retVal = categoryDAO.UpdateCategory(category);
+                if (retVal > 0)
+                {
+                    Response.Redirect("category.aspx", false);
+                }
+                else
+                {
+                    Response.Write("Not Updated Category");
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Oops! error occured :" + ex.Message.ToString());
+            }
+        }
+        private void FillRecords() { 
+            Category category = new Category();
+            try
+            {
+
+                category = categoryDAO.DisplayCategoryById(id);
+                txtcategory.Text = category.GetCategory();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Oops! error occured :" + ex.Message.ToString());
             }
         }
     }

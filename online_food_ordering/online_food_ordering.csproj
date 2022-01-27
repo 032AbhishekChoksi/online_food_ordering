@@ -367,6 +367,7 @@
     </Compile>
     <Compile Include="ClassFunction.cs" />
     <Compile Include="ClassRandom.cs" />
+    <Compile Include="dao\CategoryDAO.cs" />
     <Compile Include="email_body\coupon.aspx.cs">
       <DependentUpon>coupon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -492,7 +493,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="dao\" />
     <Folder Include="media\banner\" />
     <Folder Include="media\dish\" />
   </ItemGroup>

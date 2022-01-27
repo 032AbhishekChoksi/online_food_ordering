@@ -16,6 +16,7 @@ namespace online_food_ordering.model
         {
             id = 0;
             category = string.Empty;
+            status = 1;
         }
         public Category(int id, string category, byte status, DateTime added_on)
         {
