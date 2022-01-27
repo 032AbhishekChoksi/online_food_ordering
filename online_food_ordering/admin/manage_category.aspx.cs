@@ -12,7 +12,6 @@ namespace online_food_ordering.admin
 {
     public partial class manage_category : System.Web.UI.Page
     {
-        ClassAdmin admin = new ClassAdmin();
         private CategoryDAO categoryDAO;
         private int id = 0;
         protected void Page_Init(object sender, EventArgs e)
@@ -48,13 +47,12 @@ namespace online_food_ordering.admin
 
             if (id == 0)
             {
-                i = Convert.ToInt32(admin.DisplayCategoryByCategory(category).Rows.Count.ToString());
+                i = categoryDAO.DisplayCategoryByCategory(category).Tables[0].Rows.Count;
             }
             else
             {
-                i = Convert.ToInt32(admin.DisplayCategoryByCategoryAndId(category, id).Rows.Count.ToString());
+                i= categoryDAO.DisplayCategoryByCategoryAndId(id, category).Tables[0].Rows.Count;
             }
-
 
             if (i > 0)
             {

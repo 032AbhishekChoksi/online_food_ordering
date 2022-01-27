@@ -146,5 +146,58 @@ namespace online_food_ordering.dao
             }
             return category;
         }
+        public DataSet DisplayCategoryByCategory(string p_category)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_CategoryByCategory")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@category", p_category);
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(ds);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                ds.Dispose();
+            }
+            return ds;
+        }
+        public DataSet DisplayCategoryByCategoryAndId(int p_id,string p_category)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_CategoryByCategoryAndId")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@id", p_id);
+                cmd.Parameters.AddWithValue("@category", p_category);
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(ds);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                ds.Dispose();
+            }
+            return ds;
+        }
     }
 }
