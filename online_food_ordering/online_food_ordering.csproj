@@ -365,6 +365,7 @@
     <Compile Include="admin\user.aspx.designer.cs">
       <DependentUpon>user.aspx</DependentUpon>
     </Compile>
+    <Compile Include="bussinesslogic\CategoryBL.cs" />
     <Compile Include="ClassFunction.cs" />
     <Compile Include="ClassRandom.cs" />
     <Compile Include="dao\CategoryDAO.cs" />

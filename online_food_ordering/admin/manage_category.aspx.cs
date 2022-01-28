@@ -1,4 +1,5 @@
-﻿using online_food_ordering.dao;
+﻿using online_food_ordering.bussinesslogic;
+using online_food_ordering.dao;
 using online_food_ordering.model;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,11 @@ namespace online_food_ordering.admin
 {
     public partial class manage_category : System.Web.UI.Page
     {
-        private CategoryDAO categoryDAO;
+        private CategoryBL categoryBL;
         private int id = 0;
         protected void Page_Init(object sender, EventArgs e)
         {
-            categoryDAO = new CategoryDAO();
+            categoryBL = new CategoryBL();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -47,11 +48,11 @@ namespace online_food_ordering.admin
 
             if (id == 0)
             {
-                i = categoryDAO.DisplayCategoryByCategory(category).Tables[0].Rows.Count;
+                i = CheckCategoryByCategory(category);
             }
             else
             {
-                i= categoryDAO.DisplayCategoryByCategoryAndId(id, category).Tables[0].Rows.Count;
+                i= CheckCategoryByCategoryAndId(id, category);
             }
 
             if (i > 0)
@@ -76,7 +77,7 @@ namespace online_food_ordering.admin
             try
             { 
                 category = new Category(p_category,1,p_added_on);
-                int retVal = categoryDAO.InsertCategory(category);
+                int retVal = categoryBL.InsertCategory(category);
                 if (retVal > 0)
                 {
                     Response.Redirect("category.aspx", false);
@@ -98,7 +99,7 @@ namespace online_food_ordering.admin
             {
                 category.SetId(p_id);
                 category.SetCategory(p_category);
-                int retVal = categoryDAO.UpdateCategory(category);
+                int retVal = categoryBL.UpdateCategory(category);
                 if (retVal > 0)
                 {
                     Response.Redirect("category.aspx", false);
@@ -118,13 +119,39 @@ namespace online_food_ordering.admin
             try
             {
 
-                category = categoryDAO.DisplayCategoryById(id);
+                category = categoryBL.DisplayCategoryById(id);
                 txtcategory.Text = category.GetCategory();
             }
             catch (Exception ex)
             {
                 Response.Write("Oops! error occured :" + ex.Message.ToString());
             }
+        }
+        private Int32 CheckCategoryByCategory(string p_category)
+        {
+            int retVal = 0;
+            try
+            {
+                retVal = categoryBL.DisplayCategoryByCategory(p_category).Rows.Count;
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Oops! error occured :" + ex.Message.ToString());
+            }
+            return retVal;
+        }
+        private Int32 CheckCategoryByCategoryAndId(int p_id, string p_category)
+        {
+            int retVal = 0;
+            try
+            {
+                retVal = categoryBL.DisplayCategoryByCategoryAndId(p_id,p_category).Rows.Count;
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Oops! error occured :" + ex.Message.ToString());
+            }
+            return retVal;
         }
     }
 }

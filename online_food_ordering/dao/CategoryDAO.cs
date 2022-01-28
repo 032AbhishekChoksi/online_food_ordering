@@ -146,9 +146,9 @@ namespace online_food_ordering.dao
             }
             return category;
         }
-        public DataSet DisplayCategoryByCategory(string p_category)
+        public DataTable DisplayCategoryByCategory(string p_category)
         {
-            DataSet ds = new DataSet();
+            DataTable dataTable = new DataTable();
             try
             {
                 SqlConnection con = GetConnection();
@@ -159,7 +159,7 @@ namespace online_food_ordering.dao
                 };
                 cmd.Parameters.AddWithValue("@category", p_category);
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                adp.Fill(ds);
+                adp.Fill(dataTable);
                 cmd.Dispose();
             }
             catch (Exception)
@@ -168,13 +168,13 @@ namespace online_food_ordering.dao
             }
             finally
             {
-                ds.Dispose();
+                dataTable.Dispose();
             }
-            return ds;
+            return dataTable;
         }
-        public DataSet DisplayCategoryByCategoryAndId(int p_id,string p_category)
+        public DataTable DisplayCategoryByCategoryAndId(int p_id,string p_category)
         {
-            DataSet ds = new DataSet();
+            DataTable dataTable = new DataTable();
             try
             {
                 SqlConnection con = GetConnection();
@@ -186,7 +186,7 @@ namespace online_food_ordering.dao
                 cmd.Parameters.AddWithValue("@id", p_id);
                 cmd.Parameters.AddWithValue("@category", p_category);
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                adp.Fill(ds);
+                adp.Fill(dataTable);
                 cmd.Dispose();
             }
             catch (Exception)
@@ -195,9 +195,9 @@ namespace online_food_ordering.dao
             }
             finally
             {
-                ds.Dispose();
+                dataTable.Dispose();
             }
-            return ds;
+            return dataTable;
         }
     }
 }
