@@ -43,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -116,6 +119,7 @@
     <Content Include="admin\user.aspx" />
     <Content Include="email_body\coupon.aspx" />
     <Content Include="email_body\emailverify.html" />
+    <Content Include="Global.asax" />
     <Content Include="user\assets\css\animate.css" />
     <Content Include="user\assets\css\bootstrap.min.css" />
     <Content Include="user\assets\css\chosen-sprite%402x.png" />
@@ -235,6 +239,7 @@
     <Content Include="user\login_register.aspx" />
     <Content Include="user\login_register_submit.aspx" />
     <Content Include="user\verify.aspx" />
+    <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +370,7 @@
     <Compile Include="admin\user.aspx.designer.cs">
       <DependentUpon>user.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="bussinesslogic\CategoryBL.cs" />
     <Compile Include="ClassFunction.cs" />
     <Compile Include="ClassRandom.cs" />
@@ -375,6 +381,9 @@
     </Compile>
     <Compile Include="email_body\coupon.aspx.designer.cs">
       <DependentUpon>coupon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="model\Admin.cs" />
     <Compile Include="model\Banner.cs" />
@@ -399,6 +408,13 @@
     </Compile>
     <Compile Include="admin\send_coupon_code.aspx.designer.cs">
       <DependentUpon>send_coupon_code.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="user\ClassUser.cs" />
     <Compile Include="user\login_register.aspx.cs">
@@ -428,6 +444,13 @@
     </Compile>
     <Compile Include="user\verify.aspx.designer.cs">
       <DependentUpon>verify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -486,6 +509,7 @@
     <Content Include="App_Data\online_food.bak" />
     <None Include="packages.config" />
     <Content Include="user\user.Master" />
+    <Content Include="Site.Mobile.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

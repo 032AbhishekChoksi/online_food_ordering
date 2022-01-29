@@ -46,7 +46,7 @@ namespace online_food_ordering.user
                         string from_referral_code = String.Empty;
 
                         // Insert record in Customer Table
-                        lastinsertedid = user.InsertUser(name, email, mobile, password, 0, 0, rand_str, referral_code, from_referral_code, added_on);
+                        lastinsertedid = user.InsertUser(name, email, mobile, password, 1, 0, rand_str, referral_code, from_referral_code, added_on);
 
                         // Get Amount in Wallet For First Time User Registration
                         decimal wallet_amt = 0;
