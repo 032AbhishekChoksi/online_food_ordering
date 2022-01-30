@@ -28,7 +28,7 @@
 										<td><%# Eval("name") %></td>
 										<td><%# Eval("email") %></td>
 										<td><%# Eval("mobile") %></td>
-										<td><?php echo getWalletAmt($row['id']) ?></td>
+										<td><%# string.Format("₹{0}",Math.Round(getWalletAmt(Eval("id"))))%></td>
 										<td>
 											<%# Eval("added_on","{0:dd-MM-yyyy}") %>
 										</td>

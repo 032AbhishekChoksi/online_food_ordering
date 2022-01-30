@@ -56,7 +56,7 @@ namespace online_food_ordering.user
                         }
                         if(wallet_amt > 0)
                         {
-                            user.manageWallet(lastinsertedid, wallet_amt, "in", "Register",String.Empty,added_on);
+                            user.manageWallet(lastinsertedid, wallet_amt, "Register", "in",String.Empty,added_on);
                         }
 
                         // Send Mail

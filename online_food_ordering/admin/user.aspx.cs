@@ -1,4 +1,5 @@
-﻿using System;
+﻿using online_food_ordering.user;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,7 @@ namespace online_food_ordering.admin
     public partial class user : System.Web.UI.Page
     {
         ClassAdmin admin = new ClassAdmin();
+        ClassUser objUser = new ClassUser();
         int id = 0;
         byte status = 1;
         string type = string.Empty;
@@ -48,6 +50,9 @@ namespace online_food_ordering.admin
                 r1.DataSource = admin.DisplayUser();
                 r1.DataBind();
             }
+        }
+        public Decimal getWalletAmt(object uid) {
+            return objUser.getWalletAmt(Convert.ToInt32(uid));
         }
     }
 }

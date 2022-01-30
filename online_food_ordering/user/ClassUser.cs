@@ -155,5 +155,50 @@ namespace online_food_ordering.user
                 Console.WriteLine(ex.Message);
             }
         }
+        public Decimal getWalletAmt(int uid)
+        {
+            decimal finalamt = 0;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_Display_WalletByUserId")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@user_id", uid);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                SqlDataReader dr = cmd.ExecuteReader();
+                cmd.Dispose();
+                decimal inamt = 0;
+                decimal outamt = 0;
+                while (dr.Read())
+                {
+                    if (dr["type"].ToString().Trim(' ').Equals("in"))
+                    {
+                        inamt = inamt + Convert.ToDecimal(dr["amt"]);
+                    }
+                    if (dr["type"].ToString().Trim(' ').Equals("out"))
+                    {
+                        outamt = outamt + Convert.ToDecimal(dr["amt"]);
+                    }
+                }
+                finalamt = inamt - outamt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                {
+                    con.Close();
+                }
+            }
+            return finalamt;
+        }
     }
 }

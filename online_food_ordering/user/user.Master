@@ -24,7 +24,7 @@
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="assets/css/responsive.css">
 	<script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-	<script src="https://www.google.com/recaptcha/api.js" async defer></script
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 		
 <body>
@@ -40,12 +40,13 @@
 					<div class="col-lg-2 col-md-4 col-12 col-sm-4">
 							<div id="wallet_top_box">
 								<a href="wallet" style="color:#fff;">
-									Wallet Amt:- 0
+									Wallet Amt:- <asp:Label ID="lblWalletAmount" runat="server"></asp:Label>
 								</a>
 								
 							</div>
 						</div>
-					
+					<%if (Session["FOOD_USER_NAME"] != null)
+                        {%>
 						<div class="col-lg-2 col-md-8 col-12 col-sm-8">
 							<div class="account-curr-lang-wrap f-right">
 								<ul>
@@ -59,6 +60,9 @@
 								</ul>
 							</div>
 						</div>
+					<%} else { %>
+							<br />
+					<%} %>
 				</div>
 			</div>
 		</div>
@@ -76,17 +80,23 @@
 					<div class="col-lg-9 col-md-8 col-12 col-sm-8">
 						<div class="header-middle-right f-right">
 							<div class="header-login">
-								
-									<a href="login_register.aspx">
-									
+								<%if (Session["FOOD_USER_NAME"] == null) {%>
+									<a href="login_register">
+								<%} %>
 									<div class="header-icon-style">
 										<i class="icon-user icons"></i>
 									</div>
-									<div class="login-text-content">										
-										<%--<center>WELCOME<div style="color:#e02c2b;font-weight: bold;"> Abhishek</div></center>--%>
-											<p>Register <br> or <span>Sign in</span></p>										
-									</div>									
-									</a>
+									<div class="login-text-content">	
+										<%if (Session["FOOD_USER_NAME"] != null) {%>
+											<center>WELCOME<div style="color:#e02c2b;font-weight: bold;">
+												<asp:Label ID="lblUsreName" runat="server"></asp:Label></div></center>
+										<%} else { %>
+											<p>Register <br> or <span>Sign in</span></p>		
+										<%} %>
+									</div>
+										<%if (Session["FOOD_USER_NAME"] == null) {%>
+											</a>
+										<%} %>
 							</div>
 							<div class="header-wishlist">
 								&nbsp;

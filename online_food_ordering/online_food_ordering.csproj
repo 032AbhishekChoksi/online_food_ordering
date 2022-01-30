@@ -238,6 +238,8 @@
     <Content Include="user\images\bg\1.jpg" />
     <Content Include="user\login_register.aspx" />
     <Content Include="user\login_register_submit.aspx" />
+    <Content Include="user\logout.aspx" />
+    <Content Include="user\shop.aspx" />
     <Content Include="user\verify.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -430,6 +432,20 @@
     </Compile>
     <Compile Include="user\login_register_submit.aspx.designer.cs">
       <DependentUpon>login_register_submit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\shop.aspx.cs">
+      <DependentUpon>shop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\shop.aspx.designer.cs">
+      <DependentUpon>shop.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\user.Master.cs">
       <DependentUpon>user.Master</DependentUpon>

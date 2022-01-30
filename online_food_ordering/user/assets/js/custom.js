@@ -4,7 +4,7 @@ jQuery('#frmRegister').on('submit', function (e) {
 	jQuery('#register_submit').attr('disabled', true);
 	jQuery('#form_msg').html('Please Wait ...');
 	jQuery.ajax({
-		url: 'login_register_submit.aspx',
+		url: 'login_register_submit',
 		type: 'post',
 		data: jQuery('#frmRegister').serialize(),
 		dataType: 'json',
@@ -33,7 +33,7 @@ jQuery('#frmLogin').on('submit', function (e) {
 	jQuery('#login_submit').attr('disabled', true);
 	jQuery('#form_login_msg').html('Please Wait ...');
 	jQuery.ajax({
-		url: 'login_register_submit.aspx',
+		url: 'login_register_submit',
 		type: 'post',
 		data: jQuery('#frmLogin').serialize(),
 		dataType: 'json',
@@ -47,11 +47,11 @@ jQuery('#frmLogin').on('submit', function (e) {
 			}
 			var is_checkout = jQuery('#is_checkout').val();
 			if (is_checkout == 'yes') {
-				window.location.href = 'checkout.aspx';
+				window.location.href = 'checkout';
 			} else if (data.status == 'success') {
 				//alert("Login Successfully");
 				//jQuery('#form_login_msg').html(data.msg);
-				window.location.href = 'shop.aspx';
+				window.location.href = 'shop';
 			}
 		}
 	});
