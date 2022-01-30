@@ -545,10 +545,9 @@ namespace online_food_ordering.admin
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = con;
                 cmd.Parameters.AddWithValue("@id", id);
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
-
+                adp = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adp.Fill(dt);
             }
             catch (Exception ex)
             {

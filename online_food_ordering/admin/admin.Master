@@ -70,67 +70,67 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.aspx">
+            <a class="nav-link" href="index">
               <i class="mdi mdi-view-quilt menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="order.aspx">
+            <a class="nav-link" href="order">
               <i class="mdi mdi-cart menu-icon"></i>
               <span class="menu-title">Order</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="refund_money.aspx">
+            <a class="nav-link" href="refund_money">
               <i class="mdi mdi-file-powerpoint-box menu-icon"></i>
               <span class="menu-title">Refund Money</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="category.aspx">
+            <a class="nav-link" href="category">
               <i class="mdi mdi-view-headline menu-icon"></i>
               <span class="menu-title">Category</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="user.aspx">
+            <a class="nav-link" href="user">
               <i class="mdi mdi-account menu-icon"></i>
               <span class="menu-title">Users</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="delivery_boy.aspx">
+            <a class="nav-link" href="delivery_boy">
               <i class="mdi mdi-truck-delivery menu-icon"></i>
               <span class="menu-title">Delivery Boy</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="coupon_code.aspx">
+            <a class="nav-link" href="coupon_code">
               <i class="mdi mdi-barcode menu-icon"></i>
               <span class="menu-title">Coupon Code</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="dish.aspx">
+            <a class="nav-link" href="dish">
               <i class="mdi mdi-silverware-fork-knife menu-icon"></i>
               <span class="menu-title">Dish</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="banner.aspx">
+            <a class="nav-link" href="banner">
               <i class="mdi mdi-animation-play menu-icon"></i>
               <span class="menu-title">Banner</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact_us.aspx">
+            <a class="nav-link" href="contact_us">
               <i class="mdi mdi-view-headline menu-icon"></i>
               <span class="menu-title">Contact Us</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="setting.aspx">
+            <a class="nav-link" href="setting">
               <i class="mdi mdi-settings menu-icon"></i>
               <span class="menu-title">Setting</span>
             </a>

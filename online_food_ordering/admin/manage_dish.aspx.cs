@@ -22,7 +22,7 @@ namespace online_food_ordering.admin
            
             if (Session["ADMIN_USER"] == null)
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login");
             }
             
             if (!IsPostBack)
@@ -147,7 +147,7 @@ namespace online_food_ordering.admin
                             admin.InsertionDishDetails(lastinsertedid, attribute, price, status, added_on);
                         }
 
-                        Response.Redirect("dish.aspx");
+                        Response.Redirect("dish");
                     }
                 }
                 else
@@ -234,7 +234,7 @@ namespace online_food_ordering.admin
                             
                         }
 
-                        Response.Redirect("dish.aspx");
+                        Response.Redirect("dish");
                     }
                 }
             }

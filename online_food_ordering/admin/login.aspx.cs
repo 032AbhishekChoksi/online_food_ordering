@@ -31,7 +31,7 @@ namespace online_food_ordering.admin
             if (i > 0)
             {
                 Session["ADMIN_USER"] = txtusername.Text;
-                Response.Redirect("index.aspx");
+                Response.Redirect("index");
             }
             else
             {

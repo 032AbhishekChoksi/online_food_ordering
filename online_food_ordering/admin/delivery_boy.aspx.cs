@@ -19,7 +19,7 @@ namespace online_food_ordering.admin
             
             if (Session["ADMIN_USER"] == null)
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login");
             }
 
 
@@ -35,13 +35,13 @@ namespace online_food_ordering.admin
             {
                 status = 0;
                 admin.UpdateDeliveryBoyStatus(id, status);
-                Response.Redirect("delivery_boy.aspx");
+                Response.Redirect("delivery_boy");
             }
             else if (id > 0 && type == "active")
             {
                 status = 1;
                 admin.UpdateDeliveryBoyStatus(id, status);
-                Response.Redirect("delivery_boy.aspx");
+                Response.Redirect("delivery_boy");
             }
 
             r1.DataSource = admin.DisplayDeliveryBoy();

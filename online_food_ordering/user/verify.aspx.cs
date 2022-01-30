@@ -34,7 +34,7 @@ namespace online_food_ordering.user
             }
             else
             {
-                Response.Redirect("shop.aspx");
+                Response.Redirect("shop");
             }
         }
     }

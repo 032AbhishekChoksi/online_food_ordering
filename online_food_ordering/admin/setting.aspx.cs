@@ -18,7 +18,7 @@ namespace online_food_ordering.admin
             
             if (Session["ADMIN_USER"] == null)
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login");
             }
             
 
@@ -51,7 +51,7 @@ namespace online_food_ordering.admin
             string theme_color = ddtthemecolor.SelectedItem.Value.ToString();
 
             admin.UpdateSetting(1, cart_min_price, cart_min_price_msg, website_close, website_close_msg, wallet_amt, referral_amt,theme_color);
-            Response.Redirect("setting.aspx");
+            Response.Redirect("setting");
         }      
 
         protected void ddtthemecolor_SelectedIndexChanged(object sender, EventArgs e)

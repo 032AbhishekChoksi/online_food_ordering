@@ -19,7 +19,7 @@ namespace online_food_ordering.admin
 
             if (Session["ADMIN_USER"] == null)
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login");
             }
 
             if (Request.QueryString["id"] != null && Request.QueryString["type"] != null)
@@ -35,13 +35,13 @@ namespace online_food_ordering.admin
             {
                 status = 0;
                 admin.UpdateDishStatus(id, status);
-                Response.Redirect("dish.aspx");
+                Response.Redirect("dish");
             }
             else if (id > 0 && type == "active")
             {
                 status = 1;
                 admin.UpdateDishStatus(id, status);
-                Response.Redirect("dish.aspx");
+                Response.Redirect("dish");
             }
 
             r1.DataSource = admin.DisplayDish();

@@ -26,7 +26,7 @@ namespace online_food_ordering
             
             if (id == 0 || id < 0)
             {
-                Response.Redirect("coupon_code.aspx");
+                Response.Redirect("coupon_code");
             }
 
             if (!Page.IsPostBack)

@@ -19,7 +19,7 @@ namespace online_food_ordering.admin
 
             if (Session["ADMIN_USER"] == null)
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login");
             }
 
             if (Request.QueryString["id"] != null)
@@ -80,7 +80,7 @@ namespace online_food_ordering.admin
                     f1.SaveAs(Request.PhysicalApplicationPath + "/media/banner/" + imagename.ToString());
 
                     admin.InsertBanner(imagename,heading,sub_heading,link,link_text,banner_order,added_on);
-                    Response.Redirect("banner.aspx");
+                    Response.Redirect("banner");
                 }
             }
             else
@@ -134,12 +134,12 @@ namespace online_food_ordering.admin
 
                 {
                     admin.UpdateBannerImage(id, imagename, heading, sub_heading, link, link_text, banner_order);
-                    Response.Redirect("banner.aspx");
+                    Response.Redirect("banner");
                 }
                 else
                 {
                     admin.UpdateBanner(id, heading, sub_heading, link, link_text, banner_order);
-                    Response.Redirect("banner.aspx");
+                    Response.Redirect("banner");
                 }
                 
                 

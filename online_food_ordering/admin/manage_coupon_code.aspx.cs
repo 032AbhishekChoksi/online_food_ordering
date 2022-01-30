@@ -18,7 +18,7 @@ namespace online_food_ordering.admin
 
             if (Session["ADMIN_USER"] == null)
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login");
             }
 
             if (Request.QueryString["id"] != null)
@@ -73,12 +73,12 @@ namespace online_food_ordering.admin
                 if (id == 0)
                 {
                     admin.InsertionCouponCode(coupon_code, coupon_type, coupon_value, cart_min_value, expired_on, added_on);
-                    Response.Redirect("coupon_code.aspx");
+                    Response.Redirect("coupon_code");
                 }
                 else
                 {
                     admin.UpdateCouponCode(coupon_code, coupon_type, coupon_value, cart_min_value, expired_on, added_on, id);
-                    Response.Redirect("coupon_code.aspx");
+                    Response.Redirect("coupon_code");
                 }
             }
             

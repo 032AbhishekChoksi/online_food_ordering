@@ -19,7 +19,7 @@ namespace online_food_ordering.admin
 
             if (Session["ADMIN_USER"] == null)
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login");
             }
             
             if (Request.QueryString["id"] != null && Request.QueryString["type"] != null)
@@ -34,13 +34,13 @@ namespace online_food_ordering.admin
             {
                 status = 0;
                 admin.UpdateUserStatus(id, status);
-                Response.Redirect("user.aspx");
+                Response.Redirect("user");
             }
             else if (id > 0 && type == "active")
             {
                 status = 1;
                 admin.UpdateUserStatus(id, status);
-                Response.Redirect("user.aspx");
+                Response.Redirect("user");
             }
 
             if (!Page.IsPostBack)

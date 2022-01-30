@@ -25,7 +25,7 @@ namespace online_food_ordering.admin
 
             if (Session["ADMIN_USER"] == null)
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login");
             }
 
             if(Request.QueryString["id"]!=null) { 
@@ -80,7 +80,7 @@ namespace online_food_ordering.admin
                 int retVal = categoryBL.InsertCategory(category);
                 if (retVal > 0)
                 {
-                    Response.Redirect("category.aspx", false);
+                    Response.Redirect("category", false);
                 }
                 else
                 {
@@ -102,7 +102,7 @@ namespace online_food_ordering.admin
                 int retVal = categoryBL.UpdateCategory(category);
                 if (retVal > 0)
                 {
-                    Response.Redirect("category.aspx", false);
+                    Response.Redirect("category", false);
                 }
                 else
                 {

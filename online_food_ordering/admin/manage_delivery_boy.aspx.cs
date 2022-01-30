@@ -18,7 +18,7 @@ namespace online_food_ordering.admin
 
             if (Session["ADMIN_USER"] == null)
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login");
             }
             
             if (Request.QueryString["id"] != null)
@@ -66,12 +66,12 @@ namespace online_food_ordering.admin
                 if (id == 0)
                 {
                     admin.InsertDeliveyBoy(name, mobile, password, added_on);
-                    Response.Redirect("delivery_boy.aspx");
+                    Response.Redirect("delivery_boy");
                 }
                 else
                 {
                     admin.UpdateDeliveyBoy(name, mobile, password, id);
-                    Response.Redirect("delivery_boy.aspx");
+                    Response.Redirect("delivery_boy");
                 }
             }
         }

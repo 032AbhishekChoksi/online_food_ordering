@@ -21,7 +21,7 @@ namespace online_food_ordering.admin
             Page.Title = "Category | Billy Admin Panel";
             if (Session["ADMIN_USER"] == null)
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login");
             }
 
             if (Request.QueryString["id"] != null && Request.QueryString["type"] != null)
@@ -35,20 +35,20 @@ namespace online_food_ordering.admin
             if (id > 0 && type=="delete")
             {
                 admin.RemoveCategory(id);
-                Response.Redirect("category.aspx");
+                Response.Redirect("category");
             }
 
             if (id > 0 && type == "deactive")
             {
                 status = 0;
                 admin.UpdateCategoryStatus(id,status);
-                Response.Redirect("category.aspx");
+                Response.Redirect("category");
             }
             else if(id > 0 && type == "active")
             {
                 status = 1;
                 admin.UpdateCategoryStatus(id, status);
-                Response.Redirect("category.aspx");
+                Response.Redirect("category");
             }
 
             r1.DataSource = admin.DisplayCategory();

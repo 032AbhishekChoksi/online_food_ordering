@@ -16,7 +16,7 @@ namespace online_food_ordering.admin
         {
             if (Session["ADMIN_USER"] == null)
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login");
             }
             else
             {

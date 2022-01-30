@@ -19,7 +19,7 @@ namespace online_food_ordering.admin
 
             if (Session["ADMIN_USER"] == null)
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect("login");
             }
 
             if (Request.QueryString["id"] != null && Request.QueryString["type"] != null)
@@ -33,20 +33,20 @@ namespace online_food_ordering.admin
             if (id > 0 && type == "delete")
             {
                 admin.RemoveBanner(id);
-                Response.Redirect("banner.aspx");
+                Response.Redirect("banner");
             }
 
             if (id > 0 && type == "deactive")
             {
                 status = 0;
                 admin.UpdateBannerStatus(id, status);
-                Response.Redirect("banner.aspx");
+                Response.Redirect("banner");
             }
             else if (id > 0 && type == "active")
             {
                 status = 1;
                 admin.UpdateBannerStatus(id, status);
-                Response.Redirect("banner.aspx");
+                Response.Redirect("banner");
             }
             r1.DataSource = admin.DisplayBanner();
             r1.DataBind();
