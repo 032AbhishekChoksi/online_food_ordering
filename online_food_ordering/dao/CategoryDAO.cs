@@ -110,9 +110,9 @@ namespace online_food_ordering.dao
                 }
             }
         }
-        public Category DisplayCategoryById(int p_id) {
+        public Category DisplayCategoryById(Category category) {
             SqlConnection con = GetConnection();
-            Category category = new Category();
+            //Category category = new Category();
             try
             {
                 SqlCommand cmd = new SqlCommand("SP_Display_CategoryById")
@@ -120,7 +120,7 @@ namespace online_food_ordering.dao
                     CommandType = CommandType.StoredProcedure,
                     Connection = con
                 };
-                cmd.Parameters.AddWithValue("@id", p_id);
+                cmd.Parameters.AddWithValue("@id", category.GetId());
                 if (con.State == ConnectionState.Closed)
                 {
                     con.Open();
@@ -146,7 +146,7 @@ namespace online_food_ordering.dao
             }
             return category;
         }
-        public DataTable DisplayCategoryByCategory(string p_category)
+        public DataTable DisplayCategoryByCategory(Category category)
         {
             DataTable dataTable = new DataTable();
             try
@@ -157,7 +157,7 @@ namespace online_food_ordering.dao
                     CommandType = CommandType.StoredProcedure,
                     Connection = con
                 };
-                cmd.Parameters.AddWithValue("@category", p_category);
+                cmd.Parameters.AddWithValue("@category", category.GetCategory());
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 adp.Fill(dataTable);
                 cmd.Dispose();
@@ -172,7 +172,7 @@ namespace online_food_ordering.dao
             }
             return dataTable;
         }
-        public DataTable DisplayCategoryByCategoryAndId(int p_id,string p_category)
+        public DataTable DisplayCategoryByCategoryAndId(Category category)
         {
             DataTable dataTable = new DataTable();
             try
@@ -183,8 +183,8 @@ namespace online_food_ordering.dao
                     CommandType = CommandType.StoredProcedure,
                     Connection = con
                 };
-                cmd.Parameters.AddWithValue("@id", p_id);
-                cmd.Parameters.AddWithValue("@category", p_category);
+                cmd.Parameters.AddWithValue("@id", category.GetId());
+                cmd.Parameters.AddWithValue("@category", category.GetCategory());
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 adp.Fill(dataTable);
                 cmd.Dispose();

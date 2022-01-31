@@ -37,9 +37,11 @@
               <form class="pt-3" id="f1" runat="server" method="post">
                 <div class="form-group">
                     <asp:TextBox ID="txtusername" runat="server" class="form-control form-control-lg" placeholder="Username" name="username"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorCategory" runat="server" Style="color:#e02c2b;" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtusername" Display="Dynamic" >Username is mandatory </asp:RequiredFieldValidator>
                 </div>
                 <div class="form-group">
                     <asp:TextBox ID="txtpassword" runat="server" class="form-control form-control-lg" placeholder="Password" name="password" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Style="color:#e02c2b;" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtpassword" Display="Dynamic" >Password is mandatory </asp:RequiredFieldValidator>
                 </div>
                 <div class="mt-3">
                     <asp:Button ID="bttnsubmit" runat="server" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" Text="SIGN IN" OnClick="bttnsubmit_Click" />

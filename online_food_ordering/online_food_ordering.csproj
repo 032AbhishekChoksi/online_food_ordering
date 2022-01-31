@@ -373,10 +373,14 @@
       <DependentUpon>user.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="bussinesslogic\AdminBL.cs" />
     <Compile Include="bussinesslogic\CategoryBL.cs" />
+    <Compile Include="bussinesslogic\SettingBL.cs" />
     <Compile Include="ClassFunction.cs" />
     <Compile Include="ClassRandom.cs" />
+    <Compile Include="dao\AdminDAO.cs" />
     <Compile Include="dao\CategoryDAO.cs" />
+    <Compile Include="dao\SettingDAO.cs" />
     <Compile Include="email_body\coupon.aspx.cs">
       <DependentUpon>coupon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

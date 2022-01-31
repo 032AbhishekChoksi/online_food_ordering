@@ -8,7 +8,7 @@
         <form ID="fo1" class="forms-sample" method="post" runat="server">
           <div class="form-group">
               <asp:Label ID="lblcart_min_price" runat="server" Text="Cart min price"></asp:Label>
-              <asp:TextBox ID="txtcart_min_price" runat="server" class="form-control" placeholder="Cart min price" name="cart_min_price"></asp:TextBox>
+              <asp:TextBox ID="txtcart_min_price" runat="server" class="form-control" placeholder="Cart min price" name="cart_min_price" TextMode="Number"></asp:TextBox>
           </div>
           <div class="form-group">
               <asp:Label ID="lblcart_min_price_msg" runat="server" Text="Order Number"></asp:Label>
@@ -28,7 +28,7 @@
           </div>
           <div class="form-group">
               <asp:Label ID="lblwallet_amt" runat="server" Text="Wallet Amount"></asp:Label>
-              <asp:TextBox ID="txtwallet_amt" runat="server" class="form-control" placeholder="Wallet Amount" name="wallet_amt"></asp:TextBox>
+              <asp:TextBox ID="txtwallet_amt" runat="server" class="form-control" placeholder="Wallet Amount" name="wallet_amt" TextMode="Number"></asp:TextBox>
           </div>
           <div class="form-group">
               <asp:Label ID="lblreferral_amt" runat="server" Text="Referral Amt"></asp:Label>

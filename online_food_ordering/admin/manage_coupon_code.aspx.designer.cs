@@ -42,6 +42,15 @@ namespace online_food_ordering.admin
         protected global::System.Web.UI.WebControls.TextBox txtcoupon_code;
 
         /// <summary>
+        /// RequiredFieldValidatorCoupon_code control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorCoupon_code;
+
+        /// <summary>
         /// error control.
         /// </summary>
         /// <remarks>
@@ -69,6 +78,15 @@ namespace online_food_ordering.admin
         protected global::System.Web.UI.WebControls.DropDownList ddtcoupon_type;
 
         /// <summary>
+        /// RequiredFieldValidatorcoupon_type control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorcoupon_type;
+
+        /// <summary>
         /// lblcoupon_value control.
         /// </summary>
         /// <remarks>
@@ -85,6 +103,15 @@ namespace online_food_ordering.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcoupon_value;
+
+        /// <summary>
+        /// RequiredFieldValidatorcoupon_value control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorcoupon_value;
 
         /// <summary>
         /// lblcart_min_value control.
@@ -105,6 +132,15 @@ namespace online_food_ordering.admin
         protected global::System.Web.UI.WebControls.TextBox txtcart_min_value;
 
         /// <summary>
+        /// RequiredFieldValidatorcart_min_value control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorcart_min_value;
+
+        /// <summary>
         /// lblexpired_on control.
         /// </summary>
         /// <remarks>
@@ -121,6 +157,15 @@ namespace online_food_ordering.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtexpired_on;
+
+        /// <summary>
+        /// RequiredFieldValidatorexpired_on control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorexpired_on;
 
         /// <summary>
         /// bttnsubmit control.

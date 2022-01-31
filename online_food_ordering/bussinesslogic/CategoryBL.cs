@@ -41,11 +41,11 @@ namespace online_food_ordering.bussinesslogic
                 categoryDAO = null;
             }
         }
-        public Category DisplayCategoryById(int p_id) {
+        public Category DisplayCategoryById(Category category) {
             CategoryDAO categoryDAO = new CategoryDAO();
             try
             {
-                return categoryDAO.DisplayCategoryById(p_id);
+                return categoryDAO.DisplayCategoryById(category);
             }
             catch (Exception)
             {
@@ -56,12 +56,12 @@ namespace online_food_ordering.bussinesslogic
                 categoryDAO = null;
             }
         }
-        public DataTable DisplayCategoryByCategory(string p_category)
+        public DataTable DisplayCategoryByCategory(Category category)
         {
             CategoryDAO categoryDAO = new CategoryDAO();
             try
             {
-                return categoryDAO.DisplayCategoryByCategory(p_category);
+                return categoryDAO.DisplayCategoryByCategory(category);
             }
             catch (Exception)
             {
@@ -72,12 +72,12 @@ namespace online_food_ordering.bussinesslogic
                 categoryDAO = null;
             }
         }
-        public DataTable DisplayCategoryByCategoryAndId(int p_id, string p_category)
+        public DataTable DisplayCategoryByCategoryAndId(Category category)
         {
             CategoryDAO categoryDAO = new CategoryDAO();
             try
             {
-                return categoryDAO.DisplayCategoryByCategoryAndId(p_id,p_category);
+                return categoryDAO.DisplayCategoryByCategoryAndId(category);
             }
             catch (Exception)
             {

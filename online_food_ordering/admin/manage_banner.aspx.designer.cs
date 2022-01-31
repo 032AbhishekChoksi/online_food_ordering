@@ -69,6 +69,15 @@ namespace online_food_ordering.admin
         protected global::System.Web.UI.WebControls.TextBox txtheading;
 
         /// <summary>
+        /// RequiredFieldValidatorheading control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorheading;
+
+        /// <summary>
         /// lblsub_heading control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace online_food_ordering.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsub_heading;
+
+        /// <summary>
+        /// RequiredFieldValidatorsub_heading control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorsub_heading;
 
         /// <summary>
         /// lbllink control.
@@ -105,6 +123,15 @@ namespace online_food_ordering.admin
         protected global::System.Web.UI.WebControls.TextBox txtlink;
 
         /// <summary>
+        /// RequiredFieldValidatorlink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorlink;
+
+        /// <summary>
         /// lbllink_txt control.
         /// </summary>
         /// <remarks>
@@ -123,6 +150,15 @@ namespace online_food_ordering.admin
         protected global::System.Web.UI.WebControls.TextBox txtlink_txt;
 
         /// <summary>
+        /// RequiredFieldValidatorlink_txt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorlink_txt;
+
+        /// <summary>
         /// lblbannerorder control.
         /// </summary>
         /// <remarks>
@@ -139,6 +175,15 @@ namespace online_food_ordering.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtbannerorder;
+
+        /// <summary>
+        /// RequiredFieldValidatorbannerorder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorbannerorder;
 
         /// <summary>
         /// bttnsubmit control.

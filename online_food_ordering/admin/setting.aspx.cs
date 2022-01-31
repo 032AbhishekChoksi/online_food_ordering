@@ -1,4 +1,6 @@
-﻿using System;
+﻿using online_food_ordering.bussinesslogic;
+using online_food_ordering.model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -10,7 +12,11 @@ namespace online_food_ordering.admin
 {
     public partial class setting : System.Web.UI.Page
     {
-        ClassAdmin admin = new ClassAdmin();
+        private SettingBL settingBL;
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            settingBL = new SettingBL();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,24 +26,10 @@ namespace online_food_ordering.admin
             {
                 Response.Redirect("login");
             }
-            
 
             if (IsPostBack) return;
-            foreach (DataRow dr in admin.DisplaySettingById(1).Rows)
-            {
-                txtcart_min_price.Text = dr["cart_min_price"].ToString();
-                txtcart_min_price_msg.Text = dr["cart_min_price_msg"].ToString();
-                ddtwebsite_close.ClearSelection();
-                var value = dr["website_close"].ToString().Trim(' ');
-                ddtwebsite_close.Items.FindByValue(value).Selected = true;
-                txtwebsite_close_msg.Text = dr["website_close_msg"].ToString();
-                txtwallet_amt.Text = dr["wallet_amt"].ToString();
-                txtreferral_amt.Text = dr["referral_amt"].ToString();
-                var valuecolor = dr["theme_color"].ToString().Trim(' ');
-                ddtthemecolor.Items.FindByValue(valuecolor).Selected = true;
-                themecolor(valuecolor);
-            }
             
+            FillRecords(1);
         }
 
         protected void bttnsubmit_Click(object sender, EventArgs e)
@@ -50,20 +42,63 @@ namespace online_food_ordering.admin
             decimal referral_amt = Convert.ToDecimal(txtreferral_amt.Text);
             string theme_color = ddtthemecolor.SelectedItem.Value.ToString();
 
-            admin.UpdateSetting(1, cart_min_price, cart_min_price_msg, website_close, website_close_msg, wallet_amt, referral_amt,theme_color);
-            Response.Redirect("setting");
-        }      
-
+            UpdateRecords(1, cart_min_price, cart_min_price_msg, website_close, website_close_msg, wallet_amt, referral_amt,theme_color);
+        }
         protected void ddtthemecolor_SelectedIndexChanged(object sender, EventArgs e)
         {
             string tcolor = ddtthemecolor.SelectedItem.Value.ToString();
             themecolor(tcolor);
-
+        }
+        private void FillRecords(int p_id)
+        {
+            try
+            {
+                Setting setting = new Setting();
+                setting.SetId(p_id);
+                setting = settingBL.DisplaySettingById(setting);
+                // Get Setting Values
+                txtcart_min_price.Text = setting.GetCartMinPrice().ToString();
+                txtcart_min_price_msg.Text = setting.GetCartMinPriceMsg().ToString();
+                ddtwebsite_close.ClearSelection();
+                var value = setting.GetWebsiteClose().ToString().Trim(' ');
+                ddtwebsite_close.Items.FindByValue(value).Selected = true;
+                txtwebsite_close_msg.Text = setting.GetWebsiteCloseMsg().ToString();
+                txtwallet_amt.Text = setting.GetWalletAmt().ToString();
+                txtreferral_amt.Text = setting.GetReferralAmt().ToString();
+                var valuecolor = setting.GetThemeColor().ToString().Trim(' ');
+                ddtthemecolor.Items.FindByValue(valuecolor).Selected = true;
+                themecolor(valuecolor);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Oops! error occured :" + ex.Message.ToString());
+            }
         }
         private void themecolor(string v)
         {
             string color = ddtthemecolor.Items.FindByValue(v).Attributes.CssStyle.Value;
             ddtthemecolor.Attributes.Add("style", color + "width:20%;color:white");
+        }
+        private void UpdateRecords(int p_id, decimal p_cart_min_price, string p_cart_min_price_msg, string p_website_close,string p_website_close_msg, decimal p_wallet_amt, decimal p_referral_amt, string p_theme_color)
+        {
+            
+            try
+            {
+                Setting setting = new Setting(p_id, p_cart_min_price, p_cart_min_price_msg, p_website_close, p_website_close_msg, p_wallet_amt, p_referral_amt, p_theme_color);
+                int retVal = settingBL.UpdateSetting(setting);
+                if (retVal > 0)
+                {
+                    Response.Redirect("setting", false);
+                }
+                else
+                {
+                    Response.Write("Not Updated Category");
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Oops! error occured :" + ex.Message.ToString());
+            }
         }
     }
 }

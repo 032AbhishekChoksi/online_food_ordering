@@ -1072,28 +1072,28 @@ namespace online_food_ordering.admin
                 Console.WriteLine(ex.Message);
             }
         }
-        public DataTable DisplayThemeColor(int id)
-        {
+        //public DataTable DisplayThemeColor(int id)
+        //{
             
-            try
-            {
-                con.Close();
-                cmd = new SqlCommand("SP_Display_ThemeColorBySetting");
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = con;
-                cmd.Parameters.AddWithValue("@id", id);
-                con.Open();
-                adp = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                adp.Fill(dt);
-                con.Close();
+        //    try
+        //    {
+        //        con.Close();
+        //        cmd = new SqlCommand("SP_Display_ThemeColorBySetting");
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        cmd.Connection = con;
+        //        cmd.Parameters.AddWithValue("@id", id);
+        //        con.Open();
+        //        adp = new SqlDataAdapter(cmd);
+        //        dt = new DataTable();
+        //        adp.Fill(dt);
+        //        con.Close();
 
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return dt;
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //    return dt;
+        //}
     }
 }

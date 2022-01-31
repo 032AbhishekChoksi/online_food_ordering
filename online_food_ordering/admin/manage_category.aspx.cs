@@ -52,7 +52,7 @@ namespace online_food_ordering.admin
             }
             else
             {
-                i= CheckCategoryByCategoryAndId(id, category);
+                i = CheckCategoryByCategoryAndId(id, category);
             }
 
             if (i > 0)
@@ -94,9 +94,9 @@ namespace online_food_ordering.admin
         }
         private void UpdateRecords(int p_id, string p_category)
         {
-            Category category = new Category();
             try
             {
+                Category category = new Category();
                 category.SetId(p_id);
                 category.SetCategory(p_category);
                 int retVal = categoryBL.UpdateCategory(category);
@@ -115,11 +115,11 @@ namespace online_food_ordering.admin
             }
         }
         private void FillRecords() { 
-            Category category = new Category();
             try
             {
-
-                category = categoryBL.DisplayCategoryById(id);
+                Category category = new Category();
+                category.SetId(id);
+                category = categoryBL.DisplayCategoryById(category);
                 txtcategory.Text = category.GetCategory();
             }
             catch (Exception ex)
@@ -132,7 +132,9 @@ namespace online_food_ordering.admin
             int retVal = 0;
             try
             {
-                retVal = categoryBL.DisplayCategoryByCategory(p_category).Rows.Count;
+                Category category = new Category();
+                category.SetCategory(p_category);
+                retVal = categoryBL.DisplayCategoryByCategory(category).Rows.Count;
             }
             catch (Exception ex)
             {
@@ -145,7 +147,10 @@ namespace online_food_ordering.admin
             int retVal = 0;
             try
             {
-                retVal = categoryBL.DisplayCategoryByCategoryAndId(p_id,p_category).Rows.Count;
+                Category category = new Category();
+                category.SetId(p_id);
+                category.SetCategory(p_category);
+                retVal = categoryBL.DisplayCategoryByCategoryAndId(category).Rows.Count;
             }
             catch (Exception ex)
             {

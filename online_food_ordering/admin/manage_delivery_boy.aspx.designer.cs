@@ -42,6 +42,15 @@ namespace online_food_ordering.admin
         protected global::System.Web.UI.WebControls.TextBox txtname;
 
         /// <summary>
+        /// RequiredFieldValidatorname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorname;
+
+        /// <summary>
         /// lblpassword control.
         /// </summary>
         /// <remarks>
@@ -60,6 +69,15 @@ namespace online_food_ordering.admin
         protected global::System.Web.UI.WebControls.TextBox txtpassword;
 
         /// <summary>
+        /// RequiredFieldValidatorpassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorpassword;
+
+        /// <summary>
         /// lblmobile control.
         /// </summary>
         /// <remarks>
@@ -76,6 +94,15 @@ namespace online_food_ordering.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtmobile;
+
+        /// <summary>
+        /// RequiredFieldValidatormobile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatormobile;
 
         /// <summary>
         /// error control.
