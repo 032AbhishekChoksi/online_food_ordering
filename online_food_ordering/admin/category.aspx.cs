@@ -1,4 +1,6 @@
-﻿using System;
+﻿using online_food_ordering.bussinesslogic;
+using online_food_ordering.model;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -12,10 +14,14 @@ namespace online_food_ordering.admin
 {
     public partial class category : System.Web.UI.Page
     {
-        ClassAdmin admin = new ClassAdmin();
-        int id = 0;
-        byte status = 1;
-        string type = string.Empty;
+        CategoryBL categoryBL;
+        private int id = 0;
+        private string type = string.Empty;
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            categoryBL = new CategoryBL();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Category | Billy Admin Panel";
@@ -28,31 +34,46 @@ namespace online_food_ordering.admin
             {
                 id = Convert.ToInt32(Request.QueryString["id"]);
                 type = Request.QueryString["type"].ToString();
+               
+                if (IsPostBack) return;
+                CategoryAction(id, type);
             }
+            FillData();
 
-            if (IsPostBack) return;
-
-            if (id > 0 && type=="delete")
-            {
-                admin.RemoveCategory(id);
-                Response.Redirect("category");
-            }
-
-            if (id > 0 && type == "deactive")
+        }
+        private void FillData()
+        {
+            r1.DataSource = categoryBL.DisplayCategory();
+            r1.DataBind();
+        }
+        private void CategoryAction(int p_id, string p_type)
+        {
+            byte status;
+            if (p_id > 0 && p_type == "deactive")
             {
                 status = 0;
-                admin.UpdateCategoryStatus(id,status);
+                Category category = new Category();
+                category.SetId(p_id);
+                category.SetStatus(status);
+                categoryBL.UpdateCategoryStatus(category);
                 Response.Redirect("category");
             }
-            else if(id > 0 && type == "active")
+            else if (p_id > 0 && p_type == "active")
             {
                 status = 1;
-                admin.UpdateCategoryStatus(id, status);
+                Category category = new Category();
+                category.SetId(p_id);
+                category.SetStatus(status);
+                categoryBL.UpdateCategoryStatus(category);
                 Response.Redirect("category");
             }
-
-            r1.DataSource = admin.DisplayCategory();
-            r1.DataBind();
+            else if(id > 0 && type == "delete")
+            {
+                Category category = new Category();
+                category.SetId(p_id);
+                categoryBL.RemoveCategory(category);
+                Response.Redirect("category");
+            }
         }
     }
 }

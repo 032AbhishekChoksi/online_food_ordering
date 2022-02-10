@@ -88,5 +88,53 @@ namespace online_food_ordering.bussinesslogic
                 categoryDAO = null;
             }
         }
+        public DataTable DisplayCategory()
+        {
+            CategoryDAO categoryDAO = new CategoryDAO();
+            try
+            {
+                return categoryDAO.DisplayCategory();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                categoryDAO = null;
+            }
+        }
+        public Int32 UpdateCategoryStatus(Category category)
+        {
+            CategoryDAO categoryDAO = new CategoryDAO();
+            try
+            {
+                return categoryDAO.UpdateCategoryStatus(category);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                categoryDAO = null;
+            }
+        }
+        public Int32 RemoveCategory(Category category)
+        {
+            CategoryDAO categoryDAO = new CategoryDAO();
+            try
+            {
+                return categoryDAO.RemoveCategory(category);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                categoryDAO = null;
+            }
+        }
     }
 }

@@ -199,5 +199,109 @@ namespace online_food_ordering.dao
             }
             return dataTable;
         }
+        public DataTable DisplayCategory()
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_Category")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dataTable);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataTable.Dispose();
+            }
+            return dataTable;
+        }
+        public Int32 UpdateCategoryStatus(Category category)
+        {
+            SqlConnection con = GetConnection();
+            int result;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_Update_CategoryStatus")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@status", category.GetStatus());
+                cmd.Parameters.AddWithValue("@id", category.GetId());
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                if (result > 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                {
+                    con.Close();
+                }
+            }
+        }
+        public Int32 RemoveCategory(Category category)
+        {
+            SqlConnection con = GetConnection();
+            int result;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_Remove_Category")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@id", category.GetId());
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                if (result > 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                {
+                    con.Close();
+                }
+            }
+        }
     }
 }
