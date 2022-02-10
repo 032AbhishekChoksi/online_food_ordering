@@ -39,9 +39,14 @@
 					</div>
 					<div class="col-lg-2 col-md-4 col-12 col-sm-4">
 							<div id="wallet_top_box">
-								<a href="wallet" style="color:#fff;">
-									Wallet Amt:- <asp:Label ID="lblWalletAmount" runat="server"></asp:Label>
-								</a>
+								<%if (Session["FOOD_USER_NAME"] != null)
+								{%>
+									<a href="wallet" style="color:#fff;">
+										Wallet Amt:- <asp:Label ID="lblWalletAmount" runat="server"></asp:Label>
+									</a>
+								<%} else { %>
+									<br />
+								<%} %>
 								
 							</div>
 						</div>

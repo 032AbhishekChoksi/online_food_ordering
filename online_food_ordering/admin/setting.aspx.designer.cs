@@ -42,6 +42,15 @@ namespace online_food_ordering.admin
         protected global::System.Web.UI.WebControls.TextBox txtcart_min_price;
 
         /// <summary>
+        /// RequiredFieldValidatorcart_min_price control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorcart_min_price;
+
+        /// <summary>
         /// lblcart_min_price_msg control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace online_food_ordering.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcart_min_price_msg;
+
+        /// <summary>
+        /// RequiredFieldValidatorcart_min_price_msg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorcart_min_price_msg;
 
         /// <summary>
         /// lblwebsite_close control.
@@ -78,6 +96,15 @@ namespace online_food_ordering.admin
         protected global::System.Web.UI.WebControls.DropDownList ddtwebsite_close;
 
         /// <summary>
+        /// RequiredFieldValidatorwebsite_close control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorwebsite_close;
+
+        /// <summary>
         /// lblwebsite_close_msg control.
         /// </summary>
         /// <remarks>
@@ -94,6 +121,15 @@ namespace online_food_ordering.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtwebsite_close_msg;
+
+        /// <summary>
+        /// RequiredFieldValidatorwebsite_close_msg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorwebsite_close_msg;
 
         /// <summary>
         /// lblwallet_amt control.
@@ -114,6 +150,15 @@ namespace online_food_ordering.admin
         protected global::System.Web.UI.WebControls.TextBox txtwallet_amt;
 
         /// <summary>
+        /// RequiredFieldValidatorwallet_amt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorwallet_amt;
+
+        /// <summary>
         /// lblreferral_amt control.
         /// </summary>
         /// <remarks>
@@ -132,6 +177,15 @@ namespace online_food_ordering.admin
         protected global::System.Web.UI.WebControls.TextBox txtreferral_amt;
 
         /// <summary>
+        /// RequiredFieldValidatorreferral_amt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorreferral_amt;
+
+        /// <summary>
         /// lblthemecolor control.
         /// </summary>
         /// <remarks>
@@ -148,6 +202,15 @@ namespace online_food_ordering.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddtthemecolor;
+
+        /// <summary>
+        /// RequiredFieldValidatorthemecolor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorthemecolor;
 
         /// <summary>
         /// bttnsubmit control.

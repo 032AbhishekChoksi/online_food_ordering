@@ -1,0 +1,57 @@
+﻿body {
+    background-image: linear-gradient(to right,#f4f0ff, white,#f4f0ff);
+}
+
+#boxes {
+    content: "";
+    display: table;
+    clear: both;
+    margin-top: 150px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 100px;
+    margin-left: 340px;
+    font-family: Microsoft Sans Serif
+}
+
+div {
+    float: left;
+    height: 470px;
+    width: 10%;
+    padding: 0 10px;
+}
+
+#column2 {
+    margin-top: 100px;
+    margin-left: 430px;
+    border-left: 3px solid #5B3B8C;
+    height: 50px;
+}
+
+#column3 {
+    margin-left: -60px;
+    margin-top: 15px;
+}
+
+pre {
+    color: black;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+a {
+    color: #FFFFFF;
+    text-align: center;
+    text-decoration: none;
+}
+
+button {
+    background-color: rebeccapurple;
+    color: white;
+    height: 30px;
+    border-color: purple;
+    border-radius: 2px;
+    cursor: pointer;
+}

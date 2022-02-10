@@ -42,6 +42,15 @@ namespace online_food_ordering.admin
         protected global::System.Web.UI.WebControls.DropDownList ddtcategory_id;
 
         /// <summary>
+        /// RequiredFieldValidatorcategory_id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorcategory_id;
+
+        /// <summary>
         /// lbldish control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace online_food_ordering.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtdish;
+
+        /// <summary>
+        /// RequiredFieldValidatordish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatordish;
 
         /// <summary>
         /// error control.
@@ -87,6 +105,15 @@ namespace online_food_ordering.admin
         protected global::System.Web.UI.WebControls.DropDownList ddttype;
 
         /// <summary>
+        /// RequiredFieldValidatortype control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatortype;
+
+        /// <summary>
         /// lbldishdetail control.
         /// </summary>
         /// <remarks>
@@ -103,6 +130,15 @@ namespace online_food_ordering.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtdish_detail;
+
+        /// <summary>
+        /// RequiredFieldValidatordish_detail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatordish_detail;
 
         /// <summary>
         /// lbldishimage control.

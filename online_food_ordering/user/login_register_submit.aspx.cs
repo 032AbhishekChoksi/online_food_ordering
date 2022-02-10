@@ -44,9 +44,9 @@ namespace online_food_ordering.user
                         string rand_str = ClassRandom.GetRandomPassword(20);
                         string referral_code = ClassRandom.GetRandomPassword(20);
                         string from_referral_code = String.Empty;
-
+                        string hashpassaword = fun.SecurePassword(password);
                         // Insert record in Customer Table
-                        lastinsertedid = user.InsertUser(name, email, mobile, password, 1, 0, rand_str, referral_code, from_referral_code, added_on);
+                        lastinsertedid = user.InsertUser(name, email, mobile, hashpassaword, 1, 0, rand_str, referral_code, from_referral_code, added_on);
 
                         // Get Amount in Wallet For First Time User Registration
                         decimal wallet_amt = 0;
@@ -94,8 +94,10 @@ namespace online_food_ordering.user
                         {
                             if(status == 1)
                             {
-                                if(dbpassword.Equals(password))
+                                string hpassword = fun.SecurePassword(password);
+                                if (dbpassword.Equals(hpassword))
                                 {
+                                    hpassword = "";
                                     Session["FOOD_USER_ID"] = Convert.ToInt32(dr["id"]);
                                     Session["FOOD_USER_NAME"] = dr["name"].ToString();
                                     Session["FOOD_USER_EMAIL"] = dr["email"].ToString();

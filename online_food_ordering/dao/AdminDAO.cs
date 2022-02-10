@@ -32,10 +32,10 @@ namespace online_food_ordering.dao
         public Int32 DisplayAdminByUsernameAndPassword(Admin admin)
         {
             int i = 0;
-            SqlConnection con = GetConnection();
             DataTable dataTable = new DataTable();
             try
             { 
+				SqlConnection con = GetConnection();
                 SqlCommand cmd = new SqlCommand("SP_Display_AdminByUsernameAndPassword")
                 {
                     CommandType = CommandType.StoredProcedure,

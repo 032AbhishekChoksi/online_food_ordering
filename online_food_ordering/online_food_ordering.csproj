@@ -120,6 +120,9 @@
     <Content Include="email_body\coupon.aspx" />
     <Content Include="email_body\emailverify.html" />
     <Content Include="Global.asax" />
+    <Content Include="page\css\pagenotfound.css" />
+    <Content Include="page\logo\logo.png" />
+    <Content Include="page\pagenotfound.html" />
     <Content Include="user\assets\css\animate.css" />
     <Content Include="user\assets\css\bootstrap.min.css" />
     <Content Include="user\assets\css\chosen-sprite%402x.png" />
