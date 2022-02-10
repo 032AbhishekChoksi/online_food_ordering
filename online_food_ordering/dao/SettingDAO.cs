@@ -106,7 +106,7 @@ namespace online_food_ordering.dao
                     return 0;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

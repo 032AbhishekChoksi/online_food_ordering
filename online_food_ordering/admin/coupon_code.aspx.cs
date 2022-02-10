@@ -1,4 +1,6 @@
-﻿using System;
+﻿using online_food_ordering.bussinesslogic;
+using online_food_ordering.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,10 +11,13 @@ namespace online_food_ordering.admin
 {
     public partial class coupon_code : System.Web.UI.Page
     {
-        ClassAdmin admin = new ClassAdmin();
-        int id = 0;
-        byte status = 1;
-        string type = string.Empty;
+        Coupon_CodeBL coupon_CodeBL;
+        private int id = 0;
+        private string type = string.Empty;
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            coupon_CodeBL = new Coupon_CodeBL();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Coupon Code | Billy Admin Panel";
@@ -26,26 +31,14 @@ namespace online_food_ordering.admin
             {
                 id = Convert.ToInt32(Request.QueryString["id"]);
                 type = Request.QueryString["type"].ToString();
+                
+                if (IsPostBack) return;
+                UpdateStatus(id, type);
             }
 
-            if (IsPostBack) return;
-
-            if (id > 0 && type == "deactive")
-            {
-                status = 0;
-                admin.UpdateCouponCodeStatus(id, status);
-                Response.Redirect("coupon_code");
-            }
-            else if (id > 0 && type == "active")
-            {
-                status = 1;
-                admin.UpdateCouponCodeStatus(id, status);
-                Response.Redirect("coupon_code");
-            }
             if (!Page.IsPostBack)
             {
-                r1.DataSource = admin.DisplayCouponCode();
-                r1.DataBind();
+               FillData();
             }
         }
 
@@ -71,9 +64,39 @@ namespace online_food_ordering.admin
             if (DateTime.Compare(cur_time, expired_on) > 0 || DateTime.Compare(cur_time, expired_on) == 0)
             {
                 msg = "Expired";
-                admin.UpdateCouponCodeStatus(id, 0);
+                Coupon_Code coupon_Code = new Coupon_Code();
+                coupon_Code.SetId(id);
+                coupon_Code.SetStatus(0);
+                coupon_CodeBL.UpdateCouponCodeStatus(coupon_Code);
             }
             return msg;
+        }
+        private void FillData()
+        {
+            r1.DataSource = coupon_CodeBL.DisplayCouponCode();
+            r1.DataBind();
+        }
+        private void UpdateStatus(int p_id, string p_type)
+        {
+            byte status;
+            if (p_id > 0 && p_type == "deactive")
+            {
+                status = 0;
+                Coupon_Code coupon_Code = new Coupon_Code();
+                coupon_Code.SetId(p_id);
+                coupon_Code.SetStatus(status);
+                coupon_CodeBL.UpdateCouponCodeStatus(coupon_Code);
+                Response.Redirect("coupon_code");
+            }
+            else if (p_id > 0 && p_type == "active")
+            {
+                status = 1;
+                Coupon_Code coupon_Code = new Coupon_Code();
+                coupon_Code.SetId(p_id);
+                coupon_Code.SetStatus(status);
+                coupon_CodeBL.UpdateCouponCodeStatus(coupon_Code);
+                Response.Redirect("coupon_code");
+            }
         }
     }
 }
