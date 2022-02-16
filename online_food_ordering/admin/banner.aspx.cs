@@ -1,4 +1,6 @@
-﻿using System;
+﻿using online_food_ordering.bussinesslogic;
+using online_food_ordering.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,10 +11,15 @@ namespace online_food_ordering.admin
 {
     public partial class banner : System.Web.UI.Page
     {
+        private BannerBL bannerBL;
         ClassAdmin admin = new ClassAdmin();
-        int id = 0;
-        byte status = 1;
-        string type = string.Empty;
+        private int id = 0;
+        private byte status = 1;
+        private string type = string.Empty;
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            bannerBL = new BannerBL();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Banner | Billy Admin Panel";
@@ -26,30 +33,46 @@ namespace online_food_ordering.admin
             {
                 id = Convert.ToInt32(Request.QueryString["id"]);
                 type = Request.QueryString["type"].ToString();
+               
+                if (IsPostBack) return;
+                BannerAction(id, type);
             }
 
-            if (IsPostBack) return;
-
-            if (id > 0 && type == "delete")
-            {
-                admin.RemoveBanner(id);
-                Response.Redirect("banner");
-            }
-
-            if (id > 0 && type == "deactive")
+            FillData();
+        }
+        private void FillData()
+        {
+            r1.DataSource = bannerBL.DisplayBanner();
+            r1.DataBind();
+        }
+        private void BannerAction(int p_id, string p_type)
+        {
+            byte status;
+            if (p_id > 0 && p_type.Equals("deactive"))
             {
                 status = 0;
-                admin.UpdateBannerStatus(id, status);
+                Banner banner = new Banner();
+                banner.SetId(p_id);
+                banner.SetStatus(status);
+                bannerBL.UpdateBannerStatus(banner);
                 Response.Redirect("banner");
             }
-            else if (id > 0 && type == "active")
+            else if (p_id > 0 && p_type.Equals("active"))
             {
                 status = 1;
-                admin.UpdateBannerStatus(id, status);
+                Banner banner = new Banner();
+                banner.SetId(p_id);
+                banner.SetStatus(status);
+                bannerBL.UpdateBannerStatus(banner);
                 Response.Redirect("banner");
             }
-            r1.DataSource = admin.DisplayBanner();
-            r1.DataBind();
+            else if (id > 0 && type.Equals("delete"))
+            {
+                Banner banner = new Banner();
+                banner.SetId(p_id);
+                bannerBL.RemoveBanner(banner);
+                Response.Redirect("banner");
+            }
         }
     }
 }

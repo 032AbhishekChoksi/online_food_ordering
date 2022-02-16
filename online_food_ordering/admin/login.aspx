@@ -12,6 +12,7 @@
   <meta name = "author" content="Billy" />
   <title>Food Ordering Admin Login</title>
   <!-- plugins:css -->
+  <link rel="shortcut icon" href="../billy.ico">
   <link rel="stylesheet" href="~/admin/assets/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="~/admin/assets/css/vendor.bundle.base.css">
   <!-- endinject -->

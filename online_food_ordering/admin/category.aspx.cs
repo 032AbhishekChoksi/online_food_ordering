@@ -14,7 +14,7 @@ namespace online_food_ordering.admin
 {
     public partial class category : System.Web.UI.Page
     {
-        CategoryBL categoryBL;
+        private CategoryBL categoryBL;
         private int id = 0;
         private string type = string.Empty;
 
@@ -29,12 +29,15 @@ namespace online_food_ordering.admin
             {
                 Response.Redirect("login");
             }
-
+            //if(RouteData.Values["id"] != null) { 
+            //    var routeid = RouteData.Values["id"];
+            //    var routetype = RouteData.Values["type"];
+            //}
             if (Request.QueryString["id"] != null && Request.QueryString["type"] != null)
             {
                 id = Convert.ToInt32(Request.QueryString["id"]);
                 type = Request.QueryString["type"].ToString();
-               
+
                 if (IsPostBack) return;
                 CategoryAction(id, type);
             }

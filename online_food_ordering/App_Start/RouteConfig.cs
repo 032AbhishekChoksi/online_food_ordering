@@ -13,6 +13,7 @@ namespace online_food_ordering
             var settings = new FriendlyUrlSettings();
             settings.AutoRedirectMode = RedirectMode.Permanent;
             routes.EnableFriendlyUrls(settings);
+            //routes.MapPageRoute("", "category/{id}/{type}", "~/Admin/category.aspx");
         }
     }
 }

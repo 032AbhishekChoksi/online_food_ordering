@@ -12,6 +12,7 @@
   <title></title>
   <!-- plugins:css -->
   <!-- https://pictogrammers.github.io/@mdi/font/1.0.62/ -->
+  <link rel="shortcut icon" href="../billy.ico">
   <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="assets/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="assets/css/dataTables.bootstrap4.css">

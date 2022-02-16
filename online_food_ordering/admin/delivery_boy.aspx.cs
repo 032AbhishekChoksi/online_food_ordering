@@ -1,4 +1,6 @@
-﻿using System;
+﻿using online_food_ordering.bussinesslogic;
+using online_food_ordering.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,10 +11,13 @@ namespace online_food_ordering.admin
 {
     public partial class delivery_boy : System.Web.UI.Page
     {
-        ClassAdmin admin = new ClassAdmin();
-        int id = 0;
-        byte status = 1;
-        string type = string.Empty;
+        private Delivery_BoyBL delivery_BoyBL;
+        private int id = 0;
+        private string type = string.Empty;
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            delivery_BoyBL = new Delivery_BoyBL();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Delivery Boy | Billy Admin Panel";
@@ -27,25 +32,38 @@ namespace online_food_ordering.admin
             {
                 id = Convert.ToInt32(Request.QueryString["id"]);
                 type = Request.QueryString["type"].ToString();
+                if (IsPostBack) return;
+                UpdateStatus(id, type);
             }
 
-            if (IsPostBack) return;
-
-            if (id > 0 && type == "deactive")
+           FillData();
+        }
+        private void FillData()
+        {
+            r1.DataSource = delivery_BoyBL.DisplayDeliveryBoy();
+            r1.DataBind();
+        }
+        private void UpdateStatus(int p_id, string p_type)
+        {
+            byte status;
+            if (p_id > 0 && p_type.Equals("deactive"))
             {
                 status = 0;
-                admin.UpdateDeliveryBoyStatus(id, status);
+                Delivery_Boy delivery_Boy = new Delivery_Boy();
+                delivery_Boy.SetId(p_id);
+                delivery_Boy.SetStatus(status);
+                delivery_BoyBL.UpdateDeliveryBoyStatus(delivery_Boy);
                 Response.Redirect("delivery_boy");
             }
-            else if (id > 0 && type == "active")
+            else if (p_id > 0 && p_type.Equals("active"))
             {
                 status = 1;
-                admin.UpdateDeliveryBoyStatus(id, status);
+                Delivery_Boy delivery_Boy = new Delivery_Boy();
+                delivery_Boy.SetId(p_id);
+                delivery_Boy.SetStatus(status);
+                delivery_BoyBL.UpdateDeliveryBoyStatus(delivery_Boy);
                 Response.Redirect("delivery_boy");
             }
-
-            r1.DataSource = admin.DisplayDeliveryBoy();
-            r1.DataBind();
         }
     }
 }

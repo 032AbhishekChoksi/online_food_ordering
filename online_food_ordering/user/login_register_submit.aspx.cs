@@ -20,11 +20,14 @@ namespace online_food_ordering.user
         DateTime added_on = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
         protected void Page_Load(object sender, EventArgs e)
         {
+            string type = string.Empty;
             var js = new JavaScriptSerializer();
-            string type = Request.Form["type"].ToString();
+            if(Request.Form["type"] != null) {
+                type = Request.Form["type"].ToString();
+            }
             DateTime added_on = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
 
-            if (type == "register")
+            if (type.Equals("register"))
             {
                 string name = Request.Form["name"].ToString();
                 string email = Request.Form["email"].ToString();
@@ -76,7 +79,7 @@ namespace online_food_ordering.user
                 Context.Response.Write(js.Serialize(json));
             }
 
-            if (type == "login")
+            if (type.Equals("login"))
             {
                 string email = Request.Form["user_email"].ToString();
                 string password = Request.Form["user_password"].ToString();
@@ -125,7 +128,58 @@ namespace online_food_ordering.user
                 }
                 Context.Response.Write(js.Serialize(json));
             }
+            // Google Authenticatio
+            if (type.Equals("Google"))
+            {
+                string name = Request.Form["name"].ToString();
+                string email = Request.Form["email"].ToString();
+                string hashpassaword = fun.SecurePassword(email);
+                long mobile = Convert.ToInt64(ClassRandom.GetRandomMobile(10));
+                string json = null;
+                int check = user.DisplayUserByEmail(email).Rows.Count;
+                if (check > 0)
+                {
+                    foreach (DataRow dr in user.DisplayUserByEmail(email).Rows)
+                    {
+                        Session["FOOD_USER_ID"] = Convert.ToInt32(dr["id"]);
+                        Session["FOOD_USER_NAME"] = dr["name"].ToString();
+                        Session["FOOD_USER_EMAIL"] = dr["email"].ToString();
+                    }
+                }
+                else
+                {
+                    string rand_str = ClassRandom.GetRandomPassword(20);
+                    string referral_code = ClassRandom.GetRandomPassword(20);
+                    string from_referral_code = String.Empty;
+                    // Insert record in Customer Table
+                    lastinsertedid = user.InsertUser(name, email, mobile, hashpassaword, 1, 1, rand_str, referral_code, from_referral_code, added_on);
+
+                    // Get Amount in Wallet For First Time User Registration
+                    decimal wallet_amt = 0;
+                    foreach (DataRow dr in user.getSetting(1).Rows)
+                    {
+                        wallet_amt = Convert.ToDecimal(dr["wallet_amt"]);
+                    }
+                    if (wallet_amt > 0)
+                    {
+                        user.manageWallet(lastinsertedid, wallet_amt, "Register", "in", String.Empty, added_on);
+                    }
+
+                    // Send Mail Logic below
+
+                    //Login
+                    if (lastinsertedid > 0) { 
+                   
+                        Session["FOOD_USER_ID"] = lastinsertedid;
+                        Session["FOOD_USER_NAME"] = name;
+                        Session["FOOD_USER_EMAIL"] = email;
+                    }
+                }
+                json = js.Serialize(new { status = "success" });
+                Context.Response.Write(js.Serialize(json));
+            }
         }
+        
         // ReCaptch Verification Method. It's return boolean value (true or false)
         public bool IsReCaptchValid()
         {

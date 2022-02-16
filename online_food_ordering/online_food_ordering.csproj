@@ -117,12 +117,14 @@
     <Content Include="admin\setting.aspx" />
     <Content Include="admin\send_coupon_code.aspx" />
     <Content Include="admin\user.aspx" />
+    <Content Include="billy.ico" />
     <Content Include="email_body\coupon.aspx" />
     <Content Include="email_body\emailverify.html" />
     <Content Include="Global.asax" />
     <Content Include="page\css\pagenotfound.css" />
     <Content Include="page\logo\logo.png" />
     <Content Include="page\pagenotfound.html" />
+    <Content Include="user\about-us.aspx" />
     <Content Include="user\assets\css\animate.css" />
     <Content Include="user\assets\css\bootstrap.min.css" />
     <Content Include="user\assets\css\chosen-sprite%402x.png" />
@@ -229,6 +231,7 @@
     <Content Include="user\assets\js\ajax-mail.js" />
     <Content Include="user\assets\js\bootstrap.min.js" />
     <Content Include="user\assets\js\custom.js" />
+    <Content Include="user\assets\js\google-auth-script.js" />
     <Content Include="user\assets\js\imagesloaded.pkgd.min.js" />
     <Content Include="user\assets\js\isotope.pkgd.min.js" />
     <Content Include="user\assets\js\main.js" />
@@ -238,6 +241,7 @@
     <Content Include="user\assets\js\sweetalert.min.js" />
     <Content Include="user\assets\js\vendor\jquery-1.12.0.min.js" />
     <Content Include="user\assets\js\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="user\contact-us.aspx" />
     <Content Include="user\images\bg\1.jpg" />
     <Content Include="user\login_register.aspx" />
     <Content Include="user\login_register_submit.aspx" />
@@ -377,14 +381,18 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="bussinesslogic\AdminBL.cs" />
+    <Compile Include="bussinesslogic\BannerBL.cs" />
     <Compile Include="bussinesslogic\CategoryBL.cs" />
     <Compile Include="bussinesslogic\Coupon_CodeBL.cs" />
+    <Compile Include="bussinesslogic\Delivery_BoyBL.cs" />
     <Compile Include="bussinesslogic\SettingBL.cs" />
     <Compile Include="ClassFunction.cs" />
     <Compile Include="ClassRandom.cs" />
     <Compile Include="dao\AdminDAO.cs" />
+    <Compile Include="dao\BannerDAO.cs" />
     <Compile Include="dao\CategoryDAO.cs" />
     <Compile Include="dao\Coupon_CodeDAO.cs" />
+    <Compile Include="dao\Delivery_BoyDAO.cs" />
     <Compile Include="dao\SettingDAO.cs" />
     <Compile Include="email_body\coupon.aspx.cs">
       <DependentUpon>coupon.aspx</DependentUpon>
@@ -427,7 +435,21 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="user\about-us.aspx.cs">
+      <DependentUpon>about-us.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\about-us.aspx.designer.cs">
+      <DependentUpon>about-us.aspx</DependentUpon>
+    </Compile>
     <Compile Include="user\ClassUser.cs" />
+    <Compile Include="user\contact-us.aspx.cs">
+      <DependentUpon>contact-us.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\contact-us.aspx.designer.cs">
+      <DependentUpon>contact-us.aspx</DependentUpon>
+    </Compile>
     <Compile Include="user\login_register.aspx.cs">
       <DependentUpon>login_register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

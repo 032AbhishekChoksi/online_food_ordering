@@ -11,7 +11,12 @@ namespace online_food_ordering.user
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session.Clear();
+            if (Session["FOOD_USER_NAME"] != null)
+            {
+                Session.Remove("FOOD_USER_ID");
+                Session.Remove("FOOD_USER_NAME");
+                Session.Remove("FOOD_USER_EMAIL");
+            }
             Response.Redirect("login_register");
         }
     }

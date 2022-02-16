@@ -11,7 +11,10 @@ namespace online_food_ordering.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session.Clear();
+            if (Session["ADMIN_USER"] != null)
+            {
+                Session.Remove("ADMIN_USER");
+            }
             Response.Redirect("login");
         }
     }

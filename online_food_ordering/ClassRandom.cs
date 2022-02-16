@@ -24,5 +24,17 @@ namespace online_food_ordering
             }
             return password;
         }
+        public static string GetRandomMobile(int length)
+        {
+            length = length + 1;
+            Random random = new Random();
+            string mobile = string.Empty;
+            int i;
+            for (i = 1; i < length; i++)
+            {
+                mobile += random.Next(0, 9).ToString();
+            }
+            return mobile;
+        }
     }
 }

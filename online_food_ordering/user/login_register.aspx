@@ -22,8 +22,8 @@
                                         <input type="password" name="user_password" placeholder="Password" required>
                                         <div class="button-box">
                                             <div class="login-toggle-btn">
-                                                <!-- <input type="checkbox"> -->
-                                                <!-- <label>Remember me</label> -->
+                                                <%-- <input type="checkbox">
+                                                <label>Remember me</label>--%>
                                                 <a href="forgot_password.aspx">Forgot Password?</a>
                                             </div>
                                             <button type="submit" id="login_submit"><span>Login</span></button>
@@ -33,6 +33,7 @@
                                         </div>
                                     </form>
                                 </div>
+                                <div id="g-signin2"></div>
                             </div>
                         </div>
                         <div id="lg2" class="tab-pane">
