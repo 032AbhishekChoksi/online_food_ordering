@@ -20,6 +20,8 @@ namespace online_food_ordering.user
                 lblUsreName.Text = Session["FOOD_USER_NAME"].ToString();
             }
             lblWalletAmount.Text = "₹" + Math.Round(amt).ToString();
+
+
         }
     }
 }

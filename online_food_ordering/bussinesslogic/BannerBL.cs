@@ -26,6 +26,39 @@ namespace online_food_ordering.bussinesslogic
                 bannerDAO = null;
             }
         }
+        public DataTable DisplayBannerByStatus()
+        {
+            BannerDAO bannerDAO = new BannerDAO();
+            try
+            {
+                return bannerDAO.DisplayBannerByStatus();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                bannerDAO = null;
+            }
+        }
+        public DataTable DisplayBannerById(Banner banner)
+        {
+            BannerDAO bannerDAO = new BannerDAO();
+            try
+            {
+                return bannerDAO.DisplayBannerById(banner);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                bannerDAO = null;
+            }
+
+        }
         public Int32 UpdateBannerStatus(Banner banner)
         {
             BannerDAO bannerDAO = new BannerDAO();

@@ -119,11 +119,13 @@
     <Content Include="admin\user.aspx" />
     <Content Include="billy.ico" />
     <Content Include="email_body\coupon.aspx" />
+    <Content Include="email_body\emailpassword.html" />
     <Content Include="email_body\emailverify.html" />
     <Content Include="Global.asax" />
     <Content Include="page\css\pagenotfound.css" />
     <Content Include="page\logo\logo.png" />
     <Content Include="page\pagenotfound.html" />
+    <Content Include="Test.aspx" />
     <Content Include="user\about-us.aspx" />
     <Content Include="user\assets\css\animate.css" />
     <Content Include="user\assets\css\bootstrap.min.css" />
@@ -238,14 +240,17 @@
     <Content Include="user\assets\js\owl.carousel.min.js" />
     <Content Include="user\assets\js\plugins.js" />
     <Content Include="user\assets\js\popper.js" />
+    <Content Include="user\assets\js\script.js" />
     <Content Include="user\assets\js\sweetalert.min.js" />
     <Content Include="user\assets\js\vendor\jquery-1.12.0.min.js" />
     <Content Include="user\assets\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="user\contact-us.aspx" />
     <Content Include="user\images\bg\1.jpg" />
+    <Content Include="user\index.aspx" />
     <Content Include="user\login_register.aspx" />
     <Content Include="user\login_register_submit.aspx" />
     <Content Include="user\logout.aspx" />
+    <Content Include="user\manage_cart.aspx" />
     <Content Include="user\shop.aspx" />
     <Content Include="user\verify.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -385,6 +390,8 @@
     <Compile Include="bussinesslogic\CategoryBL.cs" />
     <Compile Include="bussinesslogic\Coupon_CodeBL.cs" />
     <Compile Include="bussinesslogic\Delivery_BoyBL.cs" />
+    <Compile Include="bussinesslogic\DishBL.cs" />
+    <Compile Include="bussinesslogic\Dish_DetailsBL.cs" />
     <Compile Include="bussinesslogic\SettingBL.cs" />
     <Compile Include="ClassFunction.cs" />
     <Compile Include="ClassRandom.cs" />
@@ -393,6 +400,8 @@
     <Compile Include="dao\CategoryDAO.cs" />
     <Compile Include="dao\Coupon_CodeDAO.cs" />
     <Compile Include="dao\Delivery_BoyDAO.cs" />
+    <Compile Include="dao\DishDAO.cs" />
+    <Compile Include="dao\Dish_DetailsDAO.cs" />
     <Compile Include="dao\SettingDAO.cs" />
     <Compile Include="email_body\coupon.aspx.cs">
       <DependentUpon>coupon.aspx</DependentUpon>
@@ -435,6 +444,13 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="user\about-us.aspx.cs">
       <DependentUpon>about-us.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -449,6 +465,13 @@
     </Compile>
     <Compile Include="user\contact-us.aspx.designer.cs">
       <DependentUpon>contact-us.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\login_register.aspx.cs">
       <DependentUpon>login_register.aspx</DependentUpon>
@@ -470,6 +493,13 @@
     </Compile>
     <Compile Include="user\logout.aspx.designer.cs">
       <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\manage_cart.aspx.cs">
+      <DependentUpon>manage_cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\manage_cart.aspx.designer.cs">
+      <DependentUpon>manage_cart.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\shop.aspx.cs">
       <DependentUpon>shop.aspx</DependentUpon>

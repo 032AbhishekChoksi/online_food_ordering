@@ -1,4 +1,6 @@
-﻿using System;
+﻿using online_food_ordering.bussinesslogic;
+using online_food_ordering.model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -11,8 +13,13 @@ namespace online_food_ordering.admin
 {
     public partial class manage_banner : System.Web.UI.Page
     {
+        private BannerBL bannerBL;
         ClassAdmin admin = new ClassAdmin();
-        int id = 0;
+        private int id = 0;
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            bannerBL = new BannerBL();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Manage Banner | Billy Admin Panel";
@@ -25,19 +32,12 @@ namespace online_food_ordering.admin
             if (Request.QueryString["id"] != null)
             {
                 id = Convert.ToInt32(Request.QueryString["id"]);
-            }
-            if (IsPostBack) return;
-            if (id > 0)
-            {
-                foreach (DataRow dr in admin.DisplayBannerById(id).Rows)
+                if (IsPostBack) return;
+                if (id > 0)
                 {
-                    txtheading.Text = dr["heading"].ToString();
-                    txtsub_heading.Text = dr["sub_heading"].ToString();
-                    txtlink.Text = dr["link"].ToString();
-                    txtlink_txt.Text = dr["link_text"].ToString();
-                    txtbannerorder.Text = dr["banner_order"].ToString();
+                    FillData(id);
                 }
-            }
+            }            
         }
 
         protected void bttnsubmit_Click(object sender, EventArgs e)
@@ -143,6 +143,20 @@ namespace online_food_ordering.admin
                 }
                 
                 
+            }
+        }
+        private void FillData(int p_id)
+        {
+            Banner banner = new Banner();
+            banner.SetId(p_id);
+
+            foreach (DataRow dr in bannerBL.DisplayBannerById(banner).Rows)
+            {
+                txtheading.Text = dr["heading"].ToString();
+                txtsub_heading.Text = dr["sub_heading"].ToString();
+                txtlink.Text = dr["link"].ToString();
+                txtlink_txt.Text = dr["link_text"].ToString();
+                txtbannerorder.Text = dr["banner_order"].ToString();
             }
         }
     }

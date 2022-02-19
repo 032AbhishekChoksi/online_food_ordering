@@ -12,9 +12,7 @@ namespace online_food_ordering.admin
     public partial class banner : System.Web.UI.Page
     {
         private BannerBL bannerBL;
-        ClassAdmin admin = new ClassAdmin();
         private int id = 0;
-        private byte status = 1;
         private string type = string.Empty;
         protected void Page_Init(object sender, EventArgs e)
         {

@@ -38,7 +38,6 @@ namespace online_food_ordering.user
             }
             return dt;
         }
-
         public int InsertUser(string name,string email,long mobile,string password,byte status,byte email_verify,string rand_str,string referral_code,string from_referral_code,DateTime added_on)
         {
             try

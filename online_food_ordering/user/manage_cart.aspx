@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="manage_cart.aspx.cs" Inherits="online_food_ordering.user.manage_cart" %>

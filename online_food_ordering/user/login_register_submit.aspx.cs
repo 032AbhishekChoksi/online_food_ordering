@@ -166,8 +166,11 @@ namespace online_food_ordering.user
                     }
 
                     // Send Mail Logic below
-
-                    //Login
+                    string cdate = DateTime.Now.Year.ToString();
+                    string html = emailpasswordbody(cdate);
+                    fun.sendEmail(email, html, "Welcome To Billy");
+                    
+                    // Login
                     if (lastinsertedid > 0) { 
                    
                         Session["FOOD_USER_ID"] = lastinsertedid;
@@ -210,6 +213,17 @@ namespace online_food_ordering.user
                 body = reader.ReadToEnd();
             }
             body = body.Replace("{redirecturl}", redirecturl);
+            body = body.Replace("{currentyear}", currentyear);
+
+            return body;
+        }
+        private string emailpasswordbody(string currentyear)
+        {
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader(@"D:\project\online_food_ordering\online_food_ordering\email_body\emailpassword.html"))
+            {
+                body = reader.ReadToEnd();
+            }
             body = body.Replace("{currentyear}", currentyear);
 
             return body;
