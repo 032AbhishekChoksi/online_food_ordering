@@ -30,6 +30,7 @@ namespace online_food_ordering.user
             int attr = 0;
             int qty = 0;
             decimal totalPrice = 0;
+           
             if (Request.Form["attr"] != null)
             {
                 attr = Convert.ToInt32(Request.Form["attr"]);
@@ -40,50 +41,60 @@ namespace online_food_ordering.user
                 type = Request.Form["type"].ToString();
             }
            
+            if (Request.Form["qty"] != null)
+            {
+                qty = Convert.ToInt32(Request.Form["qty"]);
+            }
+           
             if (type.Equals("add"))
             {
-                if (Request.Form["qty"] != null)
+                if (Session["FOOD_USER_ID"] != null)
                 {
-                    qty = Convert.ToInt32(Request.Form["qty"]);
-                }
-
-                //Session["cart"][attr]["qty"] = qty;
-                var arr1 = new Dictionary<string, int>();
-                arr1.Add("qty", qty);
-                var arr2 = new Dictionary<int, Dictionary<string, int>>();
-                arr2.Add(attr, arr1);
-
-                if (Session["cart"] == null)
-                {
-                    Session["cart"] = arr2;
+                    int uid = Convert.ToInt32(Session["FOOD_USER_ID"]);
+                    classFunction.manageUserCart(uid, qty, attr);
                 }
                 else
-                {
-                    var arr3 = (Dictionary<int, Dictionary<string, int>>)Session["cart"];
-                    bool keyExists = arr3.ContainsKey(attr);
-                    if (keyExists)
-                    { 
-                        arr3.Remove(attr);
-                    }
-                    arr3.Add(attr, arr1);
-                    Session["cart"] = arr3;
+                { 
+                    
 
+                    //Session["cart"][attr]["qty"] = qty;
+                    var arr1 = new Dictionary<string, int>();
+                    arr1.Add("qty", qty);
+                    var arr2 = new Dictionary<int, Dictionary<string, int>>();
+                    arr2.Add(attr, arr1);
+
+                    if (Session["cart"] == null)
+                    {
+                        Session["cart"] = arr2;
+                    }
+                    else
+                    {
+                        var arr3 = (Dictionary<int, Dictionary<string, int>>)Session["cart"];
+                        bool keyExists = arr3.ContainsKey(attr);
+                        if (keyExists)
+                        { 
+                            arr3.Remove(attr);
+                        }
+                        arr3.Add(attr, arr1);
+                        Session["cart"] = arr3;
+
+                    }
+                    dish_Details = new Dish_Details();
+                    dish_Details.SetId(attr);
+                    int dishPrice = 0;
+                    string dishName = string.Empty;
+                    string dishImage = string.Empty;
+                    foreach (DataRow dr in dish_DetailsBL.DisplayDishAndDishDetailsByDDId(dish_Details).Rows)
+                    {
+                        dishPrice = Convert.ToInt32(dr["dishPrice"]);
+                        dishName = dr["dishName"].ToString();
+                        dishImage = dr["dishImage"].ToString();
+                    }
+                    int totaDish = (classFunction.getUserFullCart(attr)).Count;
+                    json = js.Serialize(new { totalCartDish = totaDish, price = dishPrice, dish = dishName, image = dishImage });
+                    Context.Response.Write(js.Serialize(json));
                 }
-                dish_Details = new Dish_Details();
-                dish_Details.SetId(attr);
-                int dishPrice = 0;
-                string dishName = string.Empty;
-                string dishImage = string.Empty;
-                foreach (DataRow dr in dish_DetailsBL.DisplayDishAndDishDetailsByDDId(dish_Details).Rows)
-                {
-                    dishPrice = Convert.ToInt32(dr["dishPrice"]);
-                    dishName = dr["dishName"].ToString();
-                    dishImage = dr["dishImage"].ToString();
-                }
-                int totaDish = (classFunction.getUserFullCart(attr)).Count;
-                json = js.Serialize(new { totalCartDish = totaDish, price = dishPrice, dish = dishName, image = dishImage });
             }
-            Context.Response.Write(js.Serialize(json));
         }
     }
 }

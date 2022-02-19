@@ -1,5 +1,8 @@
-﻿using System;
+﻿using online_food_ordering.bussinesslogic;
+using online_food_ordering.model;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net.Mail;
 using System.Security.Cryptography;
@@ -10,6 +13,7 @@ namespace online_food_ordering
 {
     public class ClassFunction
     {
+        private Dish_CartBL dish_CartBL = new Dish_CartBL();
         string message = string.Empty;
         public String sendEmail(string email, string html, string subject)
         {
@@ -64,6 +68,32 @@ namespace online_food_ordering
                 }
             }
             return cartArr;
+        }
+        public void manageUserCart(int uid,int qty,int attr)
+        {
+            int cartid = 0;
+            Customer customer = new Customer();
+            customer.SetId(uid);
+            Dish_Details dish_Details = new Dish_Details();
+            dish_Details.SetId(attr);            
+
+            if (dish_CartBL.DisplayDishDetailsByDdidAndUid(customer,dish_Details).Rows.Count > 0)
+            {
+                Dish_Cart dish_Cart = new Dish_Cart();
+                foreach (DataRow dr in dish_CartBL.DisplayDishDetailsByDdidAndUid(customer, dish_Details).Rows)
+                {
+                    cartid = Convert.ToInt32(dr["id"]);
+                }
+                dish_Cart.SetId(cartid);
+                dish_Cart.SetQty(qty);
+                dish_CartBL.UpdateDishCart(dish_Cart);
+            }
+            else
+            {
+                DateTime added_on = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
+                Dish_Cart dish_Cart = new Dish_Cart(uid, attr, qty, added_on);
+                dish_CartBL.InsertDishCart(dish_Cart);
+            }
         }
     }
 }

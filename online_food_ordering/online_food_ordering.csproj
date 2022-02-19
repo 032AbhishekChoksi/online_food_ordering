@@ -391,6 +391,7 @@
     <Compile Include="bussinesslogic\Coupon_CodeBL.cs" />
     <Compile Include="bussinesslogic\Delivery_BoyBL.cs" />
     <Compile Include="bussinesslogic\DishBL.cs" />
+    <Compile Include="bussinesslogic\Dish_CartBL.cs" />
     <Compile Include="bussinesslogic\Dish_DetailsBL.cs" />
     <Compile Include="bussinesslogic\SettingBL.cs" />
     <Compile Include="ClassFunction.cs" />
@@ -401,6 +402,7 @@
     <Compile Include="dao\Coupon_CodeDAO.cs" />
     <Compile Include="dao\Delivery_BoyDAO.cs" />
     <Compile Include="dao\DishDAO.cs" />
+    <Compile Include="dao\Dish_CartDAO.cs" />
     <Compile Include="dao\Dish_DetailsDAO.cs" />
     <Compile Include="dao\SettingDAO.cs" />
     <Compile Include="email_body\coupon.aspx.cs">

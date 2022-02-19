@@ -52,6 +52,7 @@ namespace online_food_ordering.dao
             }
             return dataTable;
         }
+        // getDishDetailById
         public DataTable DisplayDishAndDishDetailsByDDId(Dish_Details dish_Details)
         {
             DataTable dataTable = new DataTable();
