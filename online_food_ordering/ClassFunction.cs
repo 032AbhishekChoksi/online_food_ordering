@@ -14,6 +14,7 @@ namespace online_food_ordering
     public class ClassFunction
     {
         private Dish_CartBL dish_CartBL = new Dish_CartBL();
+        private Dish_DetailsBL dish_DetailsBL = new Dish_DetailsBL();
         string message = string.Empty;
         public String sendEmail(string email, string html, string subject)
         {
@@ -56,17 +57,62 @@ namespace online_food_ordering
                 return sb.ToString();
             }
         }
-        public Dictionary<int, Dictionary<string, int>> getUserFullCart(int attr_id)
+        // getUserFullCart()
+        public Dictionary<int, Dictionary<string, string>> getUserFullCart()
         {
-            var cartArr = new Dictionary<int, Dictionary<string, int>>();
-            if (HttpContext.Current.Session["cart"] != null)
+            var cartArr = new Dictionary<int, Dictionary<string, string>>();
+            
+            int uid = Convert.ToInt32(HttpContext.Current.Session["FOOD_USER_ID"]);
+            if (HttpContext.Current.Session["FOOD_USER_ID"] != null)
             {
-
-                if (((Dictionary<int, Dictionary<string, int>>)HttpContext.Current.Session["cart"]).Count > 0)
+                Customer customer = new Customer();
+                customer.SetId(uid);
+                foreach (DataRow dr in dish_CartBL.DisplayDishCartByUid(customer).Rows)
                 {
-                    cartArr = (Dictionary<int, Dictionary<string, int>>)HttpContext.Current.Session["cart"];
+                    int dish_detail_id = Convert.ToInt32(dr["dish_detail_id"]);
+                    var arr1 = new Dictionary<string, string>();
+                    arr1.Add("qty", dr["qty"].ToString());
+                   
+                    Dish_Details dish_Details = new Dish_Details();
+                    dish_Details.SetId(dish_detail_id);
+                    foreach (DataRow getDishDetailById in dish_DetailsBL.DisplayDishAndDishDetailsByDDId(dish_Details).Rows)
+                    {
+                        arr1.Add("price", getDishDetailById["dishPrice"].ToString());                       
+                        arr1.Add("dish", getDishDetailById["dishName"].ToString());                       
+                        arr1.Add("image", getDishDetailById["dishImage"].ToString());
+                    }
+                    cartArr.Add(dish_detail_id, arr1);
                 }
             }
+            else 
+            {
+                if (HttpContext.Current.Session["cart"] != null)
+                {
+                    if (((Dictionary<int, Dictionary<string, string>>)HttpContext.Current.Session["cart"]).Count > 0)
+                    {
+                        var sessionAtrr = (Dictionary<int, Dictionary<string, string>>)HttpContext.Current.Session["cart"];
+                        foreach (int key in sessionAtrr.Keys)
+                        {
+                            var arr1 = new Dictionary<string, string>();
+                            arr1.Add("qty", sessionAtrr[key]["qty"].ToString());
+                            
+                            Dish_Details dish_Details = new Dish_Details();
+                            dish_Details.SetId(key);
+                            foreach (DataRow getDishDetailById in dish_DetailsBL.DisplayDishAndDishDetailsByDDId(dish_Details).Rows)
+                            {
+                                arr1.Add("price", getDishDetailById["dishPrice"].ToString());                                
+                                arr1.Add("dish", getDishDetailById["dishName"].ToString());                           
+                                arr1.Add("image", getDishDetailById["dishImage"].ToString());
+                            }
+                            cartArr.Add(key, arr1);
+                        }
+                    }
+                }
+            }
+            //if(attr_id > 0)
+            //{
+            //    return cartArr[attr_id]["qty"];
+            //}
             return cartArr;
         }
         public void manageUserCart(int uid,int qty,int attr)

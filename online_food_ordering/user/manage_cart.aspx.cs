@@ -29,7 +29,6 @@ namespace online_food_ordering.user
             string type = string.Empty;
             int attr = 0;
             int qty = 0;
-            decimal totalPrice = 0;
            
             if (Request.Form["attr"] != null)
             {
@@ -55,12 +54,10 @@ namespace online_food_ordering.user
                 }
                 else
                 { 
-                    
-
                     //Session["cart"][attr]["qty"] = qty;
-                    var arr1 = new Dictionary<string, int>();
-                    arr1.Add("qty", qty);
-                    var arr2 = new Dictionary<int, Dictionary<string, int>>();
+                    var arr1 = new Dictionary<string, string>();
+                    arr1.Add("qty", qty.ToString());
+                    var arr2 = new Dictionary<int, Dictionary<string, string>>();
                     arr2.Add(attr, arr1);
 
                     if (Session["cart"] == null)
@@ -69,7 +66,7 @@ namespace online_food_ordering.user
                     }
                     else
                     {
-                        var arr3 = (Dictionary<int, Dictionary<string, int>>)Session["cart"];
+                        var arr3 = (Dictionary<int, Dictionary<string, string>>)Session["cart"];
                         bool keyExists = arr3.ContainsKey(attr);
                         if (keyExists)
                         { 
@@ -77,23 +74,31 @@ namespace online_food_ordering.user
                         }
                         arr3.Add(attr, arr1);
                         Session["cart"] = arr3;
-
                     }
-                    dish_Details = new Dish_Details();
-                    dish_Details.SetId(attr);
-                    int dishPrice = 0;
-                    string dishName = string.Empty;
-                    string dishImage = string.Empty;
-                    foreach (DataRow dr in dish_DetailsBL.DisplayDishAndDishDetailsByDDId(dish_Details).Rows)
-                    {
-                        dishPrice = Convert.ToInt32(dr["dishPrice"]);
-                        dishName = dr["dishName"].ToString();
-                        dishImage = dr["dishImage"].ToString();
-                    }
-                    int totaDish = (classFunction.getUserFullCart(attr)).Count;
-                    json = js.Serialize(new { totalCartDish = totaDish, price = dishPrice, dish = dishName, image = dishImage });
-                    Context.Response.Write(js.Serialize(json));
+                    // End line of Session["cart"][attr]["qty"] = qty;
                 }
+                // Total Price Calculate
+                var getUserFullCart = classFunction.getUserFullCart();
+                int totalPrice = 0;
+                foreach(int key in getUserFullCart.Keys) {
+                    totalPrice = totalPrice + (Convert.ToInt32(getUserFullCart[key]["qty"]) * Convert.ToInt32(getUserFullCart[key]["price"]));
+                }
+
+                dish_Details = new Dish_Details();
+                dish_Details.SetId(attr);
+                int dishPrice = 0;
+                string dishName = string.Empty;
+                string dishImage = string.Empty;
+                foreach (DataRow dr in dish_DetailsBL.DisplayDishAndDishDetailsByDDId(dish_Details).Rows)
+                {
+                    dishPrice = Convert.ToInt32(dr["dishPrice"]);
+                    dishName = dr["dishName"].ToString();
+                    dishImage = dr["dishImage"].ToString();
+                }
+
+                int totaDish = (classFunction.getUserFullCart()).Count;
+                json = js.Serialize(new { totalCartDish = totaDish, totalPrice = totalPrice, price = dishPrice, dish = dishName, image = dishImage });
+                Context.Response.Write(js.Serialize(json));
             }
         }
     }

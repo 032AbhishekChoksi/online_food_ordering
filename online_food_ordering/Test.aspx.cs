@@ -20,7 +20,7 @@ namespace online_food_ordering
 
             if (Session["cart"] != null)
             {
-                var cartarr = (Dictionary<int, Dictionary<string, int>>)Session["cart"];
+                var cartarr = (Dictionary<int, Dictionary<string, string>>)Session["cart"];
                 if (cartarr.Count > 0)
                 {
                     var result = cartarr[12]["qty"];

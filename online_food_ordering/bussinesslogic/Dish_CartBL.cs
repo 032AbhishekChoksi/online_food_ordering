@@ -57,5 +57,22 @@ namespace online_food_ordering.bussinesslogic
                 dish_CartDAO = null;
             }
         }
+        // getUserCart()
+        public DataTable DisplayDishCartByUid(Customer customer)
+        {
+            Dish_CartDAO dish_CartDAO = new Dish_CartDAO();
+            try
+            {
+                return dish_CartDAO.DisplayDishCartByUid(customer);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dish_CartDAO = null;
+            }
+        }
     }
 }
