@@ -25,7 +25,7 @@ namespace online_food_ordering.dao
             }
             return connection;
         }
-        public DataTable DisplayDishCategory()
+        public DataTable DisplayDishCategory(string FilterType, string cat_dish_str)
         {
             DataTable dataTable = new DataTable();
             try
@@ -36,6 +36,8 @@ namespace online_food_ordering.dao
                     CommandType = CommandType.StoredProcedure,
                     Connection = con
                 };
+                cmd.Parameters.AddWithValue("@FilterType", FilterType);
+                cmd.Parameters.AddWithValue("@cat_dish_str", cat_dish_str);
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 adp.Fill(dataTable);
                 cmd.Dispose();

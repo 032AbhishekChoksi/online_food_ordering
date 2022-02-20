@@ -23,6 +23,7 @@ namespace online_food_ordering.user
         public string[] cat_dish_arr;
         public string cat_dish;
         private string cat_dish_str;
+        private string FilterType;
         protected void Page_Init(object sender, EventArgs e)
         {
             dishBL = new DishBL();
@@ -35,8 +36,11 @@ namespace online_food_ordering.user
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblNoRecords.Text = string.Empty;
+            FilterType = string.Empty;
             if (Request.QueryString["cat_dish"] != null)
             {
+                FilterType = "cat_dish";
                 cat_dish = Request.QueryString["cat_dish"].ToString();
                 cat_dish_arr = cat_dish.Split(':');
                 cat_dish_str = String.Join(",", cat_dish_arr);
@@ -49,8 +53,24 @@ namespace online_food_ordering.user
         }
         private void FillDishCategory()
         {
-            rDishCategory.DataSource = dishBL.DisplayDishCategory();
-            rDishCategory.DataBind();
+            if (!string.IsNullOrEmpty(cat_dish_str))
+            {
+                cat_dish_str = cat_dish_str.Remove(0, 1);
+            }
+            else
+            {
+                FilterType = string.Empty;
+            }
+
+            if (dishBL.DisplayDishCategory(FilterType, cat_dish_str).Rows.Count > 0)
+            {
+                rDishCategory.DataSource = dishBL.DisplayDishCategory(FilterType, cat_dish_str);
+                rDishCategory.DataBind();
+            }
+            else
+            {
+                lblNoRecords.Text = "No Dish Found";
+            }
         }
 
         protected void rDishCategory_ItemDataBound(object sender, RepeaterItemEventArgs e)

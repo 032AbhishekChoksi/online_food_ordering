@@ -84,6 +84,7 @@
                                                          </div>
                                                      </ItemTemplate>
                                                  </asp:Repeater>
+                                                 <asp:Label ID="lblNoRecords" runat="server"></asp:Label>
                                              </div>
                                              </form>
                                     </div>
