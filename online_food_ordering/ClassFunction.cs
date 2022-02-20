@@ -141,5 +141,56 @@ namespace online_food_ordering
                 dish_CartBL.InsertDishCart(dish_Cart);
             }
         }
+        public Int32 getcartTotalPrice()
+        {
+            var cartArr = getUserFullCart();
+            int totalPrice = 0;
+            foreach (int key in cartArr.Keys)
+            {
+                totalPrice = totalPrice + (Convert.ToInt32(cartArr[key]["qty"]) * Convert.ToInt32(cartArr[key]["price"]));
+            }
+            return totalPrice;
+        }
+        public void emptyCart()
+        {
+            if (HttpContext.Current.Session["FOOD_USER_ID"] != null)
+            {
+                int uid = Convert.ToInt32(HttpContext.Current.Session["FOOD_USER_ID"]);
+                Customer customer = new Customer();
+                customer.SetId(uid);
+                dish_CartBL.DeleteDishCartByUid(customer);
+            }
+            else
+            {
+                HttpContext.Current.Session.Remove("cart");
+            }
+        }
+        // removeDishFromCartByid(dish_Details_id)
+        public void removeDishFromCartByid(int id)
+        {
+            if (HttpContext.Current.Session["FOOD_USER_ID"] != null)
+            {
+                int uid = Convert.ToInt32(HttpContext.Current.Session["FOOD_USER_ID"]);
+                Customer customer = new Customer();
+                customer.SetId(uid);
+                Dish_Details dish_Details = new Dish_Details();
+                dish_Details.SetId(id);
+                dish_CartBL.DeleteDishCartByDdidAndUid(dish_Details, customer);
+            }
+            else
+            {
+                // unset($_SESSION['cart'][$id]);
+                var cartArr = (Dictionary<int, Dictionary<string, string>>)HttpContext.Current.Session["cart"];
+                HttpContext.Current.Session.Remove("cart");
+                foreach (int key in cartArr.Keys)
+                {
+                    if (key.Equals(id))
+                    {
+                        cartArr.Remove(key);
+                    }
+                }
+                HttpContext.Current.Session["cart"] = cartArr;
+            }
+        }
     }
 }

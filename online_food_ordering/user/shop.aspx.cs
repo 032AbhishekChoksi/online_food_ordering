@@ -14,13 +14,20 @@ namespace online_food_ordering.user
         private DishBL dishBL;
         private Dish_DetailsBL dish_DetailsBL;
         private int did;
+        public int DDID;
+        protected Dictionary<int, Dictionary<string, string>> cartArr;
+        private ClassFunction classFunction;
         protected void Page_Init(object sender, EventArgs e)
         {
             dishBL = new DishBL();
             dish_DetailsBL = new Dish_DetailsBL();
+            classFunction = new ClassFunction();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            user mp = (user)Page.Master;
+            cartArr = classFunction.getUserFullCart();
+
             Page.Title = "Shop | Billy";
             FillDishCategory();
         }
@@ -38,6 +45,46 @@ namespace online_food_ordering.user
             dish.SetId(did);
             rDishDetails.DataSource = dish_DetailsBL.DisplayDishDetailsByDid(dish);
             rDishDetails.DataBind();
+        }
+
+        public string displayAddedMessage(object DDID)
+        {
+            string message = string.Empty;
+            if (cartArr != null) { 
+                int id = Convert.ToInt32(DDID);
+                if (cartArr.ContainsKey(id))
+                {
+                    int added_qty = Convert.ToInt32(cartArr[id]["qty"]);
+                    message = "(Added - " + added_qty + ")";
+                }
+            }
+            return message;
+        }
+        public string Radiochecked(object DDID)
+        {
+            string message = string.Empty;
+            if (cartArr != null)
+            {
+                int id = Convert.ToInt32(DDID);
+                if (cartArr.ContainsKey(id))
+                {
+                    message = " checked ";
+                }
+            }
+            return message;
+        }
+        public string QtySelected(object DDID)
+        {
+            string message = string.Empty;
+            if (cartArr != null)
+            {
+                int id = Convert.ToInt32(DDID);
+                if (cartArr.ContainsKey(id))
+                {
+                    message = " selected ";
+                }
+            }
+            return message;
         }
     }
 }

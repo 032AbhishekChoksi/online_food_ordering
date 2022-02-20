@@ -165,5 +165,84 @@ namespace online_food_ordering.dao
             }
             return dataTable;
         }
+        public Int32 DeleteDishCartByUid(Customer customer)
+        {
+            SqlConnection con = GetConnection();
+            int result;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_Remove_DishCartByUid")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@uid", customer.GetId());
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                if (result > 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                {
+                    con.Close();
+                }
+            }
+        }
+        public Int32 DeleteDishCartByDdidAndUid(Dish_Details dish_Details,Customer customer)
+        {
+            SqlConnection con = GetConnection();
+            int result;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_Remove_DishCartByDdidAndUid")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@ddid", dish_Details.GetId());
+                cmd.Parameters.AddWithValue("@uid", customer.GetId());
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                if (result > 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                {
+                    con.Close();
+                }
+            }
+        }
     }
 }

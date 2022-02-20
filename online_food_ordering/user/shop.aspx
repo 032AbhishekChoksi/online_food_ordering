@@ -58,12 +58,12 @@
                                                                  <div class="item-radio" style="margin-top: 5px;">
                                                                      <asp:HiddenField ID="hdid" runat="server" Value='<%# Eval("did") %>' />
                                                                      <asp:Repeater ID="rDishDetails" runat="server">
-                                                                         <ItemTemplate>
-                                                                             <input type='radio' style='width: 16px; height: 12px; margin-right: 5px; margin-left: 5px;' name='radio_<%# Eval("dish_id") %>' id='radio_<%# Eval("dish_id") %>' value='<%# Eval("DDID") %>' />
+                                                                         <ItemTemplate>                                                                            
+                                                                             <input type='radio' style='width: 16px; height: 12px; margin-right: 5px; margin-left: 5px;' name='radio_<%# Eval("dish_id") %>' id='radio_<%# Eval("dish_id") %>' value='<%# Eval("DDID") %>'  <%# Radiochecked(Eval("DDID")) %> />
                                                                              <%# Eval("attribute") %>
                                                                         &nbsp;
-                                                                        <span>(₹ <%# Math.Round(Convert.ToDecimal(Eval("price"))) %>)                                            
-                                                                            <span style='font-size: 12px;color:#e02c2b !important;' id='shop_added_msg_<%# Eval("DDID")%>'></span>
+                                                                        <span>(₹ <%# Math.Round(Convert.ToDecimal(Eval("price"))) %>)                                                                           
+                                                                            <span style='font-size: 12px;color:#e02c2b !important;' id='shop_added_msg_<%# Eval("DDID")%>'><asp:Label ID="lbladdedMessage" runat="server" Text='<%# displayAddedMessage(Eval("DDID")) %>'></asp:Label></span>
                                                                              <br />
                                                                             </ItemTemplate>
                                                                      </asp:Repeater>
@@ -73,7 +73,7 @@
                                                                          <option value="0">Qty</option>
                                                                          <% for (int i = 1; i <=10; i++)
                                                                              {%>
-                                                                         <option value='<%= i %>'><%= i %></option>
+                                                                         <option value='<%= i %>'> <%= i %> </option>
                                                                          <%} %>
                                                                      </select>
 

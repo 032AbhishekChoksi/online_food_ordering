@@ -116,49 +116,54 @@
 								<a href="#">
 									<div class="header-icon-style">
 										<i class="icon-handbag icons"></i>
-										<span class="count-style" id="totalCartDish">0</span>
+										<span class="count-style" id="totalCartDish"><%= totalCartDish %></span>
 									</div>
 									<div class="cart-text">
 										<span class="digit">My Cart</span>
 										<span class="cart-digit-bold" id="totalPrice">
-											0 Rs
+											<% if (totalPrice != 0) { %>
+												<%=totalPrice %> Rs.
+											<% } else { %>
+												0 Rs.
+											<%} %>
 										</span>
 									</div>
 								</a>
-								<%--<?php if ($totalPrice != 0) { ?>
+								<% if (totalPrice != 0) { %>
 									<div class="shopping-cart-content">
 										<ul id="cart_ul">
-											<?php foreach ($cartArr as $key => $list) { ?>
-												<li class="single-shopping-cart" id="attr_<?php echo $key ?>">
+											<% foreach(int key in cartArr.Keys) { %>
+												<li class="single-shopping-cart" id="attr_<%= key %>">
 													<div class="shopping-cart-img">
-														<a href="javascript:void(0)"><img alt="" src="<?php echo SITE_DISH_IMAGE . $list['image'] ?>" style="width:100%;"></a>
+														<a href="javascript:void(0)"><img alt="" src='../media/dish/<%= cartArr[key]["image"] %>' style="width:100%;"></a>
 													</div>
 													<div class="shopping-cart-title">
 														<h4><a href="javascript:void(0)">
-																<?php echo $list['dish'] ?>
+																<%= cartArr[key]["dish"] %>
 															</a></h4>
-														<h6>Price: <?php echo $list['price'] ?> Rs</h6>
+														<h6>Price:<%= cartArr[key]["price"] %> Rs.</h6>
 														<h6>Qty: <?php echo $list['qty'] ?></h6>
-														<span><?php echo
-																$list['qty'] * $list['price']; ?> Rs</span>
+														<span>
+															<%= Convert.ToInt32(cartArr[key]["qty"]) * Convert.ToInt32(cartArr[key]["price"]) %> Rs.
+														</span>
 													</div>
 													<div class="shopping-cart-delete">
-														<a href="javascript:void(0)" onclick="delete_cart('<?php echo $key ?>')"><i class="ion ion-close"></i></a>
+														<a href="javascript:void(0)" onclick="delete_cart('<%= key %>')"><i class="ion ion-close"></i></a>
 													</div>
 												</li>
-											<?php } ?>
+											<%} %>
 										</ul>
 										<div class="shopping-cart-total">
 											<h4>Total : <span class="shop-total" id="shopTotal">
-													<?php echo $totalPrice ?> Rs
+													<%=totalPrice %> Rs.
 												</span></h4>
 										</div>
 										<div class="shopping-cart-btn">
-											<a href="<?php echo FRONT_SITE_PATH ?>cart">view cart</a>
-											<a href="<?php echo FRONT_SITE_PATH ?>checkout">checkout</a>
+											<a href="cart">view cart</a>
+											<a href="checkout">checkout</a>
 										</div>
 									</div>
-								<?php } ?>--%>
+								<%} %>
 							</div>
 						</div>
 					</div>

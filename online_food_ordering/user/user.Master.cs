@@ -9,9 +9,22 @@ namespace online_food_ordering.user
 {
     public partial class user : System.Web.UI.MasterPage
     {
-        ClassUser objUser = new ClassUser();
+        private ClassFunction classFunction;
+        private ClassUser objUser;
+        // Fronted Access Variable
+        protected Dictionary<int, Dictionary<string, string>> cartArr;
+        protected Int32 totalPrice;
+        protected Int32 totalCartDish;
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            classFunction = new ClassFunction();
+            objUser = new ClassUser();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
+            cartArr = classFunction.getUserFullCart();
+            totalPrice = classFunction.getcartTotalPrice();
+            totalCartDish = cartArr.Count;
             decimal amt = 0;
             if (Session["FOOD_USER_NAME"] != null)
             {
@@ -20,8 +33,6 @@ namespace online_food_ordering.user
                 lblUsreName.Text = Session["FOOD_USER_NAME"].ToString();
             }
             lblWalletAmount.Text = "₹" + Math.Round(amt).ToString();
-
-
         }
     }
 }

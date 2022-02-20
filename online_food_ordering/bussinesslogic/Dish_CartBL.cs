@@ -74,5 +74,37 @@ namespace online_food_ordering.bussinesslogic
                 dish_CartDAO = null;
             }
         }
+        public Int32 DeleteDishCartByUid(Customer customer)
+        {
+            Dish_CartDAO dish_CartDAO = new Dish_CartDAO();
+            try
+            {
+                return dish_CartDAO.DeleteDishCartByUid(customer);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dish_CartDAO = null;
+            }
+        }
+        public Int32 DeleteDishCartByDdidAndUid(Dish_Details dish_Details, Customer customer)
+        {
+            Dish_CartDAO dish_CartDAO = new Dish_CartDAO();
+            try
+            {
+                return dish_CartDAO.DeleteDishCartByDdidAndUid(dish_Details, customer);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dish_CartDAO = null;
+            }
+        }
     }
 }
