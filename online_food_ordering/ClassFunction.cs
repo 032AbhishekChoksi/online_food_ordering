@@ -180,16 +180,30 @@ namespace online_food_ordering
             else
             {
                 // unset($_SESSION['cart'][$id]);
-                var cartArr = (Dictionary<int, Dictionary<string, string>>)HttpContext.Current.Session["cart"];
-                HttpContext.Current.Session.Remove("cart");
-                foreach (int key in cartArr.Keys)
+                if (HttpContext.Current.Session["cart"] != null)
                 {
-                    if (key.Equals(id))
+                    var cartArr = (Dictionary<int, Dictionary<string, string>>)HttpContext.Current.Session["cart"];
+                    HttpContext.Current.Session.Remove("cart");
+                    if (cartArr.Count > 0)
                     {
-                        cartArr.Remove(key);
+                        foreach (int key in cartArr.Keys)
+                        {
+                            if (key.Equals(id))
+                            {
+                                cartArr.Remove(key);
+                                break;
+                            }
+                        }
+                    }
+                    if (cartArr.Count > 0)
+                    {
+                        HttpContext.Current.Session["cart"] = cartArr;
+                    }
+                    else
+                    {
+                        HttpContext.Current.Session.Remove("cart");
                     }
                 }
-                HttpContext.Current.Session["cart"] = cartArr;
             }
         }
     }

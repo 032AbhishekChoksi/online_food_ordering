@@ -100,6 +100,20 @@ namespace online_food_ordering.user
                 json = js.Serialize(new { totalCartDish = totaDish, totalPrice = totalPrice, price = dishPrice, dish = dishName, image = dishImage });
                 Context.Response.Write(js.Serialize(json));
             }
+
+            if (type.Equals("delete"))
+            {
+                classFunction.removeDishFromCartByid(attr);
+                var getUserFullCart = classFunction.getUserFullCart();
+                int totaDish = (classFunction.getUserFullCart()).Count;
+                int totalPrice = 0;
+                foreach (int key in getUserFullCart.Keys)
+                {
+                    totalPrice = totalPrice + (Convert.ToInt32(getUserFullCart[key]["qty"]) * Convert.ToInt32(getUserFullCart[key]["price"]));
+                }
+                json = js.Serialize(new { totalCartDish = totaDish, totalPrice = totalPrice });
+                Context.Response.Write(js.Serialize(json));
+            }
         }
     }
 }
