@@ -303,5 +303,31 @@ namespace online_food_ordering.dao
                 }
             }
         }
+        public DataTable DisplayCategoryByStatusOrderById(Category category)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_CategoryByStatusOrderById")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@status", category.GetStatus());
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dataTable);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataTable.Dispose();
+            }
+            return dataTable;
+        }
     }
 }

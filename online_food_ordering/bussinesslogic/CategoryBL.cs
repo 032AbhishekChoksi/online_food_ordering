@@ -136,5 +136,21 @@ namespace online_food_ordering.bussinesslogic
                 categoryDAO = null;
             }
         }
+        public DataTable DisplayCategoryByStatusOrderById(Category category)
+        {
+            CategoryDAO categoryDAO = new CategoryDAO();
+            try
+            {
+                return categoryDAO.DisplayCategoryByStatusOrderById(category);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                categoryDAO = null;
+            }
+        }
     }
 }

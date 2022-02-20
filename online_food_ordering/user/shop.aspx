@@ -84,7 +84,6 @@
                                                          </div>
                                                      </ItemTemplate>
                                                  </asp:Repeater>
-
                                              </div>
                                              </form>
                                     </div>
@@ -99,9 +98,10 @@
                             <h4 class="shop-sidebar-title">Shop By Categories</h4>
                             <div class="shop-catigory">
                                 <ul id="faq">
-                                    <li><a href="#">Vegetables</a> </li>
-                                    <li><a href="#">Fruits</a></li>
-                                    <li><a href="#">Red Meat</a></li>
+                                    <li><a href="shop.aspx"><u>clear</u></a></li>
+                                    <%foreach (string str in categoryList()){ %>
+                                         <%= str %>
+                                   <% } %>
                                 </ul>
                             </div>
                         </div>
@@ -110,9 +110,14 @@
             </div>
         </div>
     </div>
+    <form method="get" id="frmCatDish">
+        <input type="hidden" name="cat_dish" id="cat_dish" value='<%= cat_dish %>' />
+ <%--       <input type="hidden" name="dish_type" id="dish_type" value='<?php echo  $dish_type; ?>' />
+        <input type="hidden" name="search_str" id="search_str" value='<?php echo $search_str ?>' />--%>
+    </form>
     <script>
     function set_checkbox(id) {
-        // alert(id);
+       /* alert(id);*/
         var cat_dish = jQuery('#cat_dish').val();
         var check = cat_dish.search(":" + id);
         if (check != '-1') {
