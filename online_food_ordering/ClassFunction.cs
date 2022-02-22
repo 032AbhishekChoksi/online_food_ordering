@@ -13,6 +13,7 @@ namespace online_food_ordering
 {
     public class ClassFunction
     {
+        private CustomerBL customerBL = new CustomerBL();
         private Dish_CartBL dish_CartBL = new Dish_CartBL();
         private Dish_DetailsBL dish_DetailsBL = new Dish_DetailsBL();
         string message = string.Empty;
@@ -22,7 +23,7 @@ namespace online_food_ordering
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential("abhishekmeet032015@gmail.com", "bmiit032015");
+            smtp.Credentials = new System.Net.NetworkCredential("EMAIL ID", "EMAIL PASSWORD");
             smtp.EnableSsl = true;
             MailMessage msg = new MailMessage();
             msg.Subject = subject;
@@ -30,7 +31,7 @@ namespace online_food_ordering
             msg.IsBodyHtml = true;
             string toaddress = email;
             msg.To.Add(toaddress);
-            string fromaddress = "Billy Admin <abhishekmeet032015@gmail.com>";
+            string fromaddress = "Billy Admin <EMAIL ID>";
             msg.From = new MailAddress(fromaddress);
             try
             {
@@ -205,6 +206,31 @@ namespace online_food_ordering
                     }
                 }
             }
+        }
+        // getUserDetailsByid()
+        public Dictionary<string, string> getUserDetailsByid(Customer customer)
+        {
+            int uid = 0;
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            if (HttpContext.Current.Session["FOOD_USER_ID"] != null)
+            {
+                uid = Convert.ToInt32(HttpContext.Current.Session["FOOD_USER_ID"]);
+                customer.SetId(uid);
+            }
+            if (uid > 0)
+            {
+                if(customerBL.DisplayCustomerByCid(customer).Rows.Count > 0)
+                {
+                    foreach(DataRow dr in customerBL.DisplayCustomerByCid(customer).Rows)
+                    {
+                        data.Add("name", dr["name"].ToString());
+                        data.Add("email", dr["email"].ToString());
+                        data.Add("mobile", dr["mobile"].ToString());
+                        data.Add("referral_code", dr["referral_code"].ToString());
+                    }
+                }
+            }
+            return data;
         }
     }
 }

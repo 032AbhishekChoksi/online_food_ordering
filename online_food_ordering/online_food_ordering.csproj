@@ -117,7 +117,9 @@
     <Content Include="admin\setting.aspx" />
     <Content Include="admin\send_coupon_code.aspx" />
     <Content Include="admin\user.aspx" />
+    <Content Include="App_Data\online_food.sql" />
     <Content Include="billy.ico" />
+    <Content Include="user\checkout.aspx" />
     <Content Include="email_body\coupon.aspx" />
     <Content Include="email_body\emailpassword.html" />
     <Content Include="email_body\emailverify.html" />
@@ -253,6 +255,7 @@
     <Content Include="user\logout.aspx" />
     <Content Include="user\manage_cart.aspx" />
     <Content Include="user\shop.aspx" />
+    <Content Include="user\success.aspx" />
     <Content Include="user\verify.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -390,17 +393,30 @@
     <Compile Include="bussinesslogic\BannerBL.cs" />
     <Compile Include="bussinesslogic\CategoryBL.cs" />
     <Compile Include="bussinesslogic\Coupon_CodeBL.cs" />
+    <Compile Include="bussinesslogic\CustomerBL.cs" />
     <Compile Include="bussinesslogic\Delivery_BoyBL.cs" />
     <Compile Include="bussinesslogic\DishBL.cs" />
     <Compile Include="bussinesslogic\Dish_CartBL.cs" />
     <Compile Include="bussinesslogic\Dish_DetailsBL.cs" />
+    <Compile Include="bussinesslogic\Order_DetailBL.cs" />
+    <Compile Include="bussinesslogic\Order_MasterBL.cs" />
     <Compile Include="bussinesslogic\SettingBL.cs" />
+    <Compile Include="dao\Order_DetailDAO.cs" />
+    <Compile Include="dao\Order_MasterDAO.cs" />
+    <Compile Include="user\checkout.aspx.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\checkout.aspx.designer.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ClassFunction.cs" />
     <Compile Include="ClassRandom.cs" />
     <Compile Include="dao\AdminDAO.cs" />
     <Compile Include="dao\BannerDAO.cs" />
     <Compile Include="dao\CategoryDAO.cs" />
     <Compile Include="dao\Coupon_CodeDAO.cs" />
+    <Compile Include="dao\CustomerDAO.cs" />
     <Compile Include="dao\Delivery_BoyDAO.cs" />
     <Compile Include="dao\DishDAO.cs" />
     <Compile Include="dao\Dish_CartDAO.cs" />
@@ -517,6 +533,13 @@
     </Compile>
     <Compile Include="user\shop.aspx.designer.cs">
       <DependentUpon>shop.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\success.aspx.cs">
+      <DependentUpon>success.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\success.aspx.designer.cs">
+      <DependentUpon>success.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\user.Master.cs">
       <DependentUpon>user.Master</DependentUpon>
