@@ -244,6 +244,7 @@
     <Content Include="user\assets\js\sweetalert.min.js" />
     <Content Include="user\assets\js\vendor\jquery-1.12.0.min.js" />
     <Content Include="user\assets\js\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="user\cart.aspx" />
     <Content Include="user\contact-us.aspx" />
     <Content Include="user\images\bg\1.jpg" />
     <Content Include="user\index.aspx" />
@@ -459,6 +460,13 @@
     </Compile>
     <Compile Include="user\about-us.aspx.designer.cs">
       <DependentUpon>about-us.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\cart.aspx.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\cart.aspx.designer.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\ClassUser.cs" />
     <Compile Include="user\contact-us.aspx.cs">

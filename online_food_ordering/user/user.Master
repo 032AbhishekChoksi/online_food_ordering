@@ -142,7 +142,7 @@
 																<%= cartArr[key]["dish"] %>
 															</a></h4>
 														<h6>Price:<%= cartArr[key]["price"] %> Rs.</h6>
-														<h6>Qty: <?php echo $list['qty'] ?></h6>
+														<h6>Qty: <%= cartArr[key]["qty"] %> </h6>
 														<span>
 															<%= Convert.ToInt32(cartArr[key]["qty"]) * Convert.ToInt32(cartArr[key]["price"]) %> Rs.
 														</span>

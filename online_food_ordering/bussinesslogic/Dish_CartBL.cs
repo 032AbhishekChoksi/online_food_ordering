@@ -106,5 +106,21 @@ namespace online_food_ordering.bussinesslogic
                 dish_CartDAO = null;
             }
         }
+        public Int32 UpdateDishCartQtyByUid(Dish_Cart dish_Cart)
+        {
+            Dish_CartDAO dish_CartDAO = new Dish_CartDAO();
+            try
+            {
+                return dish_CartDAO.UpdateDishCartQtyByUid(dish_Cart);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dish_CartDAO = null;
+            }
+        }
     }
 }

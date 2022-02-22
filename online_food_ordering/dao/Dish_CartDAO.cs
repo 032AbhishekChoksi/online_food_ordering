@@ -244,5 +244,46 @@ namespace online_food_ordering.dao
                 }
             }
         }
+        public Int32 UpdateDishCartQtyByUid(Dish_Cart dish_Cart)
+        {
+            SqlConnection con = GetConnection();
+            int result;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_Update_DishCartQTYByUid")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@qty", dish_Cart.GetQty());
+                cmd.Parameters.AddWithValue("@ddid", dish_Cart.GetDishDetailId());
+                cmd.Parameters.AddWithValue("@uid", dish_Cart.GetUserId());
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                if (result > 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                {
+                    con.Close();
+                }
+            }
+        }
     }
 }

@@ -13,19 +13,23 @@ namespace online_food_ordering
         ClassFunction fun = new ClassFunction();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.Form["btnSubmit"] != null)
+            {
+                string name = Request.Form["fname"].ToString();
+            }
             //string email = "19bmiit032@gmail.com";
             //string cdate = DateTime.Now.Year.ToString();
             //string html = emailpasswordbody(cdate);
             //fun.sendEmail(email, html, "Welcome To Billy");
 
-            if (Session["cart"] != null)
-            {
-                var cartarr = (Dictionary<int, Dictionary<string, string>>)Session["cart"];
-                if (cartarr.Count > 0)
-                {
-                    var result = cartarr[12]["qty"];
-                }
-            }
+            //if (Session["cart"] != null)
+            //{
+            //    var cartarr = (Dictionary<int, Dictionary<string, string>>)Session["cart"];
+            //    if (cartarr.Count > 0)
+            //    {
+            //        var result = cartarr[12]["qty"];
+            //    }
+            //}
         }
         //private string emailpasswordbody(string currentyear)
         //{
@@ -37,6 +41,10 @@ namespace online_food_ordering
         //    body = body.Replace("{currentyear}", currentyear);
 
         //    return body;
+        //}
+        //protected void btnLogin_Click(object sender, EventArgs e)
+        //{
+        //    string name = Request.Form["fname"].ToString();
         //}
     }
 }
