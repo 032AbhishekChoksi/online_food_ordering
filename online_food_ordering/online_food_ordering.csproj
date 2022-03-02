@@ -257,6 +257,7 @@
     <Content Include="user\login_register_submit.aspx" />
     <Content Include="user\logout.aspx" />
     <Content Include="user\manage_cart.aspx" />
+    <Content Include="user\order_history.aspx" />
     <Content Include="user\payment_process.aspx" />
     <Content Include="user\pgRedirect.aspx" />
     <Content Include="user\pgResponse.aspx" />
@@ -532,6 +533,13 @@
     </Compile>
     <Compile Include="user\manage_cart.aspx.designer.cs">
       <DependentUpon>manage_cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\order_history.aspx.cs">
+      <DependentUpon>order_history.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\order_history.aspx.designer.cs">
+      <DependentUpon>order_history.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\payment_process.aspx.cs">
       <DependentUpon>payment_process.aspx</DependentUpon>

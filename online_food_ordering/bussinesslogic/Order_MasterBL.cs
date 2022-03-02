@@ -2,6 +2,7 @@
 using online_food_ordering.model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -31,6 +32,22 @@ namespace online_food_ordering.bussinesslogic
             try
             {
                 return order_MasterDAO.UpdateOrderMasterPaymentStatusById(order_Master);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                order_MasterDAO = null;
+            }
+        }
+        public DataTable DisplayOrderMasterByUserId(Customer customer)
+        {
+            Order_MasterDAO order_MasterDAO = new Order_MasterDAO();
+            try
+            {
+                return order_MasterDAO.DisplayOrderMasterByUserId(customer);
             }
             catch (Exception)
             {
