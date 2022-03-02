@@ -31,8 +31,12 @@
 												</div><br />
 												<a href="download_invoice?id=<%# Eval("id") %>"><img src='./assets/img/icon-img/pdf.png' width="20px" title="Download Invoice" /></a>
 											</td style="font-size:14px;">
-											<td><%# string.Format("₹ {0}",Math.Round((decimal)Eval("total_price"))) %>
+											<td><%# string.Format("{0} Rs.",Math.Round((decimal)Eval("total_price"))) %>
 											</td>
+											<%--<td>
+												<%# ApplyCoupon(Eval("coupon_code"),Eval("total_price"), Eval("final_price"))[0] %>
+												<%# ApplyCoupon(Eval("coupon_code"),Eval("total_price"), Eval("final_price"))[1] %>
+											</td>--%>
 											<td>
 												<%# ApplyCoupon(Eval("coupon_code"), Eval("final_price"))[0] %>
 												<%# ApplyCoupon(Eval("coupon_code"), Eval("final_price"))[1] %>

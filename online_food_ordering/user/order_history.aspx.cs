@@ -39,23 +39,41 @@ namespace online_food_ordering.user
                 Response.Redirect("shop");
             }
         }
-        protected String[] ApplyCoupon(object coupon_code,object final_price)
+        protected String[] ApplyCoupon(object coupon_code, object final_price)
         {
             String[] result = new String[2];
             string coupon = coupon_code.ToString().Trim(' ');
-            string final = final_price.ToString();
-            if (string.IsNullOrEmpty(coupon) || string.IsNullOrWhiteSpace(coupon))
+            decimal final = Convert.ToDecimal(final_price.ToString());
+         
+            if (!string.IsNullOrEmpty(coupon))
             {
                 result[0] = "Coupon Code:- " + coupon + "<br />";
-                result[1] = "Final Price:- " + final + " Rs.";
+                result[1] = "Final Price:- " + Math.Round((decimal)final) + " Rs.";
             }
             else
             {
                 result[0] = "-";
-                result[1] = "-";
+                result[1] = "";
             }
             return result;
         }
+        //protected String[] ApplyCoupon(object coupon_code,object total_price, object final_price)
+        //{
+        //    String[] result = new String[2];
+        //    decimal total = Convert.ToDecimal(total_price.ToString());
+        //    decimal final = Convert.ToDecimal(final_price.ToString());
+        //    if (total != final)
+        //    {
+        //        result[0] = "Coupon Code:- " + coupon_code.ToString() + "<br />";
+        //        result[1] = "Final Price:- " + Math.Round((decimal)final) + " Rs.";
+        //    }
+        //    else
+        //    {
+        //        result[0] = "-";
+        //        result[1] = "";
+        //    }
+        //    return result;
+        //}
         protected string CheckOrderStatus(object order_status)
         {
             string result = string.Empty;
