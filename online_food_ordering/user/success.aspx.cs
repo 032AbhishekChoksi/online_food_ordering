@@ -11,10 +11,18 @@ namespace online_food_ordering.user
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["ORDER_ID"] == null)
+            string OID = string.Empty;
+            
+            if(Session["ORDER_ID"] != null)
+            {
+                 OID = Session["ORDER_ID"].ToString();
+                 Session.Remove("ORDER_ID");
+            }
+            else
             {
                 Response.Redirect("shop");
             }
+            lblOrderID.Text = OID;
         }
     }
 }

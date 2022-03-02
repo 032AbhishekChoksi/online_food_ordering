@@ -19,12 +19,14 @@ namespace online_food_ordering
         protected string is_show, box_id, final_show, final_box_id, is_error;
         protected string is_dis = string.Empty, low_msg = string.Empty, cart_min_price_msg = string.Empty;
         protected Int32 totalPrice;
+        protected decimal final_price = 0;
         private ClassUser objUser;
         private decimal getWalletAmt = 0;
         private decimal cart_min_price = 0;
         private int uid = 0;
         private Order_MasterBL order_MasterBL;
         private Order_DetailBL order_DetailBl;
+        protected int razoramt = 0;
         protected void Page_Init(object sender, EventArgs e)
         {
             classFunction = new ClassFunction();
@@ -37,16 +39,18 @@ namespace online_food_ordering
             is_error = string.Empty;
             cartArr = classFunction.getUserFullCart();
             totalPrice = classFunction.getcartTotalPrice();
-
+            razoramt = Convert.ToInt32(totalPrice);
+            Session["ORDER_ID"] = 3;
             if (cartArr.Count > 0 || cartArr != null)
             {}
             else
             {
                 Response.Redirect("shop");
             }
+
             if(Session["FOOD_USER_ID"] != null)
             {
-                 uid = Convert.ToInt32(Session["FOOD_USER_ID"]);
+                uid = Convert.ToInt32(Session["FOOD_USER_ID"]);
 
                 Customer customer = new Customer();
                 customer.SetId(uid);
@@ -101,22 +105,24 @@ namespace online_food_ordering
                     string checkout_address = Request.Form["checkout_address"];
                     string payment_type = Request.Form["payment_type"];
                     string coupon_code = string.Empty;
-                    decimal final_price = 0;
+                    
 
                     if (Session["COUPON_CODE"] != null)
                     {
                         coupon_code = Session["COUPON_CODE"].ToString();
                         final_price = Convert.ToDecimal(Session["FINAL_PRICE"]);
+                        razoramt = Convert.ToInt32(final_price);
                     }
                     else
                     {
                         coupon_code = string.Empty;
                         final_price = totalPrice;
+                        razoramt = Convert.ToInt32(final_price);
                     }
 
                     DateTime added_on = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
                     int lastinsertedid = 0;
-                    
+
                     Order_Master order_Master = new Order_Master();
                     order_Master.SetUserId(uid);
                     order_Master.SetAddress(checkout_address);
@@ -130,7 +136,7 @@ namespace online_food_ordering
                     order_Master.SetRefundStatus(0);
                     order_Master.SetAddedOn(added_on);
                     lastinsertedid = order_MasterBL.InsertOrderMaster(order_Master);
-                    
+
                     if (Session["ORDER_ID"] != null)
                     {
                         Session.Remove("ORDER_ID");
@@ -144,7 +150,7 @@ namespace online_food_ordering
                         order_DetailBl.InsertOrder_Detail(order_Detail);
                     }
                     classFunction.emptyCart();
-                    
+
                     if (payment_type.Equals("cod"))
                     {
                         // Send Email
@@ -157,7 +163,7 @@ namespace online_food_ordering
                         // withdraw amount in wallet
                         string ttype = "Order Id- " + lastinsertedid;
                         objUser.manageWallet(uid, final_price, ttype, "out", string.Empty, added_on);
-                        
+
                         // Update Payment Status
                         order_Master.SetId(lastinsertedid);
                         order_Master.SetPaymentStatus("success");
@@ -165,6 +171,30 @@ namespace online_food_ordering
                         // Send Email
 
                         Response.Redirect("success");
+                    }
+                    if (payment_type.Equals("paytm"))
+                    {
+                        string paytm_oid = "ORDS_" + lastinsertedid + "_" + Session["FOOD_USER_ID"].ToString() + "_" + ClassRandom.GetRandomPassword(3);
+
+                        string outputHTML = "<form id='f1' runat='server' method='post' action='pgRedirect' name='frmPayment' style='display:none;'>";
+                        outputHTML += "<input type='text' tabindex = '1' maxlength = '20' size = '20' name = 'ORDER_ID' autocomplete = 'off' value='" + paytm_oid + "'>";
+                        outputHTML += "<input id = 'CUST_ID' tabindex = '2' maxlength = '12' size = '12' name = 'CUST_ID' autocomplete = 'off' value='" + Session["FOOD_USER_ID"] + "' />";
+                        outputHTML += "<input id = 'INDUSTRY_TYPE_ID' tabindex = '4' maxlength = '12' size = '12' name = 'INDUSTRY_TYPE_ID' autocomplete = 'off' value='Retail' />";
+                        outputHTML += "<input id = 'CHANNEL_ID' tabindex = '4' maxlength = '12' size = '12' name = 'CHANNEL_ID'' autocomplete = 'off' value='WEB' />";
+                        outputHTML += "<input title = 'TXN_AMOUNT' tabindex = '10'	type = 'text' name = 'TXN_AMOUNT' value='" + final_price + "' />";
+                        outputHTML += "<input value = 'CheckOut' type = 'submit'  onclick='' />";
+                        outputHTML += "</form>";
+                        outputHTML += "<script type='text/javascript'>";
+                        outputHTML += "document.frmPayment.submit();";
+                        outputHTML += "</script>";
+
+                        //Response.Write("<script>alert('Print HTML')</script>");
+                        Response.Write(outputHTML);
+                    }
+                    if (payment_type.Equals("Razorpay"))
+                    {
+                        Response.Write("<script>pay_now();</script>");
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "Callpay_now", "pay_now()", true);
                     }
                 }
                     //Response.Write("<script>alert('Button Clicked!')</script>");

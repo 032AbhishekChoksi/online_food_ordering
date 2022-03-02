@@ -57,7 +57,7 @@
 													<div class="col-lg-3 col-md-6">
 														<div class="billing-info">
 															<label>Customer Name</label>
-															<input type="text" name="checkout_name" required value='<%= userArr["name"] %>' readonly>
+															<input type="text" name="checkout_name" id="checkout_name" required value='<%= userArr["name"] %>' readonly>
 														</div>
 													</div>
 													<div class="col-lg-3 col-md-6">
@@ -108,6 +108,10 @@
 												<div class="single-ship">
 													<input type="radio" name="payment_type" value="paytm">
 													<label>PayTm</label>
+												</div>
+												<div class="single-ship">
+													<input type="radio" name="payment_type" value="Razorpay" disabled='disabled'>
+													<label>Razorpay</label>
 												</div>
 												<div class="single-ship">
 													<input type="radio" name="payment_type" value="wallet" <%= is_dis %> >
@@ -164,7 +168,8 @@
 							<h4>Coupon Code : <span class="shop-total coupon_code_str"></span></h4>
 						</div>
 						<div class="shopping-cart-total coupon_price_box">
-							<h4>Final Price : <span class="shop-total final_price"></span></h4>
+							<h4>Final Price : <span class="shop-total final_price"><%= final_price %> Rs.</span></h4>
+							<input type="hidden" name="amt"  id="amt" value="<%= razoramt %>" />
 						</div>
 					</div>
 				</div>
@@ -172,5 +177,4 @@
 		</div>
 	</div>
 </div>
-
 </asp:Content>

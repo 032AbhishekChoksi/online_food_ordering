@@ -105,6 +105,20 @@ namespace online_food_ordering.user
                                     Session["FOOD_USER_NAME"] = dr["name"].ToString();
                                     Session["FOOD_USER_EMAIL"] = dr["email"].ToString();
                                     json = js.Serialize(new { status = "success", msg = "" });
+                                    if (Session["cart"] != null)
+                                    {
+                                        if(((Dictionary<int, Dictionary<string, string>>)Session["cart"]).Count > 0)
+                                        {
+                                            var cartArr = (Dictionary<int, Dictionary<string, string>>)Session["cart"];
+                                            foreach (int key in cartArr.Keys)
+                                            {
+                                                int uid = Convert.ToInt32(Session["FOOD_USER_ID"]);
+                                                int qty = Convert.ToInt32(cartArr[key]["qty"]);
+                                                fun.manageUserCart(uid, qty, key);
+                                            }
+                                        }
+                                        Session.Remove("cart");
+                                    }
                                 }
                                 else
                                 {

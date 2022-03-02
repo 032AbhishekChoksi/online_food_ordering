@@ -30,6 +30,7 @@
 	<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     <meta name="google-signin-client_id" content="875780088562-qv2f3f89vi0ste9kuv2ge1kis17qshed.apps.googleusercontent.com">
 	<script src="assets/js/google-auth-script.js"></script>
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 		
 <body>
@@ -155,7 +156,7 @@
 										</ul>
 										<div class="shopping-cart-total">
 											<h4>Total : <span class="shop-total" id="shopTotal">
-													<%=totalPrice %> Rs.
+													<%= totalPrice %> Rs.
 												</span></h4>
 										</div>
 										<div class="shopping-cart-btn">

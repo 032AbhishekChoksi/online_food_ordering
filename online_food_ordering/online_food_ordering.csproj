@@ -50,6 +50,9 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PaytmChecksum">
+      <HintPath>lib\PaytmChecksum.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -254,6 +257,9 @@
     <Content Include="user\login_register_submit.aspx" />
     <Content Include="user\logout.aspx" />
     <Content Include="user\manage_cart.aspx" />
+    <Content Include="user\payment_process.aspx" />
+    <Content Include="user\pgRedirect.aspx" />
+    <Content Include="user\pgResponse.aspx" />
     <Content Include="user\shop.aspx" />
     <Content Include="user\success.aspx" />
     <Content Include="user\verify.aspx" />
@@ -527,6 +533,27 @@
     <Compile Include="user\manage_cart.aspx.designer.cs">
       <DependentUpon>manage_cart.aspx</DependentUpon>
     </Compile>
+    <Compile Include="user\payment_process.aspx.cs">
+      <DependentUpon>payment_process.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\payment_process.aspx.designer.cs">
+      <DependentUpon>payment_process.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\pgRedirect.aspx.cs">
+      <DependentUpon>pgRedirect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\pgRedirect.aspx.designer.cs">
+      <DependentUpon>pgRedirect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\pgResponse.aspx.cs">
+      <DependentUpon>pgResponse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\pgResponse.aspx.designer.cs">
+      <DependentUpon>pgResponse.aspx</DependentUpon>
+    </Compile>
     <Compile Include="user\shop.aspx.cs">
       <DependentUpon>shop.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -628,6 +655,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="lib\" />
     <Folder Include="media\banner\" />
     <Folder Include="media\dish\" />
   </ItemGroup>

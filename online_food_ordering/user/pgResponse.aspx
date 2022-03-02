@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="pgResponse.aspx.cs" Inherits="online_food_ordering.user.pgResponse" %>

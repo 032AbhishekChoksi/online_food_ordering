@@ -92,6 +92,7 @@ namespace online_food_ordering.dao
                     Connection = con
                 };
                 cmd.Parameters.AddWithValue("@payment_status", order_Master.GetPaymentStatus());
+                cmd.Parameters.AddWithValue("@payment_id",order_Master.GetPaymentId());
                 cmd.Parameters.AddWithValue("@id", order_Master.GetId());
                 if (con.State == ConnectionState.Closed)
                 {

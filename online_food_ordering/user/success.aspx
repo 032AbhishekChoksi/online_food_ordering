@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-7 d-flex align-items-center">
                     <div class="overview-content-2">
-                        <h2>Order has been placed successfully. <br/><br/>Order Id <%Session["ORDER_ID"].ToString(); %></h2>
+                            <h2>Order has been placed successfully. Order Id <asp:Label ID="lblOrderID" runat="server"></asp:Label></h2>
                     </div>
                 </div>
             </div>

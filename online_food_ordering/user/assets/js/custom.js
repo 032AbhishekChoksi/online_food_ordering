@@ -239,3 +239,34 @@ function updaterating(id, oid) {
 		})
 	}
 }
+function pay_now() {
+	var name = jQuery('#checkout_name').val();
+	var amt = jQuery('#amt').val();
+	jQuery.ajax({
+		type: 'post',
+		url: 'payment_process.aspx',
+		data: "amt=" + amt + "&name=" + name,
+		success: function (result) {
+			var options = {
+				"key": "rzp_test_4WtXukJXO0OQa5",
+				"amount": amt * 100,
+				"currency": "INR",
+				"name": "Billy",
+				"description": "CheckOut Transaction",
+				"image": "https://i.ibb.co/6myys4W/logo-1.png",
+				"handler": function (response) {
+					jQuery.ajax({
+						type: 'post',
+						url: 'payment_process.aspx',
+						data: "payment_id=" + response.razorpay_payment_id,
+						success: function (result) {
+							window.location.href = "success.aspx";
+						}
+					});
+				}
+			};
+			var rzp1 = new Razorpay(options);
+			rzp1.open();
+		}
+	});
+}
