@@ -210,6 +210,58 @@ namespace online_food_ordering.user
                 // Send Ressponse in json_encode format
                 Context.Response.Write(js.Serialize(json));
             }
+            if (type.Equals("forgot"))
+            {
+                string json = null;
+                string email = Request.Form["user_email"].ToString();
+                int check = user.DisplayUserByEmail(email).Rows.Count;
+
+                if (check > 0)
+                {
+                    byte status = 0;
+                    byte email_verify = 0;
+                    int id = 0;
+                    foreach (DataRow dr in user.DisplayUserByEmail(email).Rows)
+                    {
+                        status = Convert.ToByte(dr["status"]);
+                        email_verify = Convert.ToByte(dr["email_verify"]);
+                        id = Convert.ToInt32(dr["id"].ToString());
+                    }
+                    if (email_verify == 1)
+                    {
+                        if (status == 1)
+                        {
+                            string rand_str = ClassRandom.GetRandomPassword(20);
+                            string new_password = fun.SecurePassword(rand_str);
+                            Customer customer = new Customer();
+                            customer.SetId(id);
+                            customer.SetPassword(new_password);
+                            customerBL.UpdateCustomerPasswordById(customer);
+                            string cdate = DateTime.Now.Year.ToString();
+
+                            string html = forgotPasswordbody(rand_str, cdate);
+                            fun.sendEmail(email, html, "New Password");
+                            json = js.Serialize(new { status = "success", msg = "Password has been reset and send it to your Email Id" });
+                        }
+                        else
+                        {
+                            json = js.Serialize(new { status = "error", msg = "Your Account has been Deactivated" });
+                        }
+                    }
+                    else
+                    {
+                        json = js.Serialize(new { status = "error", msg = "Please Verify Your Email Id" });
+                    }
+
+                }
+                else
+                {
+                    json = js.Serialize(new { status = "error", msg = "Please Enter Valid Email Id" });
+                }
+               
+                // Send Ressponse in json_encode format
+                Context.Response.Write(js.Serialize(json));
+            }
         }
         
         // ReCaptch Verification Method. It's return boolean value (true or false)
@@ -253,6 +305,18 @@ namespace online_food_ordering.user
             {
                 body = reader.ReadToEnd();
             }
+            body = body.Replace("{currentyear}", currentyear);
+
+            return body;
+        }
+        private string forgotPasswordbody(string newpassword, string currentyear)
+        {
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader(@"D:\project\online_food_ordering\online_food_ordering\email_body\forgotpassword.html"))
+            {
+                body = reader.ReadToEnd();
+            }
+            body = body.Replace("{userpassword}", newpassword);
             body = body.Replace("{currentyear}", currentyear);
 
             return body;

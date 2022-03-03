@@ -65,6 +65,7 @@ jQuery('#frmForgotPassword').on('submit', function (e) {
 		url: 'login_register_submit',
 		type: 'post',
 		data: jQuery('#frmForgotPassword').serialize(),
+		dataType: 'json',
 		success: function (result) {
 			jQuery('#form_forgot_msg').html('');
 			jQuery('#forgot_submit').attr('disabled', false);
