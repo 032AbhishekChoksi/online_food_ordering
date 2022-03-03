@@ -1,8 +1,7 @@
-﻿using System;
+﻿using online_food_ordering.bussinesslogic;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,42 +11,44 @@ namespace online_food_ordering.admin
 {
     public partial class order : System.Web.UI.Page
     {
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString);
+        private Order_MasterBL order_MasterBL;
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            order_MasterBL = new Order_MasterBL();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Order | Billy Admin Panel";
-
-            if (con.State == ConnectionState.Open)
-            {
-                con.Close();
-            }
-            con.Open();
 
             if (Session["ADMIN_USER"] == null)
             {
                 Response.Redirect("login");
             }
-
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select order_master.*,order_status.order_status as order_status_str from order_master,order_status where order_master.order_status=order_status.id order by order_master.id desc";
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            r1.DataSource = dt;
+            
+            FillOrderMasterRecords();
+        }
+        private void FillOrderMasterRecords()
+        {
+            r1.DataSource = order_MasterBL.DisplayOrderMaster();
             r1.DataBind();
         }
-        public string checkcoupon_code(object myvalue1, object id1)
+        protected String[] ApplyCoupon(object coupon_code, object final_price)
         {
-            if (myvalue1 == "")
+            String[] result = new String[2];
+            string coupon = coupon_code.ToString().Trim(' ');
+            decimal final = Convert.ToDecimal(final_price.ToString());
+
+            if (!string.IsNullOrEmpty(coupon))
             {
-                return myvalue1.ToString();
+                result[0] = "Coupon Code:- " + coupon + "<br />";
+                result[1] = "Final Price:- " + Math.Round((decimal)final) + " Rs.";
             }
             else
             {
-                return "<%# Eval('coupon_code') %><br />₹ <%# Eval('final_price') %>";
+                result[0] = "";
+                result[1] = "";
             }
+            return result;
         }
     }
 

@@ -147,5 +147,30 @@ namespace online_food_ordering.dao
             }
             return dataTable;
         }
+        public DataTable DisplayOrderMaster()
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_OrderMaster")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dataTable);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataTable.Dispose();
+            }
+            return dataTable;
+        }
     }
 }

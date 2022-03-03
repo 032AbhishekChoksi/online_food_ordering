@@ -28,7 +28,7 @@
 									<tr>
 										<td>
 											<div class="div_order_id">
-												<a href="order_detail.aspx?id=<%# Eval("id") %>"><%# Eval("id") %></a>
+												<a href="order_detail.aspx?id=<%# Eval("id") %>"><asp:Label ID="lblRowNumber" Text='<%# Container.ItemIndex + 1 %>' runat="server" /></a>
 											</div>
 										</td>
 										<td>
@@ -39,8 +39,9 @@
 											<p><%# Eval("address") %></p>
 											<p><%# Eval("zipcode") %></p>
 										</td>
-										<td style="font-size:14px;">₹ <%# Eval("total_price") %><br />
-											<%#checkcoupon_code(Eval("coupon_code"),Eval("id"))%>
+										<td style="font-size:14px;"><%# Eval("total_price") %> Rs.<br />
+											<%# ApplyCoupon(Eval("coupon_code"), Eval("final_price"))[0] %>
+											<%# ApplyCoupon(Eval("coupon_code"), Eval("final_price"))[1] %>
 										</td>
 										<td>
 											<div class="payment_status payment_status_<%# Eval("payment_status") %>"><%# Eval("payment_status") %></div>
@@ -50,9 +51,6 @@
 											<%# Eval("added_on","{0:dd/M/yyyy}") %>
 										</td>
 									</tr>								
-								<tr>
-									<td colspan="5">No data found</td>
-								</tr>
 					</ItemTemplate>
 					<FooterTemplate>
 						</tbody>

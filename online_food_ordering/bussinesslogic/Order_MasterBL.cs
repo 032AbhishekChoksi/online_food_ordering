@@ -58,5 +58,21 @@ namespace online_food_ordering.bussinesslogic
                 order_MasterDAO = null;
             }
         }
+        public DataTable DisplayOrderMaster()
+        {
+            Order_MasterDAO order_MasterDAO = new Order_MasterDAO();
+            try
+            {
+                return order_MasterDAO.DisplayOrderMaster();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                order_MasterDAO = null;
+            }
+        }
     }
 }
