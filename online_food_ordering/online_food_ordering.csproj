@@ -117,6 +117,7 @@
     <Content Include="admin\manage_delivery_boy.aspx" />
     <Content Include="admin\manage_dish.aspx" />
     <Content Include="admin\order.aspx" />
+    <Content Include="admin\order_detail.aspx" />
     <Content Include="admin\setting.aspx" />
     <Content Include="admin\send_coupon_code.aspx" />
     <Content Include="admin\user.aspx" />
@@ -262,8 +263,10 @@
     <Content Include="user\payment_process.aspx" />
     <Content Include="user\pgRedirect.aspx" />
     <Content Include="user\pgResponse.aspx" />
+    <Content Include="user\profile.aspx" />
     <Content Include="user\shop.aspx" />
     <Content Include="user\success.aspx" />
+    <Content Include="user\update_profile.aspx" />
     <Content Include="user\verify.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -381,6 +384,13 @@
     </Compile>
     <Compile Include="admin\order.aspx.designer.cs">
       <DependentUpon>order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\order_detail.aspx.cs">
+      <DependentUpon>order_detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\order_detail.aspx.designer.cs">
+      <DependentUpon>order_detail.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\setting.aspx.cs">
       <DependentUpon>setting.aspx</DependentUpon>
@@ -570,6 +580,13 @@
     <Compile Include="user\pgResponse.aspx.designer.cs">
       <DependentUpon>pgResponse.aspx</DependentUpon>
     </Compile>
+    <Compile Include="user\profile.aspx.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\profile.aspx.designer.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="user\shop.aspx.cs">
       <DependentUpon>shop.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -583,6 +600,13 @@
     </Compile>
     <Compile Include="user\success.aspx.designer.cs">
       <DependentUpon>success.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\update_profile.aspx.cs">
+      <DependentUpon>update_profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\update_profile.aspx.designer.cs">
+      <DependentUpon>update_profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\user.Master.cs">
       <DependentUpon>user.Master</DependentUpon>

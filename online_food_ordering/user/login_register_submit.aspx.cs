@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
+using online_food_ordering.bussinesslogic;
+using online_food_ordering.model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,10 +16,15 @@ namespace online_food_ordering.user
 {
     public partial class login_register_submit : System.Web.UI.Page
     {
-        ClassUser user = new ClassUser();
-        ClassFunction fun = new ClassFunction();
-        int lastinsertedid = 0;
-        DateTime added_on = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
+        private CustomerBL customerBL;
+        private ClassUser user = new ClassUser();
+        private ClassFunction fun = new ClassFunction();
+        private int lastinsertedid = 0;
+        private DateTime added_on = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            customerBL = new CustomerBL();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             string type = string.Empty;
@@ -48,8 +55,11 @@ namespace online_food_ordering.user
                         string referral_code = ClassRandom.GetRandomPassword(20);
                         string from_referral_code = String.Empty;
                         string hashpassaword = fun.SecurePassword(password);
+
                         // Insert record in Customer Table
-                        lastinsertedid = user.InsertUser(name, email, mobile, hashpassaword, 1, 0, rand_str, referral_code, from_referral_code, added_on);
+                        Customer customer = new Customer(name, email, mobile, hashpassaword, 1, 0, rand_str, referral_code, from_referral_code, added_on);
+                        lastinsertedid = customerBL.InsertCustomer(customer);
+                        //lastinsertedid = user.InsertUser(name, email, mobile, hashpassaword, 1, 0, rand_str, referral_code, from_referral_code, added_on);
 
                         // Get Amount in Wallet For First Time User Registration
                         decimal wallet_amt = 0;
@@ -76,6 +86,7 @@ namespace online_food_ordering.user
                         json = js.Serialize(new { status = "error", msg = "captcha failed, please try again later", field = "form_msg" });
                     }
                 }
+                // Send Ressponse in json_encode format
                 Context.Response.Write(js.Serialize(json));
             }
 
@@ -140,6 +151,7 @@ namespace online_food_ordering.user
                 {
                     json = js.Serialize(new { status = "error", msg = "Please enter valid email id" });
                 }
+                // Send Ressponse in json_encode format
                 Context.Response.Write(js.Serialize(json));
             }
             // Google Authenticatio
@@ -166,7 +178,9 @@ namespace online_food_ordering.user
                     string referral_code = ClassRandom.GetRandomPassword(20);
                     string from_referral_code = String.Empty;
                     // Insert record in Customer Table
-                    lastinsertedid = user.InsertUser(name, email, mobile, hashpassaword, 1, 1, rand_str, referral_code, from_referral_code, added_on);
+                    Customer customer = new Customer(name, email, mobile, hashpassaword, 1, 0, rand_str, referral_code, from_referral_code, added_on);
+                    lastinsertedid = customerBL.InsertCustomer(customer);
+                    // lastinsertedid = user.InsertUser(name, email, mobile, hashpassaword, 1, 1, rand_str, referral_code, from_referral_code, added_on);
 
                     // Get Amount in Wallet For First Time User Registration
                     decimal wallet_amt = 0;
@@ -193,6 +207,7 @@ namespace online_food_ordering.user
                     }
                 }
                 json = js.Serialize(new { status = "success" });
+                // Send Ressponse in json_encode format
                 Context.Response.Write(js.Serialize(json));
             }
         }

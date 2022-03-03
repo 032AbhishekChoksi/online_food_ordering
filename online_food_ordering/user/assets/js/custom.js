@@ -90,6 +90,7 @@ jQuery('#frmProfile').on('submit', function (e) {
 		url: 'update_profile',
 		type: 'post',
 		data: jQuery('#frmProfile').serialize(),
+		dataType: 'json',
 		success: function (result) {
 			jQuery('#profile_submit').attr('disabled', false);
 			jQuery('#form_msg').html('');
@@ -99,6 +100,9 @@ jQuery('#frmProfile').on('submit', function (e) {
 				swal("Success Message", data.msg, "success");
 				// jQuery('#form_msg').html(data.msg);
 			}
+			if (data.status == 'error') {
+				swal("Warning Message", data.msg, "warning");
+            }
 		}
 	});
 	e.preventDefault();
@@ -110,6 +114,7 @@ jQuery('#frmPassword').on('submit', function (e) {
 		url: 'update_profile',
 		type: 'post',
 		data: jQuery('#frmPassword').serialize(),
+		dataType: 'json',
 		success: function (result) {
 			jQuery('#password_form_msg').html('');
 			jQuery('#password_submit').attr('disabled', false);

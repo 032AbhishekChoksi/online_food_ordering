@@ -26,5 +26,69 @@ namespace online_food_ordering.bussinesslogic
                 customerDAO = null;
             }
         }
+        public Int32 InsertCustomer(Customer customer)
+        {
+            CustomerDAO customerDAO = new CustomerDAO();
+            try
+            {
+                return customerDAO.InsertCustomer(customer);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                customerDAO = null;
+            }
+        }
+        public Int32 UpdateCustomer(Customer customer)
+        {
+            CustomerDAO customerDAO = new CustomerDAO();
+            try
+            {
+                return customerDAO.UpdateCustomer(customer);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                customerDAO = null;
+            }
+        }
+        public DataTable DisplayCustomerByPassword(Customer customer)
+        {
+            CustomerDAO customerDAO = new CustomerDAO();
+            try
+            {
+                return customerDAO.DisplayCustomerByPassword(customer);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                customerDAO = null;
+            }
+        }
+        public Int32 UpdateCustomerPasswordById(Customer customer)
+        {
+            CustomerDAO customerDAO = new CustomerDAO();
+            try
+            {
+                return customerDAO.UpdateCustomerPasswordById(customer);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                customerDAO = null;
+            }
+        }
     }
 }
