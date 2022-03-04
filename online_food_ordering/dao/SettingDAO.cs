@@ -29,6 +29,7 @@ namespace online_food_ordering.dao
             }
             return connection;
         }
+        //getSetting()
         public Setting DisplaySettingById(Setting setting)
         {
             SqlConnection con = GetConnection();

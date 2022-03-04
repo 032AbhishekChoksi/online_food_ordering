@@ -21,6 +21,7 @@ namespace online_food_ordering
         protected Int32 totalPrice;
         protected decimal final_price = 0;
         private ClassUser objUser;
+        private SettingBL settingBL;
         private decimal getWalletAmt = 0;
         private decimal cart_min_price = 0;
         private int uid = 0;
@@ -31,6 +32,7 @@ namespace online_food_ordering
         {
             classFunction = new ClassFunction();
             objUser = new ClassUser();
+            settingBL = new SettingBL();
             order_MasterBL = new Order_MasterBL();
             order_DetailBl = new Order_DetailBL();
         }

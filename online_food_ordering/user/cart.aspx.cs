@@ -16,12 +16,13 @@ namespace online_food_ordering.user
         private Dish_CartBL dish_CartBL;
         protected Dictionary<int, Dictionary<string, string>> cartArr;
         protected void Page_Init(object sender, EventArgs e)
-        {
+        {            
             classFunction = new ClassFunction();
             dish_CartBL = new Dish_CartBL();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.Title = "Cart | Billy";
             cartArr = classFunction.getUserFullCart();
             if (Request.Form["update_cart"] != null)
             {

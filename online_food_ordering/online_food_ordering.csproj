@@ -124,6 +124,11 @@
     <Content Include="App_Data\online_food.sql" />
     <Content Include="billy.ico" />
     <Content Include="email_body\forgotpassword.html" />
+    <Content Include="page\images\privacy_policy.png" />
+    <Content Include="page\images\under_construction.png" />
+    <Content Include="page\privacy_policy.html" />
+    <Content Include="page\termsandcondition.html" />
+    <Content Include="page\underconstructor.html" />
     <Content Include="user\checkout.aspx" />
     <Content Include="email_body\coupon.aspx" />
     <Content Include="email_body\emailpassword.html" />
@@ -253,6 +258,7 @@
     <Content Include="user\assets\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="user\cart.aspx" />
     <Content Include="user\contact-us.aspx" />
+    <Content Include="user\error.aspx" />
     <Content Include="user\forgot_password.aspx" />
     <Content Include="user\images\bg\1.jpg" />
     <Content Include="user\index.aspx" />
@@ -511,6 +517,13 @@
     </Compile>
     <Compile Include="user\contact-us.aspx.designer.cs">
       <DependentUpon>contact-us.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\error.aspx.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\error.aspx.designer.cs">
+      <DependentUpon>error.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\forgot_password.aspx.cs">
       <DependentUpon>forgot_password.aspx</DependentUpon>
