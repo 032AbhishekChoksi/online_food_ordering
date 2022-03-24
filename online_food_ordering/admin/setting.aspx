@@ -6,6 +6,7 @@
     <div class="card">
       <div class="card-body">
         <form ID="fo1" class="forms-sample" method="post" runat="server">
+            <asp:ScriptManager runat="server"></asp:ScriptManager>
           <div class="form-group">
               <asp:Label ID="lblcart_min_price" runat="server" Text="Cart min price"></asp:Label>
               <asp:TextBox ID="txtcart_min_price" runat="server" class="form-control" placeholder="Cart min price" name="cart_min_price" TextMode="Number"></asp:TextBox>
@@ -42,14 +43,18 @@
           </div>
          <div class="form-group">
               <asp:Label ID="lblthemecolor" runat="server" Text="Website Close"></asp:Label>
-              <asp:DropDownList ID="ddtthemecolor" runat="server" class="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddtthemecolor_SelectedIndexChanged">
-                  <asp:ListItem Value="darkbluestyle.css" Text="Dark Blue" style="background-color:#037FB0;"></asp:ListItem>
-                  <asp:ListItem Value="lightbluestyle.css" Text="Light Blue" style="background-color:#6fa8dc;"></asp:ListItem>
-                  <asp:ListItem Value="darkgreenstyle.css" Text="Dark Green" style="background-color:#6aa84f;"></asp:ListItem>
-                  <asp:ListItem Value="lightgreenstyle.css" Text="Light Green" style="background-color:#93c47d;"></asp:ListItem>
-                  <asp:ListItem Value="darkpurplestyle.css" Text="Dark Purple" style="background-color:#5e2572;"></asp:ListItem>
-                  <asp:ListItem Value="lightpurplestyle.css" Text="Light Purple" style="background-color:#674ea7;"></asp:ListItem>
-              </asp:DropDownList>
+             <asp:UpdatePanel ID="UP" runat="server">
+                 <ContentTemplate>
+                    <asp:DropDownList ID="ddtthemecolor" runat="server" class="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddtthemecolor_SelectedIndexChanged">
+                        <asp:ListItem Value="darkbluestyle.css" Text="Dark Blue" style="background-color:#037FB0;"></asp:ListItem>
+                        <asp:ListItem Value="lightbluestyle.css" Text="Light Blue" style="background-color:#6fa8dc;"></asp:ListItem>
+                        <asp:ListItem Value="darkgreenstyle.css" Text="Dark Green" style="background-color:#6aa84f;"></asp:ListItem>
+                        <asp:ListItem Value="lightgreenstyle.css" Text="Light Green" style="background-color:#93c47d;"></asp:ListItem>
+                        <asp:ListItem Value="darkpurplestyle.css" Text="Dark Purple" style="background-color:#5e2572;"></asp:ListItem>
+                        <asp:ListItem Value="lightpurplestyle.css" Text="Light Purple" style="background-color:#674ea7;"></asp:ListItem>
+                    </asp:DropDownList>
+                     </ContentTemplate>
+                 </asp:UpdatePanel>
              <asp:RequiredFieldValidator ID="RequiredFieldValidatorthemecolor" runat="server" Style="color:#e02c2b;" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddtthemecolor" Display="Dynamic" >Themecolor is mandatory </asp:RequiredFieldValidator>
           </div>
             <asp:Button ID="bttnsubmit" runat="server" Text="Submit" class="btn btn-primary mr-2" name="submit" OnClick="bttnsubmit_Click"/>

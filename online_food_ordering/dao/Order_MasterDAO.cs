@@ -172,5 +172,71 @@ namespace online_food_ordering.dao
             }
             return dataTable;
         }
+        public DataTable DisplayOrderMasterByOId(Order_Master order_Master)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_OrderMasterByOid")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@oid", order_Master.GetId());
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dataTable);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataTable.Dispose();
+            }
+            return dataTable;
+        }
+        public Dictionary<string, string> GetOrderByIdFunction(Order_Master order_Master)
+        {
+            Dictionary<string, string> getOrderById = new Dictionary<string, string>();
+            DataTable dt = DisplayOrderMasterByOId(order_Master);
+            try
+            {               
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        getOrderById.Add("id", dr["id"].ToString());
+                        getOrderById.Add("user_id", dr["user_id"].ToString());
+                        getOrderById.Add("address", dr["address"].ToString());
+                        getOrderById.Add("total_price", dr["total_price"].ToString());
+                        getOrderById.Add("coupon_code", dr["coupon_code"].ToString());
+                        getOrderById.Add("final_price", dr["final_price"].ToString());
+                        getOrderById.Add("zipcode", dr["zipcode"].ToString());
+                        getOrderById.Add("delivery_boy_id", dr["delivery_boy_id"].ToString());
+                        getOrderById.Add("payment_status", dr["payment_status"].ToString());
+                        getOrderById.Add("payment_type", dr["payment_type"].ToString());
+                        getOrderById.Add("payment_id", dr["payment_id"].ToString());
+                        getOrderById.Add("order_status", dr["order_status"].ToString());
+                        getOrderById.Add("cancel_by", dr["cancel_by"].ToString());
+                        getOrderById.Add("cancel_at", dr["cancel_at"].ToString());
+                        getOrderById.Add("delivered_on", dr["delivered_on"].ToString());
+                        getOrderById.Add("refund_status", dr["refund_status"].ToString());
+                        getOrderById.Add("added_on", dr["added_on"].ToString());
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dt.Dispose();
+            }
+            return getOrderById;
+        }
     }
 }

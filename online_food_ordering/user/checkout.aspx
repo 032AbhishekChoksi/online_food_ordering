@@ -76,13 +76,13 @@
 												<div class="col-lg-3 col-md-6">
 													<div class="billing-info">
 														<label>Zip/Postal Code</label>
-														<input type="number" name="checkout_zip" required>
+														<input type="number" name="checkout_zip" value='<%= userAddress["postal"] %>' required>
 													</div>
 												</div>
 												<div class="col-lg-12 col-md-12">
 													<div class="billing-info">
 														<label>Address</label>
-														<input type="text" name="checkout_address" required>
+														<input type="text" name="checkout_address" required value='<%= semiAdreess%>'>
 													</div>
 												</div>
 												<div class="col-lg-3 col-md-12">

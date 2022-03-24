@@ -13,10 +13,11 @@ namespace online_food_ordering
         ClassFunction fun = new ClassFunction();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Form["btnSubmit"] != null)
-            {
-                string name = Request.Form["fname"].ToString();
-            }
+            Response.Redirect("https://localhost:44350/email_body/orderemail.aspx?id=" + 19 + "&oid=" + 1016);
+            //if (Request.Form["btnSubmit"] != null)
+            //{
+            //    string name = Request.Form["fname"].ToString();
+            //}
             //string email = "19bmiit032@gmail.com";
             //string cdate = DateTime.Now.Year.ToString();
             //string html = emailpasswordbody(cdate);

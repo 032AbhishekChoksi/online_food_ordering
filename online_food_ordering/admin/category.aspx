@@ -13,8 +13,8 @@
 										<thead>
 											<tr>
 												<th width="10%">S.No #</th>
-												<th width="60%">Category</th>
-												<th width="30%">Actions</th>
+												<th width="70%">Category</th>
+												<th width="20%">Actions</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -26,18 +26,18 @@
 										<td><%# Eval("category") %></td>
 										<td>
 											<a href="manage_category.aspx?id=<%# Eval("id") %>">
-												<label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;								
+												<label class="badge badge-success hand_cursor">Edit</label></a>&emsp;							
 								<asp:HyperLink ID="HyperLinkActive" runat="server" NavigateUrl='<%# string.Format("category.aspx?id={0}&type=deactive",Eval("id")) %>' Visible='<%# Eval("status").ToString() != "False" ? true : false %>'>
 									<asp:Label ID="lblactive" runat="server" class="badge badge-danger hand_cursor" Text="Active"></asp:Label>
 								</asp:HyperLink>
 											<asp:HyperLink ID="HyperLinkDeactive" runat="server" NavigateUrl='<%# string.Format("category.aspx?id={0}&type=active",Eval("id")) %>' Visible='<%# Eval("status").ToString() != "True" ? true : false %>'>
 												<asp:Label ID="lbldeactive" runat="server" class="badge badge-info hand_cursor" Text="Deactive"></asp:Label>
 											</asp:HyperLink>
-											&nbsp;
+											<%--&nbsp;
 								<a href="category.aspx?id=<%# Eval("id") %>&type=delete">
 									<label class="badge badge-danger delete_red hand_cursor">Delete</label>
 
-								</a>
+								</a>--%>
 										</td>
 
 									</tr>

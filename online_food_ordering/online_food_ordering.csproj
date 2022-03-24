@@ -43,6 +43,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.FriendlyUrls, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
     </Reference>
@@ -124,6 +130,8 @@
     <Content Include="App_Data\online_food.sql" />
     <Content Include="billy.ico" />
     <Content Include="email_body\forgotpassword.html" />
+    <Content Include="email_body\orderemail.aspx" />
+    <Content Include="lib\Newtonsoft.Json.dll" />
     <Content Include="page\images\privacy_policy.png" />
     <Content Include="page\images\under_construction.png" />
     <Content Include="page\privacy_policy.html" />
@@ -429,6 +437,13 @@
     <Compile Include="bussinesslogic\SettingBL.cs" />
     <Compile Include="dao\Order_DetailDAO.cs" />
     <Compile Include="dao\Order_MasterDAO.cs" />
+    <Compile Include="email_body\orderemail.aspx.cs">
+      <DependentUpon>orderemail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="email_body\orderemail.aspx.designer.cs">
+      <DependentUpon>orderemail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="user\checkout.aspx.cs">
       <DependentUpon>checkout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -717,7 +732,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="lib\" />
     <Folder Include="media\banner\" />
     <Folder Include="media\dish\" />
   </ItemGroup>

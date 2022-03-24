@@ -217,6 +217,10 @@ namespace online_food_ordering
                 uid = Convert.ToInt32(HttpContext.Current.Session["FOOD_USER_ID"]);
                 customer.SetId(uid);
             }
+            else
+            { 
+                uid = customer.GetId();
+            }
             if (uid > 0)
             {
                 if(customerBL.DisplayCustomerByCid(customer).Rows.Count > 0)

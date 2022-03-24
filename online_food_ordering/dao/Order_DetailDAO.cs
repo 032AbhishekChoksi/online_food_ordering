@@ -70,5 +70,52 @@ namespace online_food_ordering.dao
                 }
             }
         }
+        // getOrderDetails()
+        public DataTable DisplayOrderDetailsByOId(Order_Master order_Master)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_OrderDetailsByOid")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@oid", order_Master.GetId());
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dataTable);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataTable.Dispose();
+            }
+            return dataTable;
+        }
+        public Dictionary<int, Dictionary<string, string>> getOrderDetails(Order_Master order_Master)
+        {
+
+            DataTable dt = DisplayOrderDetailsByOId(order_Master);
+            Dictionary<int, Dictionary<string, string>> getOrderDetails = new Dictionary<int, Dictionary<string, string>>();
+            if (dt.Rows.Count > 0)
+            {               
+                foreach (DataRow dr in dt.Rows)
+                {
+                    Dictionary<string, string> temp = new Dictionary<string, string>();
+                    temp.Add("price", dr["price"].ToString());
+                    temp.Add("qty", dr["qty"].ToString());
+                    temp.Add("attribute", dr["attribute"].ToString());
+                    temp.Add("dish_name", dr["dish_name"].ToString());
+                    temp.Add("dish_detail_id", dr["dish_detail_id"].ToString());
+                    getOrderDetails.Add(Convert.ToInt32(dr["id"]), temp);
+                }
+            }
+            return getOrderDetails;
+        }
     }
 }

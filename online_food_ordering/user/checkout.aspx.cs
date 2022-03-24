@@ -1,10 +1,13 @@
-﻿using online_food_ordering.bussinesslogic;
+﻿using Newtonsoft.Json;
+using online_food_ordering.bussinesslogic;
 using online_food_ordering.model;
 using online_food_ordering.user;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -28,6 +31,8 @@ namespace online_food_ordering
         private Order_MasterBL order_MasterBL;
         private Order_DetailBL order_DetailBl;
         protected int razoramt = 0;
+        protected Dictionary<string, string> userAddress;
+        protected string semiAdreess = string.Empty;
         protected void Page_Init(object sender, EventArgs e)
         {
             classFunction = new ClassFunction();
@@ -38,11 +43,17 @@ namespace online_food_ordering
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            userAddress = GetAdressUsingIP();
+            if(userAddress["country"].Equals("IN"))
+            {
+                semiAdreess = userAddress["city"] + ", " + userAddress["region"] + ", " + userAddress["postal"] + ", India";
+            }
+            
             is_error = string.Empty;
             cartArr = classFunction.getUserFullCart();
             totalPrice = classFunction.getcartTotalPrice();
             razoramt = Convert.ToInt32(totalPrice);
-            Session["ORDER_ID"] = 3;
+
             if (cartArr.Count > 0 || cartArr != null)
             {}
             else
@@ -125,26 +136,26 @@ namespace online_food_ordering
                     DateTime added_on = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
                     int lastinsertedid = 0;
 
-                    Order_Master order_Master = new Order_Master();
-                    order_Master.SetUserId(uid);
-                    order_Master.SetAddress(checkout_address);
-                    order_Master.SetZipCode(checkout_zip);
-                    order_Master.SetTotalPrice(totalPrice);
-                    order_Master.SetFinalPrice(final_price);
-                    order_Master.SetCouponCode(coupon_code);
-                    order_Master.SetOrderStatus(1);
-                    order_Master.SetPaymentStatus("pending");
-                    order_Master.SetPaymentType(payment_type);
-                    order_Master.SetRefundStatus(0);
-                    order_Master.SetAddedOn(added_on);
+                    Order_Master order_Master = new Order_Master(uid, checkout_address, totalPrice, coupon_code, final_price, checkout_zip, 0, "pending", payment_type, "", 1, "", 0, added_on);
+                    //order_Master.SetUserId(uid);
+                    //order_Master.SetAddress(checkout_address);
+                    //order_Master.SetZipCode(checkout_zip);
+                    //order_Master.SetTotalPrice(totalPrice);
+                    //order_Master.SetFinalPrice(final_price);
+                    //order_Master.SetCouponCode(coupon_code);
+                    //order_Master.SetOrderStatus(1);
+                    //order_Master.SetPaymentStatus("pending");
+                    //order_Master.SetPaymentType(payment_type);
+                    //order_Master.SetRefundStatus(0);
+                    //order_Master.SetAddedOn(added_on);
                     lastinsertedid = order_MasterBL.InsertOrderMaster(order_Master);
 
                     if (Session["ORDER_ID"] != null)
                     {
                         Session.Remove("ORDER_ID");
                     }
-
-                    Session["ORDER_ID"] = lastinsertedid;
+                    string paytm_oid = "ORDS_" + lastinsertedid + "_" + Session["FOOD_USER_ID"].ToString() + "_" + ClassRandom.GetRandomPassword(3);
+                    Session["ORDER_ID"] = paytm_oid;
 
                     foreach (int key in cartArr.Keys)
                     {
@@ -164,7 +175,7 @@ namespace online_food_ordering
                     {
                         // withdraw amount in wallet
                         string ttype = "Order Id- " + lastinsertedid;
-                        objUser.manageWallet(uid, final_price, ttype, "out", string.Empty, added_on);
+                        objUser.manageWallet(uid, final_price, ttype, "out", "", added_on);
 
                         // Update Payment Status
                         order_Master.SetId(lastinsertedid);
@@ -176,7 +187,6 @@ namespace online_food_ordering
                     }
                     if (payment_type.Equals("paytm"))
                     {
-                        string paytm_oid = "ORDS_" + lastinsertedid + "_" + Session["FOOD_USER_ID"].ToString() + "_" + ClassRandom.GetRandomPassword(3);
 
                         string outputHTML = "<form id='f1' runat='server' method='post' action='pgRedirect' name='frmPayment' style='display:none;'>";
                         outputHTML += "<input type='text' tabindex = '1' maxlength = '20' size = '20' name = 'ORDER_ID' autocomplete = 'off' value='" + paytm_oid + "'>";
@@ -201,6 +211,23 @@ namespace online_food_ordering
                 }
                     //Response.Write("<script>alert('Button Clicked!')</script>");
             }
+        }
+        private string IPRequestHelper(string url)
+        {
+            HttpWebRequest objrequest = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse objresponse = (HttpWebResponse)objrequest.GetResponse();
+            StreamReader responsereader = new StreamReader(objresponse.GetResponseStream());
+            string responseread = responsereader.ReadToEnd();
+            responsereader.Close();
+            responsereader.Dispose();
+            return responseread;
+        }
+        private Dictionary<string, string> GetAdressUsingIP()
+        {
+            string IPAddress = IPRequestHelper("http://ipinfo.io/ip");
+            string json = IPRequestHelper("http://ipinfo.io/" + IPAddress);
+            var values = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+            return values;
         }
     }
 }

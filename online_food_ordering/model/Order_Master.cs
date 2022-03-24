@@ -80,6 +80,25 @@ namespace online_food_ordering.model
             this.refund_status = refund_status;
             this.added_on = added_on;
         }
+
+        public Order_Master(int user_id, string address, decimal total_price, string coupon_code, decimal final_price, int zipcode, int delivery_boy_id, string payment_status, string payment_type, string payment_id, int order_status, string cancel_by, byte refund_status, DateTime added_on)
+        {
+            this.user_id = user_id;
+            this.address = address;
+            this.total_price = total_price;
+            this.coupon_code = coupon_code;
+            this.final_price = final_price;
+            this.zipcode = zipcode;
+            this.delivery_boy_id = delivery_boy_id;
+            this.payment_status = payment_status;
+            this.payment_type = payment_type;
+            this.payment_id = payment_id;
+            this.order_status = order_status;
+            this.cancel_by = cancel_by;
+            this.refund_status = refund_status;
+            this.added_on = added_on;
+        }
+
         public int GetId() => id;
         public void SetId(int id) => this.id = id;
         public int GetUserId() => user_id;

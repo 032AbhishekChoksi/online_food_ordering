@@ -15,8 +15,8 @@
 								<th width="10%">S.No #</th>
 								<th width="15%">Image</th>
 								<th width="25%">Heading</th>
-								<th width="25%">Sub Heading</th>
-								<th width="25%">Actions</th>
+								<th width="30%">Sub Heading</th>
+								<th width="20%">Actions</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -28,17 +28,18 @@
 										<td><%# Eval("heading") %></td>
 										<td><%# Eval("sub_heading") %></td>
 										<td>
-											<a href="manage_banner.aspx?id=<%# Eval("id") %>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
+											<a href="manage_banner.aspx?id=<%# Eval("id") %>"><label class="badge badge-success hand_cursor">Edit</label></a>&emsp;
 											<asp:HyperLink ID="HyperLinkActive" runat="server" NavigateUrl='<%# string.Format("banner.aspx?id={0}&type=deactive",Eval("id")) %>' Visible='<%# Eval("status").ToString() != "False" ? true : false %>'>
 												<asp:Label ID="lblactive" runat="server" class="badge badge-danger hand_cursor" Text="Active"></asp:Label>
 											</asp:HyperLink>
 											<asp:HyperLink ID="HyperLinkDeActive" runat="server" NavigateUrl='<%# string.Format("banner.aspx?id={0}&type=active",Eval("id")) %>' Visible='<%# Eval("status").ToString() != "True" ? true : false %>'>
 												<asp:Label ID="lbldeactive" runat="server" class="badge badge-info hand_cursor" Text="Deactive"></asp:Label>
-											</asp:HyperLink>&nbsp;
+											</asp:HyperLink>
+											<%--&nbsp;
 											<a href="banner.aspx?id=<%# Eval("id") %>&type=delete">
 									<label class="badge badge-danger delete_red hand_cursor">Delete</label>
 
-								</a>
+								</a>--%>
 										</td>
 
 									</tr>

@@ -48,10 +48,10 @@ namespace online_food_ordering.user
                 }
             }
             string oid = paramList["ORDERID"];
-
+            Session["ORDER_ID"] = oid;
+            
             string[] oArr = oid.Split('_');
             string ORDER_ID = oArr[1];
-            Session["ORDER_ID"] = ORDER_ID;
             int uid = Convert.ToInt32(oArr[2]);
             Order_Master order_Master = new Order_Master();
             order_Master.SetId(Convert.ToInt32(ORDER_ID));

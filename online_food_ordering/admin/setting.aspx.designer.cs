@@ -195,6 +195,15 @@ namespace online_food_ordering.admin
         protected global::System.Web.UI.WebControls.Label lblthemecolor;
 
         /// <summary>
+        /// UP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UP;
+
+        /// <summary>
         /// ddtthemecolor control.
         /// </summary>
         /// <remarks>

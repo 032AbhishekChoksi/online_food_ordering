@@ -74,5 +74,37 @@ namespace online_food_ordering.bussinesslogic
                 order_MasterDAO = null;
             }
         }
+        public DataTable DisplayOrderMasterByOId(Order_Master order_Master)
+        {
+            Order_MasterDAO order_MasterDAO = new Order_MasterDAO();
+            try
+            {
+                return order_MasterDAO.DisplayOrderMasterByOId(order_Master);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                order_MasterDAO = null;
+            }
+        }
+        public Dictionary<string, string> GetOrderByIdFunction(Order_Master order_Master)
+        {
+            Order_MasterDAO order_MasterDAO = new Order_MasterDAO();
+            try
+            {
+                return order_MasterDAO.GetOrderByIdFunction(order_Master);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                order_MasterDAO = null;
+            }
+        }
     }
 }
