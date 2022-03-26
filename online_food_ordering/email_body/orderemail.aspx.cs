@@ -17,7 +17,6 @@ namespace online_food_ordering.email_body
         protected Dictionary<int, Dictionary<string, string>> getOrderDetails;
         protected string customername = string.Empty;
         private string customeremail = string.Empty;
-        private DataTable dt;
         protected decimal total_amount = 0;
         protected int order_id = 0;
         private ClassFunction objFunction;

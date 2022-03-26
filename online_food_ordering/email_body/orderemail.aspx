@@ -534,7 +534,7 @@
                                 </td>
                           </tr>
                         </table>
-                        <p>If you have any questions about this invoice, simply reply to this email or reach out to our <a href="../page/privacy_policy.html">support team</a> for help.</p>
+                        <p>If you have any questions about this invoice, simply reply to this email or reach out to our <a href="https://localhost:44350/page/privacy_policy.html">support team</a> for help.</p>
                         <p>Cheers,<br/>Billy</p>
                         <!-- Sub copy -->                        
                       </div>

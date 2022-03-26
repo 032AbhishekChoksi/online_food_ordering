@@ -167,7 +167,10 @@ namespace online_food_ordering
                     if (payment_type.Equals("cod"))
                     {
                         // Send Email
+                        string html = HttpContent("https://localhost:44350/email_body/orderemail.aspx?id=" + uid + "&oid=" + lastinsertedid);
+                        classFunction.sendEmail(Session["FOOD_USER_EMAIL"].ToString(), html, "Order Invoice");
 
+                        Session["ORDER_ID"] = paytm_oid;
                         Response.Redirect("success");
                     }
 
@@ -181,13 +184,21 @@ namespace online_food_ordering
                         order_Master.SetId(lastinsertedid);
                         order_Master.SetPaymentStatus("success");
                         order_MasterBL.UpdateOrderMasterPaymentStatusById(order_Master);
+                       
                         // Send Email
+                        string html = HttpContent("https://localhost:44350/email_body/orderemail.aspx?id=" + uid + "&oid=" + lastinsertedid);
+                        classFunction.sendEmail(Session["FOOD_USER_EMAIL"].ToString(), html, "Order Invoice");
 
+                        Session["ORDER_ID"] = paytm_oid;
                         Response.Redirect("success");
                     }
                     if (payment_type.Equals("paytm"))
                     {
+                        // Send Email
+                        string html = HttpContent("https://localhost:44350/email_body/orderemail.aspx?id=" + uid + "&oid=" + lastinsertedid);
+                        classFunction.sendEmail(Session["FOOD_USER_EMAIL"].ToString(), html, "Order Invoice");
 
+                        // PayTM Payment Gateway
                         string outputHTML = "<form id='f1' runat='server' method='post' action='pgRedirect' name='frmPayment' style='display:none;'>";
                         outputHTML += "<input type='text' tabindex = '1' maxlength = '20' size = '20' name = 'ORDER_ID' autocomplete = 'off' value='" + paytm_oid + "'>";
                         outputHTML += "<input id = 'CUST_ID' tabindex = '2' maxlength = '12' size = '12' name = 'CUST_ID' autocomplete = 'off' value='" + Session["FOOD_USER_ID"] + "' />";
@@ -228,6 +239,14 @@ namespace online_food_ordering
             string json = IPRequestHelper("http://ipinfo.io/" + IPAddress);
             var values = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
             return values;
+        }
+        private string HttpContent(string url)
+        {
+            WebRequest objRequest = System.Net.HttpWebRequest.Create(url);
+            StreamReader sr = new StreamReader(objRequest.GetResponse().GetResponseStream());
+            string result = sr.ReadToEnd();
+            sr.Close();
+            return result;
         }
     }
 }

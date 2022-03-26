@@ -46,8 +46,13 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    <Reference Include="itextsharp, Version=5.5.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\itextsharp.xmlworker.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.FriendlyUrls, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
@@ -131,6 +136,8 @@
     <Content Include="billy.ico" />
     <Content Include="email_body\forgotpassword.html" />
     <Content Include="email_body\orderemail.aspx" />
+    <Content Include="lib\itextsharp.dll" />
+    <Content Include="lib\itextsharp.xmlworker.dll" />
     <Content Include="lib\Newtonsoft.Json.dll" />
     <Content Include="page\images\privacy_policy.png" />
     <Content Include="page\images\under_construction.png" />
@@ -266,6 +273,7 @@
     <Content Include="user\assets\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="user\cart.aspx" />
     <Content Include="user\contact-us.aspx" />
+    <Content Include="user\download_invoice.aspx" />
     <Content Include="user\error.aspx" />
     <Content Include="user\forgot_password.aspx" />
     <Content Include="user\images\bg\1.jpg" />
@@ -533,6 +541,13 @@
     <Compile Include="user\contact-us.aspx.designer.cs">
       <DependentUpon>contact-us.aspx</DependentUpon>
     </Compile>
+    <Compile Include="user\download_invoice.aspx.cs">
+      <DependentUpon>download_invoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\download_invoice.aspx.designer.cs">
+      <DependentUpon>download_invoice.aspx</DependentUpon>
+    </Compile>
     <Compile Include="user\error.aspx.cs">
       <DependentUpon>error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -721,6 +736,8 @@
       <Link>.editorconfig</Link>
     </Content>
     <Content Include="App_Data\online_food.bak" />
+    <Content Include="lib\itextsharp.dll.refresh" />
+    <Content Include="lib\itextsharp.xmlworker.dll.refresh" />
     <None Include="packages.config" />
     <Content Include="user\user.Master" />
     <Content Include="Site.Mobile.Master" />
