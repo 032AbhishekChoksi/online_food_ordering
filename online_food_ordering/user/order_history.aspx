@@ -1,6 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user/user.Master" AutoEventWireup="true" CodeBehind="order_history.aspx.cs" Inherits="online_food_ordering.user.order_history" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="c2" runat="server">
-    <div class="cart-main-area pt-95 pb-100">
+<div class="breadcrumb-area gray-bg">
+<div class="container">
+    <div class="breadcrumb-content">
+        <ul>
+            <li><a href="shop">Home</a></li>
+            <li class="active">Order History</li>
+        </ul>
+    </div>
+</div>
+</div>
+    <div class="cart-main-area pt-30 pb-30">
 	<div class="container">
 		<h3 class="page-title">Order History</h3>
 		<div class="row">

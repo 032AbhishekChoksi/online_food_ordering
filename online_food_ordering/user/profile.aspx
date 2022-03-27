@@ -1,6 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user/user.Master" AutoEventWireup="true" CodeBehind="profile.aspx.cs" Inherits="online_food_ordering.user.profile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="c2" runat="server">
-    <div class="myaccount-area pb-25 pt-50">
+<div class="breadcrumb-area gray-bg">
+<div class="container">
+    <div class="breadcrumb-content">
+        <ul>
+            <li><a href="shop">Home</a></li>
+            <li class="active">Profile</li>
+        </ul>
+    </div>
+</div>
+</div>
+    <div class="myaccount-area pb-25 pt-25">
     <div class="container">
         <div class="row">
             <div class="ml-auto mr-auto col-lg-9">
