@@ -94,5 +94,86 @@ namespace online_food_ordering.dao
                 }
             }
         }
+        public DataTable DisplayDeliveyBoyById(Delivery_Boy delivery_Boy)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_DeliveryBoyById")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };                
+                cmd.Parameters.AddWithValue("@id", delivery_Boy.GetId());
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dataTable);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataTable.Dispose();
+            }
+            return dataTable;
+        }
+        public string getDeliveryBoyNameById(Delivery_Boy delivery_Boy)
+        {
+            string result = string.Empty;
+            DataTable dataTable = DisplayDeliveyBoyById(delivery_Boy);
+            try
+            {
+                if(dataTable.Rows.Count > 0)
+                {
+                    foreach(DataRow dr in dataTable.Rows)
+                    {
+                        result = dr["name"].ToString() + " (" + dr["mobile"].ToString() + ")";
+                    }
+                }
+                else
+                {
+                    result = "Not Assign";
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataTable.Dispose();
+            }
+            return result;
+        }
+        public DataTable DisplayDeliveyBoyByStatus()
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_DeliveryBoyByStaus")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dataTable);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataTable.Dispose();
+            }
+            return dataTable;
+        }
     }
 }

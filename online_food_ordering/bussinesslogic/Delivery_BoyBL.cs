@@ -42,5 +42,53 @@ namespace online_food_ordering.bussinesslogic
                 delivery_BoyDAO = null;
             }
         }
+        public DataTable DisplayDeliveyBoyById(Delivery_Boy delivery_Boy)
+        {
+            Delivery_BoyDAO delivery_BoyDAO = new Delivery_BoyDAO();
+            try
+            {
+                return delivery_BoyDAO.DisplayDeliveyBoyById(delivery_Boy);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                delivery_BoyDAO = null;
+            }
+        }
+        public string getDeliveryBoyNameById(Delivery_Boy delivery_Boy)
+        {
+            Delivery_BoyDAO delivery_BoyDAO = new Delivery_BoyDAO();
+            try
+            {
+                return delivery_BoyDAO.getDeliveryBoyNameById(delivery_Boy);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                delivery_BoyDAO = null;
+            }
+        }
+        public DataTable DisplayDeliveyBoyByStatus()
+        {
+            Delivery_BoyDAO delivery_BoyDAO = new Delivery_BoyDAO();
+            try
+            {
+                return delivery_BoyDAO.DisplayDeliveyBoyByStatus();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                delivery_BoyDAO = null;
+            }
+        }
     }
 }

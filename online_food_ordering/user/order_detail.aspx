@@ -39,7 +39,7 @@
 									<td><%=getOrderDetails[key]["attribute"] %></td>
 									<td>₹ <%=getOrderDetails[key]["price"] %></td>
 									<td><%=getOrderDetails[key]["qty"] %></td>
-									<td>₹  <%= item_price %></td>
+									<td>₹ <%= item_price %></td>
 									<td id="rating<%=getOrderDetails[key]["dish_detail_id"] %>">
 									<%
                                         if (Convert.ToInt32(getOrderById["order_status"]) == 4)

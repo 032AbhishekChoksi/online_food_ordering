@@ -442,9 +442,11 @@
     <Compile Include="bussinesslogic\Dish_DetailsBL.cs" />
     <Compile Include="bussinesslogic\Order_DetailBL.cs" />
     <Compile Include="bussinesslogic\Order_MasterBL.cs" />
+    <Compile Include="bussinesslogic\Order_StatusBL.cs" />
     <Compile Include="bussinesslogic\SettingBL.cs" />
     <Compile Include="dao\Order_DetailDAO.cs" />
     <Compile Include="dao\Order_MasterDAO.cs" />
+    <Compile Include="dao\Order_StatusDAO.cs" />
     <Compile Include="email_body\orderemail.aspx.cs">
       <DependentUpon>orderemail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

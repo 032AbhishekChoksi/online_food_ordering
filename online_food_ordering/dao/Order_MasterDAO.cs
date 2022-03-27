@@ -238,5 +238,195 @@ namespace online_food_ordering.dao
             }
             return getOrderById;
         }
+        public DataTable DisplayOrderReportByOid(Order_Master order_Master)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_OrderReportByOid")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@oid", order_Master.GetId());
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dataTable);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataTable.Dispose();
+            }
+            return dataTable;
+        }
+        public Dictionary<string, string> GetOrderRow(Order_Master order_Master)
+        {
+            Dictionary<string, string> orderRow = new Dictionary<string, string>();
+            DataTable dt = DisplayOrderReportByOid(order_Master);
+            try
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        orderRow.Add("id", dr["id"].ToString());
+                        orderRow.Add("address", dr["address"].ToString());                      
+                        orderRow.Add("coupon_code", dr["coupon_code"].ToString());
+                        orderRow.Add("final_price", dr["final_price"].ToString());
+                        orderRow.Add("zipcode", dr["zipcode"].ToString());
+                        orderRow.Add("payment_status", dr["payment_status"].ToString().ToLower());
+                        orderRow.Add("added_on", dr["added_on"].ToString());
+                        orderRow.Add("user_name", dr["user_name"].ToString());
+                        orderRow.Add("order_status_str", dr["order_status_str"].ToString());
+                        if (dr["delivery_boy_id"] == null || string.IsNullOrEmpty(dr["delivery_boy_id"].ToString()))
+                        {
+                            orderRow.Add("delivery_boy_id", "0");                           
+                        }
+                        else
+                        {
+                            orderRow.Add("delivery_boy_id", dr["delivery_boy_id"].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dt.Dispose();
+            }
+            return orderRow;
+        }
+        public Int32 UpdateOrderStatusById(Order_Master order_Master)
+        {
+            SqlConnection con = GetConnection();
+            int result;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_Update_OrderStatus")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@status", order_Master.GetOrderStatus());
+                cmd.Parameters.AddWithValue("@oid", order_Master.GetId());
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                if (result > 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                {
+                    con.Close();
+                }
+            }
+        }
+        public Int32 UpdateOrderStatusAndCancelStatusById(Order_Master order_Master)
+        {
+            SqlConnection con = GetConnection();
+            int result;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_Update_OrderStatusAndCancelStatus")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@status", order_Master.GetOrderStatus());
+                cmd.Parameters.AddWithValue("@cancel_by", order_Master.GetCancelBy());
+                cmd.Parameters.AddWithValue("@cancel_at", order_Master.GetCancelAt());
+                cmd.Parameters.AddWithValue("@refund_status", order_Master.GetRefundStatus());
+                cmd.Parameters.AddWithValue("@oid", order_Master.GetId());
+
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                if (result > 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                {
+                    con.Close();
+                }
+            }
+        }
+        public Int32 UpdateDeliveryBoyStatusByOid(Order_Master order_Master)
+        {
+            SqlConnection con = GetConnection();
+            int result;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_Update_DeliveryBoyStatusByOid")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@did", order_Master.GetDeliveryBoyId());
+                cmd.Parameters.AddWithValue("@oid", order_Master.GetId());
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                if (result > 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                {
+                    con.Close();
+                }
+            }
+        }
     }
 }
