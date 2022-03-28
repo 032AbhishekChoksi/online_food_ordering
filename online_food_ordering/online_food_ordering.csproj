@@ -134,6 +134,9 @@
     <Content Include="admin\user.aspx" />
     <Content Include="App_Data\online_food.sql" />
     <Content Include="billy.ico" />
+    <Content Include="deliveryboy\index.aspx" />
+    <Content Include="deliveryboy\login.aspx" />
+    <Content Include="deliveryboy\logout.aspx" />
     <Content Include="email_body\forgotpassword.html" />
     <Content Include="email_body\orderemail.aspx" />
     <Content Include="lib\itextsharp.dll" />
@@ -447,6 +450,27 @@
     <Compile Include="dao\Order_DetailDAO.cs" />
     <Compile Include="dao\Order_MasterDAO.cs" />
     <Compile Include="dao\Order_StatusDAO.cs" />
+    <Compile Include="deliveryboy\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="deliveryboy\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="deliveryboy\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="deliveryboy\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="deliveryboy\logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="deliveryboy\logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="email_body\orderemail.aspx.cs">
       <DependentUpon>orderemail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

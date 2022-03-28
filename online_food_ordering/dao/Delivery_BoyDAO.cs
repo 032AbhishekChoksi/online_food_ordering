@@ -175,5 +175,33 @@ namespace online_food_ordering.dao
             }
             return dataTable;
         }
+        public DataTable DisplayDeliveyBoyByMobileAndPassword(Delivery_Boy delivery_Boy)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_DeliveyBoyByMobileAndPassword")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@mobile", delivery_Boy.GetMobile());
+                cmd.Parameters.AddWithValue("@password", delivery_Boy.GetPassword());
+                
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dataTable);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataTable.Dispose();
+            }
+            return dataTable;
+        }
     }
 }

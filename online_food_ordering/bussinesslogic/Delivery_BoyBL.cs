@@ -90,5 +90,21 @@ namespace online_food_ordering.bussinesslogic
                 delivery_BoyDAO = null;
             }
         }
+        public DataTable DisplayDeliveyBoyByMobileAndPassword(Delivery_Boy delivery_Boy)
+        {
+            Delivery_BoyDAO delivery_BoyDAO = new Delivery_BoyDAO();
+            try
+            {
+                return delivery_BoyDAO.DisplayDeliveyBoyByMobileAndPassword(delivery_Boy);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                delivery_BoyDAO = null;
+            }
+        }
     }
 }

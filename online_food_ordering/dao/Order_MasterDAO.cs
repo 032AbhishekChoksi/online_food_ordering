@@ -428,5 +428,31 @@ namespace online_food_ordering.dao
                 }
             }
         }
+        public DataTable DisplayOrderDeliveryByDeliveryBoyId(Delivery_Boy delivery_Boy)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_OrderDeliveryByDeliveryBoyId")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@dbid", delivery_Boy.GetId());
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dataTable);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataTable.Dispose();
+            }
+            return dataTable;
+        }
     }
 }
