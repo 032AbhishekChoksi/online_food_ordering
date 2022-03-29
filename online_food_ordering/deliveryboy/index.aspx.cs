@@ -28,6 +28,27 @@ namespace online_food_ordering.deliveryboy
             { 
                 FillRecords();
             }
+            if (Request.QueryString["set_payment"] != null)
+            {
+                Order_Master order_Master = new Order_Master();
+                order_Master.SetId(Convert.ToInt32(Request.QueryString["set_payment"].ToString()));
+                order_Master.SetPaymentStatus("success");
+                order_Master.SetDeliveryBoyId(Convert.ToInt32(Session["DELIVERY_BOY_ID"].ToString()));
+
+                order_MasterBL.UpdatePaymentStatusByOIdAndDid(order_Master);
+                Response.Redirect("index");
+            }
+            if(Request.QueryString["set_order_id"] != null)
+            {
+                Order_Master order_Master = new Order_Master();
+                order_Master.SetId(Convert.ToInt32(Request.QueryString["set_order_id"].ToString()));
+                order_Master.SetOrderStatus(4);
+                order_Master.SetDeliveredOn(DateTime.Now);
+                order_Master.SetDeliveryBoyId(Convert.ToInt32(Session["DELIVERY_BOY_ID"].ToString()));
+
+                order_MasterBL.UpdateOrderStatusByOIdAndDid(order_Master);
+                Response.Redirect("index");
+            }
         }
         public string ucfirst(Object payment_status)
         {
@@ -41,16 +62,6 @@ namespace online_food_ordering.deliveryboy
             Delivery_Boy delivery_Boy = new Delivery_Boy();
             delivery_Boy.SetId(Convert.ToInt32(Session["DELIVERY_BOY_ID"].ToString()));
             DataTable dt = order_MasterBL.DisplayOrderDeliveryByDeliveryBoyId(delivery_Boy);
-
-            //if (dt.Rows.Count > 0)
-            //{
-            //    r1.DataSource = dt;
-            //    r1.DataBind();
-            //}
-            //else
-            //{
-            //    lblMessage.Text = "<tr><td colspan='6'> No data found</td></ tr >";
-            //}
             r1.DataSource = dt;
             r1.DataBind();
         }

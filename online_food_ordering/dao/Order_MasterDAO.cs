@@ -454,5 +454,88 @@ namespace online_food_ordering.dao
             }
             return dataTable;
         }
+        public Int32 UpdatePaymentStatusByOIdAndDid(Order_Master order_Master)
+        {
+            SqlConnection con = GetConnection();
+            int result;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_Update_PaymentStatusByOIdAndDid")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@payment_status", order_Master.GetPaymentStatus());
+                cmd.Parameters.AddWithValue("@oid", order_Master.GetId());
+                cmd.Parameters.AddWithValue("@did", order_Master.GetDeliveryBoyId());
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                if (result > 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                {
+                    con.Close();
+                }
+            }
+        }
+        public Int32 UpdateOrderStatusByOIdAndDid(Order_Master order_Master)
+        {
+            SqlConnection con = GetConnection();
+            int result;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_Update_OrderStatusByOIdAndDid")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@OrderStatus", order_Master.GetOrderStatus());
+                cmd.Parameters.AddWithValue("@DeliveryOn", order_Master.GetDeliveredOn());
+                cmd.Parameters.AddWithValue("@oid", order_Master.GetId());
+                cmd.Parameters.AddWithValue("@did", order_Master.GetDeliveryBoyId());
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                if (result > 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                {
+                    con.Close();
+                }
+            }
+        }
     }
 }

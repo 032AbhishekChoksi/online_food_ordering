@@ -49,7 +49,8 @@
 
               </form>
               <div class="login_msg" id="error" runat="server"  style="margin-top:10px; display:none">
-                  <strong>Please enter valid login details</strong>
+                  <strong>
+                      <asp:Label ID="lblMessage" runat="server"></asp:Label></strong>
               </div>
             </div>
           </div>

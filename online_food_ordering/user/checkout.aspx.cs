@@ -43,6 +43,7 @@ namespace online_food_ordering
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.Title = "Checkout | Billy";
             userAddress = GetAdressUsingIP();
             if(userAddress["country"].Equals("IN"))
             {
@@ -224,7 +225,7 @@ namespace online_food_ordering
             }
         }
         private string IPRequestHelper(string url)
-        {
+        { 
             HttpWebRequest objrequest = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse objresponse = (HttpWebResponse)objrequest.GetResponse();
             StreamReader responsereader = new StreamReader(objresponse.GetResponseStream());
@@ -232,6 +233,7 @@ namespace online_food_ordering
             responsereader.Close();
             responsereader.Dispose();
             return responseread;
+        
         }
         private Dictionary<string, string> GetAdressUsingIP()
         {

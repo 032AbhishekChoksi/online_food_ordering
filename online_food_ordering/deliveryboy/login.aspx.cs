@@ -64,15 +64,23 @@ namespace online_food_ordering.deliveryboy
                 {
                     foreach(DataRow dr in dt.Rows)
                     {
-                        Session["DELIVERY_BOY_USER_LOGIN"] = "yes";
-                        Session["DELIVERY_BOY_USER"] = dr["name"].ToString();
-                        Session["DELIVERY_BOY_ID"] = dr["id"].ToString();
-                    }
-                   
-                    Response.Redirect("index", false);
+                        if (Convert.ToBoolean(dr["status"]))
+                        { 
+                            Session["DELIVERY_BOY_USER_LOGIN"] = "yes";
+                            Session["DELIVERY_BOY_USER"] = dr["name"].ToString();
+                            Session["DELIVERY_BOY_ID"] = dr["id"].ToString();
+                            Response.Redirect("index", false);
+                        }
+                        else
+                        {
+                            lblMessage.Text = "Your account has been deactivated";
+                            error.Style.Add("display", "block");
+                        }
+                    }                    
                 }
                 else
                 {
+                    lblMessage.Text = "Please enter valid login details";
                     error.Style.Add("display", "block");
                 }
             }

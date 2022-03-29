@@ -58,7 +58,7 @@
                      <h1 class="grid_title">Order Master</h1>
                      <div class="row grid_box">
                         <div class="col-12">
-                           <div class="table-responsive">                             
+                           <div class="table-responsive">
                                <asp:Repeater ID="r1" runat="server">
                                    <HeaderTemplate>
                                        <table id="order-listing" class="table">
@@ -93,16 +93,22 @@
                                                      <td style="font-size:14px;">₹ <%# Eval("final_price") %></td>
                                                      <td><%# Eval("payment_type") %></td>
                                                      <td>
-                                                         <div class="payment_status payment_status_<%# Eval("payment_status") %>"><%# ucfirst(Eval("payment_status"))%></div>      
+                                                         <asp:HyperLink ID="HyperLinkPending" runat="server" NavigateUrl='<%# string.Format("index.aspx?set_payment={0}",Eval("id")) %>' Visible='<%# Eval("payment_status").ToString().Equals("pending") ? true : false %>'>
+                                                         <div class="payment_status payment_status_<%# Eval("payment_status") %>"><%# ucfirst(Eval("payment_status"))%></div>   
+                                                             </asp:HyperLink>
+
+                                                         <asp:HyperLink ID="HyperLinkNotPending" runat="server" Visible='<%# Eval("payment_status").ToString() != "pending" ? true : false %>'>
+                                                         <div class="payment_status payment_status_<%# Eval("payment_status") %>"><%# ucfirst(Eval("payment_status"))%></div>   
+                                                             </asp:HyperLink>
                                                      </td>
                                                      <td><a href="index.aspx?set_order_id=<%# Eval("id") %>">Set Delivered</a></td>
                                                      <td>
                                                         <%# Eval("added_on","{0:dd-MM-yyyy}") %>
                                                      </td>
                                                   </tr>
+                                     
                                </ItemTemplate>
-							   <FooterTemplate>
-                                   
+							   <FooterTemplate>                                   
                                          </tbody>
                                       </table>
                                </FooterTemplate>
