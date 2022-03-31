@@ -87,6 +87,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\add_money.aspx" />
     <Content Include="admin\assets\css\bootstrap-datepicker.min.css" />
     <Content Include="admin\assets\css\darkbluestyle.css" />
     <Content Include="admin\assets\css\darkgreenstyle.css" />
@@ -129,6 +130,7 @@
     <Content Include="admin\manage_dish.aspx" />
     <Content Include="admin\order.aspx" />
     <Content Include="admin\order_detail.aspx" />
+    <Content Include="admin\refund_money.aspx" />
     <Content Include="admin\setting.aspx" />
     <Content Include="admin\send_coupon_code.aspx" />
     <Content Include="admin\user.aspx" />
@@ -299,6 +301,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\add_money.aspx.cs">
+      <DependentUpon>add_money.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\add_money.aspx.designer.cs">
+      <DependentUpon>add_money.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -419,6 +428,13 @@
     <Compile Include="admin\order_detail.aspx.designer.cs">
       <DependentUpon>order_detail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\refund_money.aspx.cs">
+      <DependentUpon>refund_money.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\refund_money.aspx.designer.cs">
+      <DependentUpon>refund_money.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\setting.aspx.cs">
       <DependentUpon>setting.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -446,10 +462,12 @@
     <Compile Include="bussinesslogic\Order_DetailBL.cs" />
     <Compile Include="bussinesslogic\Order_MasterBL.cs" />
     <Compile Include="bussinesslogic\Order_StatusBL.cs" />
+    <Compile Include="bussinesslogic\RefundMoneyBL.cs" />
     <Compile Include="bussinesslogic\SettingBL.cs" />
     <Compile Include="dao\Order_DetailDAO.cs" />
     <Compile Include="dao\Order_MasterDAO.cs" />
     <Compile Include="dao\Order_StatusDAO.cs" />
+    <Compile Include="dao\RefundMoneyDAO.cs" />
     <Compile Include="deliveryboy\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
