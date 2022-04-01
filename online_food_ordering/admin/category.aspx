@@ -20,7 +20,6 @@
 										<tbody>
 								</HeaderTemplate>
 								<ItemTemplate>
-
 									<tr>
 										<td><asp:Label ID="lblRowNumber" Text='<%# Container.ItemIndex + 1 %>' runat="server" /></td>
 										<td><%# Eval("category") %></td>

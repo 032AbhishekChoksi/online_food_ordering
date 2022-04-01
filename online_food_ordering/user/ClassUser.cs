@@ -159,12 +159,12 @@ namespace online_food_ordering.user
             decimal finalamt = 0;
             try
             {
-                SqlCommand cmd = new SqlCommand("SP_Display_WalletByUserId")
+                SqlCommand cmd = new SqlCommand("SP_Display_WalletDetailsByUid")
                 {
                     CommandType = CommandType.StoredProcedure,
                     Connection = con
                 };
-                cmd.Parameters.AddWithValue("@user_id", uid);
+                cmd.Parameters.AddWithValue("@uid", uid);
                 if (con.State == ConnectionState.Closed)
                 {
                     con.Open();

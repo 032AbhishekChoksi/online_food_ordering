@@ -54,7 +54,7 @@ namespace online_food_ordering.user
             string ORDER_ID = oArr[1];
             int uid = Convert.ToInt32(oArr[2]);
             Order_Master order_Master = new Order_Master();
-            order_Master.SetId(Convert.ToInt32(ORDER_ID));
+           
             if(Session["FOOD_USER_ID"] == null)
             {
                 Customer  customer = new Customer();
@@ -74,19 +74,19 @@ namespace online_food_ordering.user
                 {
                     decimal amt = Convert.ToDecimal(paramList["TXNAMOUNT"]);
 
-                    if (Session["IS_WALLET"] != null)
+                    if (ORDER_ID.Equals("ISWALLET"))
                     {
                         DateTime added_on = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
                         objUser.manageWallet(uid, amt, "Added", "in", TXNID, added_on);
-                        Session.Remove("IS_WALLET");
                         Response.Redirect("wallet");
                     }
                     else
                     {
                         string useremail = Session["FOOD_USER_EMAIL"].ToString();
-                        
+
 
                         // Update Order Status
+                        order_Master.SetId(Convert.ToInt32(ORDER_ID));
                         order_Master.SetPaymentStatus("success");
                         order_Master.SetPaymentId(TXNID);
                         order_MasterBL.UpdateOrderMasterPaymentStatusById(order_Master);
@@ -97,6 +97,7 @@ namespace online_food_ordering.user
                 else
                 {
                     // Update Order Status
+                    order_Master.SetId(Convert.ToInt32(ORDER_ID));
                     order_Master.SetPaymentStatus("failed");
                     order_Master.SetPaymentId(TXNID);
                     order_MasterBL.UpdateOrderMasterPaymentStatusById(order_Master);
@@ -107,6 +108,7 @@ namespace online_food_ordering.user
             else
             {
                 // Update Order Status
+                order_Master.SetId(Convert.ToInt32(ORDER_ID));
                 order_Master.SetPaymentStatus("failed");
                 order_Master.SetPaymentId(TXNID);
                 order_MasterBL.UpdateOrderMasterPaymentStatusById(order_Master);

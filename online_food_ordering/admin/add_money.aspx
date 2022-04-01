@@ -5,8 +5,7 @@
 		<h1 class="grid_title">Send Refund Money</h1>
 		<div class="row grid_box">
 			<div class="col-12">
-				<div class="table-responsive">
-			
+				<div class="table-responsive">			
 					<asp:Repeater ID="r1" runat="server">
 						<HeaderTemplate>
 							<table id="order-listing" class="table">
