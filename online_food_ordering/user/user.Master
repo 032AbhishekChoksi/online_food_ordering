@@ -89,85 +89,103 @@
 							</a>
 						</div>
 					</div>
-					<div class="col-lg-9 col-md-8 col-12 col-sm-8">
-						<div class="header-middle-right f-right">
-							<div class="header-login">
-								<%if (Session["FOOD_USER_NAME"] == null) {%>
-									<a href="login_register">
-								<%} %>
-									<div class="header-icon-style">
-										<i class="icon-user icons"></i>
-									</div>
-									<div class="login-text-content">	
-										<%if (Session["FOOD_USER_NAME"] != null) {%>
-											<center>WELCOME<div style="color:#e02c2b;font-weight: bold;">
-												<asp:Label ID="lblUsreName" runat="server"></asp:Label></div></center>
-										<%} else { %>
-											<p>Register <br> or <span>Sign in</span></p>		
+					<% if (websiteclose.Equals("no"))
+                       { %>
+							<div class="col-lg-9 col-md-8 col-12 col-sm-8">
+								<div class="header-middle-right f-right">
+									<div class="header-login">
+										<%if (Session["FOOD_USER_NAME"] == null)
+											{%>
+											<a href="login_register">
 										<%} %>
+											<div class="header-icon-style">
+												<i class="icon-user icons"></i>
+											</div>
+											<div class="login-text-content">	
+												<%if (Session["FOOD_USER_NAME"] != null)
+													{%>
+													<center>WELCOME<div style="color:#e02c2b;font-weight: bold;">
+														<asp:Label ID="lblUsreName" runat="server"></asp:Label></div></center>
+												<%}
+													else
+													{ %>
+													<p>Register <br> or <span>Sign in</span></p>		
+												<%} %>
+											</div>
+												<%if (Session["FOOD_USER_NAME"] == null)
+													{%>
+													</a>
+												<%} %>
 									</div>
-										<%if (Session["FOOD_USER_NAME"] == null) {%>
-											</a>
-										<%} %>
+									<div class="header-wishlist">
+										&nbsp;
+									</div>
+									<div class="header-cart">
+										<a href="#">
+											<div class="header-icon-style">
+												<i class="icon-handbag icons"></i>
+												<span class="count-style" id="totalCartDish"><%= totalCartDish %></span>
+											</div>
+											<div class="cart-text">
+												<span class="digit">My Cart</span>
+												<span class="cart-digit-bold" id="totalPrice">
+													<% if (totalPrice != 0)
+														{ %>
+														<%=totalPrice %> Rs.
+													<% }
+														else
+														{ %>
+														0 Rs.
+													<%} %>
+												</span>
+											</div>
+										</a>
+										<% if (totalPrice != 0)
+											{ %>
+											<div class="shopping-cart-content">
+												<ul id="cart_ul">
+													<% foreach (int key in cartArr.Keys)
+														{ %>
+														<li class="single-shopping-cart" id="attr_<%= key %>">
+															<div class="shopping-cart-img">
+																<a href="javascript:void(0)"><img alt="" src='../media/dish/<%= cartArr[key]["image"] %>' style="width:100%;"></a>
+															</div>
+															<div class="shopping-cart-title">
+																<h4><a href="javascript:void(0)">
+																		<%= cartArr[key]["dish"] %>
+																	</a></h4>
+																<h6>Price:<%= cartArr[key]["price"] %> Rs.</h6>
+																<h6>Qty: <%= cartArr[key]["qty"] %> </h6>
+																<span>
+																	<%= Convert.ToInt32(cartArr[key]["qty"]) * Convert.ToInt32(cartArr[key]["price"]) %> Rs.
+																</span>
+															</div>
+															<div class="shopping-cart-delete">
+																<a href="javascript:void(0)" onclick="delete_cart('<%= key %>')"><i class="ion ion-close"></i></a>
+															</div>
+														</li>
+													<%} %>
+												</ul>
+												<div class="shopping-cart-total">
+													<h4>Total : <span class="shop-total" id="shopTotal">
+															<%= totalPrice %> Rs.
+														</span></h4>
+												</div>
+												<div class="shopping-cart-btn">
+													<a href="cart">view cart</a>
+													<a href="checkout">checkout</a>
+												</div>
+											</div>
+										 <%}						%>
+									</div>
+								</div>
 							</div>
-							<div class="header-wishlist">
-								&nbsp;
-							</div>
-							<div class="header-cart">
-								<a href="#">
-									<div class="header-icon-style">
-										<i class="icon-handbag icons"></i>
-										<span class="count-style" id="totalCartDish"><%= totalCartDish %></span>
-									</div>
-									<div class="cart-text">
-										<span class="digit">My Cart</span>
-										<span class="cart-digit-bold" id="totalPrice">
-											<% if (totalPrice != 0) { %>
-												<%=totalPrice %> Rs.
-											<% } else { %>
-												0 Rs.
-											<%} %>
-										</span>
-									</div>
-								</a>
-								<% if (totalPrice != 0) { %>
-									<div class="shopping-cart-content">
-										<ul id="cart_ul">
-											<% foreach(int key in cartArr.Keys) { %>
-												<li class="single-shopping-cart" id="attr_<%= key %>">
-													<div class="shopping-cart-img">
-														<a href="javascript:void(0)"><img alt="" src='../media/dish/<%= cartArr[key]["image"] %>' style="width:100%;"></a>
-													</div>
-													<div class="shopping-cart-title">
-														<h4><a href="javascript:void(0)">
-																<%= cartArr[key]["dish"] %>
-															</a></h4>
-														<h6>Price:<%= cartArr[key]["price"] %> Rs.</h6>
-														<h6>Qty: <%= cartArr[key]["qty"] %> </h6>
-														<span>
-															<%= Convert.ToInt32(cartArr[key]["qty"]) * Convert.ToInt32(cartArr[key]["price"]) %> Rs.
-														</span>
-													</div>
-													<div class="shopping-cart-delete">
-														<a href="javascript:void(0)" onclick="delete_cart('<%= key %>')"><i class="ion ion-close"></i></a>
-													</div>
-												</li>
-											<%} %>
-										</ul>
-										<div class="shopping-cart-total">
-											<h4>Total : <span class="shop-total" id="shopTotal">
-													<%= totalPrice %> Rs.
-												</span></h4>
-										</div>
-										<div class="shopping-cart-btn">
-											<a href="cart">view cart</a>
-											<a href="checkout">checkout</a>
-										</div>
-									</div>
-								<%} %>
-							</div>
-						</div>
-					</div>
+					<% }
+					   else
+					   {						
+					%>
+						<center><strong><%=websiteclosemsg %></strong></center>
+					<% }%>
 				</div>
 			</div>
 		</div>

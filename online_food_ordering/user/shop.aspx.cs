@@ -24,6 +24,9 @@ namespace online_food_ordering.user
         public string cat_dish;
         private string cat_dish_str;
         private string FilterType;
+        private SettingBL settingBL;
+        protected string websiteclose = string.Empty;
+        protected string websiteclosemsg = string.Empty;
         protected void Page_Init(object sender, EventArgs e)
         {
             dishBL = new DishBL();
@@ -33,9 +36,20 @@ namespace online_food_ordering.user
             category = new Category();
             cat_dish = string.Empty;
             cat_dish_str = string.Empty;
+            settingBL = new SettingBL();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            Setting setting = new Setting();
+            setting.SetId(1);
+            setting = settingBL.DisplaySettingById(setting);
+            if(setting != null)
+            {
+                websiteclose = setting.GetWebsiteClose();
+                websiteclosemsg = setting.GetWebsiteCloseMsg();
+            }
+
             lblNoRecords.Text = string.Empty;
             FilterType = string.Empty;
             if (Request.QueryString["cat_dish"] != null)

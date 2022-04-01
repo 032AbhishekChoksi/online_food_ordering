@@ -1,4 +1,6 @@
-﻿using System;
+﻿using online_food_ordering.bussinesslogic;
+using online_food_ordering.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,13 +17,26 @@ namespace online_food_ordering.user
         protected Dictionary<int, Dictionary<string, string>> cartArr;
         protected Int32 totalPrice;
         protected Int32 totalCartDish;
+        private SettingBL settingBL;
+        protected string websiteclose = string.Empty;
+        protected string websiteclosemsg = string.Empty;
         protected void Page_Init(object sender, EventArgs e)
         {
             classFunction = new ClassFunction();
             objUser = new ClassUser();
+            settingBL = new SettingBL();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Setting setting = new Setting();
+            setting.SetId(1);
+            setting = settingBL.DisplaySettingById(setting);
+            if (setting != null)
+            {
+                websiteclose = setting.GetWebsiteClose();
+                websiteclosemsg = setting.GetWebsiteCloseMsg();
+            }
+
             cartArr = classFunction.getUserFullCart();
             totalPrice = classFunction.getcartTotalPrice();
             totalCartDish = cartArr.Count;

@@ -33,6 +33,8 @@ namespace online_food_ordering
         protected int razoramt = 0;
         protected Dictionary<string, string> userAddress;
         protected string semiAdreess = string.Empty;
+        protected string websiteclose = string.Empty;
+        protected string websiteclosemsg = string.Empty;
         protected void Page_Init(object sender, EventArgs e)
         {
             classFunction = new ClassFunction();
@@ -44,6 +46,16 @@ namespace online_food_ordering
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Checkout | Billy";
+
+            Setting setting = new Setting();
+            setting.SetId(1);
+            setting = settingBL.DisplaySettingById(setting);
+            if (setting != null)
+            {
+                websiteclose = setting.GetWebsiteClose();
+                websiteclosemsg = setting.GetWebsiteCloseMsg();
+            }
+
             userAddress = GetAdressUsingIP();
             if(userAddress["country"].Equals("IN"))
             {

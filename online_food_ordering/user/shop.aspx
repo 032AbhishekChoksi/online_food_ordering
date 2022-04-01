@@ -41,17 +41,20 @@
                                                                  <a target="_blank" href='../media/dish/<%# Eval("image") %>'>
                                                                      <img src='../media/dish/<%# Eval("image") %>' style="margin: auto auto; display: block;">
                                                                  </a>
-                                                                 <div class="icon-list">
-                                                                     <button type="button">
-                                                                         <i class="fas fa-sync-alt"></i>
-                                                                     </button>
-                                                                     <button type="button">
-                                                                         <i class="fas fa-shopping-cart" aria-hidden="true" onclick="add_to_cart('<%# Eval("did") %>','add')"></i>
-                                                                     </button>
-                                                                     <button type="button">
-                                                                         <i class="far fa-heart"></i>
-                                                                     </button>
-                                                                 </div>
+                                                                 <%if (websiteclose.Equals("no"))
+                                                                   { %>
+                                                                     <div class="icon-list">
+                                                                         <button type="button">
+                                                                             <i class="fas fa-sync-alt"></i>
+                                                                         </button>
+                                                                         <button type="button">
+                                                                             <i class="fas fa-shopping-cart" aria-hidden="true" onclick="add_to_cart('<%# Eval("did") %>','add')"></i>
+                                                                         </button>
+                                                                         <button type="button">
+                                                                             <i class="far fa-heart"></i>
+                                                                         </button>
+                                                                     </div>
+                                                                  <% }%>
                                                              </div>
                                                              <div class="item-detail">
                                                                  <img src='assets/img/icon-img/<%# Eval("dishtype").ToString().Trim(' ')%>.png' alt="" class="imge" style="height: 25px; width: 25px;" />
@@ -69,18 +72,28 @@
                                                                             </ItemTemplate>
                                                                      </asp:Repeater>
                                                                  </div>
-                                                                 <div class="item-price" style="margin-top: -5px;">
-                                                                     <select id='qty<%# Eval("did") %>'>
-                                                                         <option value="0">Qty</option>
-                                                                         <% for (int i = 1; i <=10; i++)
-                                                                             {%>
-                                                                         <option value='<%= i %>'> <%= i %> </option>
-                                                                         <%} %>
-                                                                     </select>
-
-                                                                 </div>
+                                                                 <%if (websiteclose.Equals("no"))
+                                                                   { %>
+                                                                        <div class="item-price" style="margin-top: -5px;">
+                                                                            <select id='qty<%# Eval("did") %>'>
+                                                                                <option value="0">Qty</option>
+                                                                                <% for (int i = 1; i <= 10; i++)
+                                                                                    {%>
+                                                                                <option value='<%= i %>'> <%= i %> </option>
+                                                                                <%}    %>
+                                                                            </select>
+                                                                        </div>
+                                                                  <% }%>
                                                                  <p><%# Eval("dish_desc") %></p>
+                                                                 <%if (websiteclose.Equals("yes"))
+                                                                   { %>
+                                                                  <strong><%= websiteclosemsg %>
+                                                                 </strong>
+                                                                <% }
+                                                                   else
+                                                                   { %>
                                                                  <button type="button" class="add-btn" onclick="add_to_cart('<%# Eval("did") %>','add')">add to cart</button>
+                                                                 <%} %>
                                                              </div>
                                                          </div>
                                                      </ItemTemplate>
