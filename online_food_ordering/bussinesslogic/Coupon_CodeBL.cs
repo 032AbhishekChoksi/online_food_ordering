@@ -42,5 +42,21 @@ namespace online_food_ordering.bussinesslogic
                 coupon_codeDAO = null;
             }
         }
+        public DataTable DisplayCouponCodeByCodeAndStatus(Coupon_Code coupon_Code)
+        {
+            Coupon_CodeDAO coupon_codeDAO = new Coupon_CodeDAO();
+            try
+            {
+                return coupon_codeDAO.DisplayCouponCodeByCodeAndStatus(coupon_Code);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                coupon_codeDAO = null;
+            }
+        }
     }
 }

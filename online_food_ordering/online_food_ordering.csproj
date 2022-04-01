@@ -151,6 +151,7 @@
     <Content Include="page\privacy_policy.html" />
     <Content Include="page\termsandcondition.html" />
     <Content Include="page\underconstructor.html" />
+    <Content Include="user\apply_coupon.aspx" />
     <Content Include="user\checkout.aspx" />
     <Content Include="email_body\coupon.aspx" />
     <Content Include="email_body\emailpassword.html" />
@@ -518,6 +519,13 @@
     <Compile Include="email_body\orderemail.aspx.designer.cs">
       <DependentUpon>orderemail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="user\apply_coupon.aspx.cs">
+      <DependentUpon>apply_coupon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\apply_coupon.aspx.designer.cs">
+      <DependentUpon>apply_coupon.aspx</DependentUpon>
+    </Compile>
     <Compile Include="user\checkout.aspx.cs">
       <DependentUpon>checkout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -614,6 +622,7 @@
     <Compile Include="user\contact_us_submit.aspx.designer.cs">
       <DependentUpon>contact_us_submit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="user\DatatTable.cs" />
     <Compile Include="user\download_invoice.aspx.cs">
       <DependentUpon>download_invoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

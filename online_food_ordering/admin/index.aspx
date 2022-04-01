@@ -106,13 +106,13 @@
 						    <thead>
 							    <tr>
 								    <th width="5%">Order Id</th>
-								    <th width="20%">Name/Email/Mobile</th>
-								    <th width="20%">Address/Zipcode</th>
-								    <th width="5%">Price</th>
+								    <th width="10%">Name/Email/Mobile</th>
+								    <th width="10%">Address/Zipcode</th>
+								    <th width="15%">Price</th>
 								    <th width="10%">Payment Type</th>
-								    <th width="10%">Payment Status</th>
+								    <th width="5%">Payment Status</th>
 								    <th width="10%">Order Status</th>
-								    <th width="15%">Added On</th>
+								    <th width="30%">Added On</th>
 							    </tr>
 						    </thead>
 						    <tbody>

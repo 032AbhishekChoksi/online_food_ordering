@@ -239,6 +239,7 @@ function apply_coupon() {
 			url: 'apply_coupon',
 			type: 'post',
 			data: 'coupon_code=' + coupon_code,
+			dataType: 'json',
 			success: function (result) {
 				var data = jQuery.parseJSON(result);
 				if (data.status == 'success') {

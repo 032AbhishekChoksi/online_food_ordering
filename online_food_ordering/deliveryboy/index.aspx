@@ -65,9 +65,9 @@
                                          <thead>
                                             <tr>
                                                <th width="5%">Order Id</th>
-                                               <th width="20%">Name/Mobile</th>
+                                               <th width="15%">Name/Mobile</th>
                                                <th width="20%">Address/Zipcode</th>
-                                               <th width="5%">Price</th>
+                                               <th width="10%">Price</th>
                                                <th width="10%">Payment Type</th>
                                                <th width="10%">Payment Status</th>
                                                <th width="10%">Order Status</th>

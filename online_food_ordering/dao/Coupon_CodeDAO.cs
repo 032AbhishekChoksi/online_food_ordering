@@ -95,5 +95,34 @@ namespace online_food_ordering.dao
                 }
             }
         }
+        public DataTable DisplayCouponCodeByCodeAndStatus(Coupon_Code coupon_Code)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_CouponCodeByCodeAndStatus")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@code", coupon_Code.GetCouponCode());
+                cmd.Parameters.AddWithValue("@status", coupon_Code.GetStatus());
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dataTable);
+                cmd.Dispose();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataTable.Dispose();
+            }
+            return dataTable;
+        }
     }
 }
