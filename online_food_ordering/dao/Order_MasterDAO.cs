@@ -537,5 +537,30 @@ namespace online_food_ordering.dao
                 }
             }
         }
+        public DataTable DisplayLastFiveOrderDetails()
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_LastFiveOrder")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dataTable);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataTable.Dispose();
+            }
+            return dataTable;
+        }
     }
 }

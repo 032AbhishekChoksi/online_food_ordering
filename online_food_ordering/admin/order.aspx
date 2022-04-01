@@ -35,6 +35,7 @@
 											<p><%# Eval("name") %></p>
 											<p><%# Eval("email") %></p>
 											<p><%# Eval("mobile") %></p>
+										</td>
 										<td>
 											<p><%# Eval("address") %></p>
 											<p><%# Eval("zipcode") %></p>
@@ -44,18 +45,18 @@
 											<%# ApplyCoupon(Eval("coupon_code"), Eval("final_price"))[1] %>
 										</td>
 										<td>
-											<div class="payment_status payment_status_<%# Eval("payment_status") %>"><%# Eval("payment_status") %></div>
+											<div class="payment_status payment_status_<%# Eval("payment_status") %>"><%# Eval("payment_status", "{0:C}") %></div>
 										</td>
 										<td><%# Eval("order_status_str") %></td>
 										<td>
-											<%# Eval("added_on","{0:dd/M/yyyy}") %>
+											<%# Eval("added_on","{0:dd/MM/yyyy}") %>
 										</td>
 									</tr>								
 					</ItemTemplate>
 					<FooterTemplate>
 						</tbody>
 					</table>
-						  </FooterTemplate>
+					</FooterTemplate>
 				</asp:Repeater>
 				</div>
 			</div>

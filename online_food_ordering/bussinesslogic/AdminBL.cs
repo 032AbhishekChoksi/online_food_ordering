@@ -2,6 +2,7 @@
 using online_food_ordering.model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -15,6 +16,54 @@ namespace online_food_ordering.bussinesslogic
             try
             {
                 return adminDAO.DisplayAdminByUsernameAndPassword(admin);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                adminDAO = null;
+            }
+        }
+        public decimal GetSalesDetails(DateTime startdate, DateTime enddate)
+        {
+            AdminDAO adminDAO = new AdminDAO();
+            try
+            {
+                return adminDAO.GetSalesDetails(startdate, enddate);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                adminDAO = null;
+            }
+        }
+        public DataTable MostSaleDish()
+        {
+            AdminDAO adminDAO = new AdminDAO();
+            try
+            {
+                return adminDAO.MostSaleDish();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                adminDAO = null;
+            }
+        }
+        public DataTable MostActiveUser()
+        {
+            AdminDAO adminDAO = new AdminDAO();
+            try
+            {
+                return adminDAO.MostActiveUser();
             }
             catch (Exception)
             {

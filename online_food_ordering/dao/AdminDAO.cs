@@ -59,5 +59,100 @@ namespace online_food_ordering.dao
             }
             return i;
         }
+        // getSale()
+        public decimal GetSalesDetails(DateTime startdate, DateTime enddate)
+        {
+            decimal result = 0;
+            SqlConnection con = GetConnection();
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_Display_SalesReport")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@startdate", startdate);
+                cmd.Parameters.AddWithValue("@enddate", enddate);
+
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                string r = cmd.ExecuteScalar().ToString();
+                cmd.Dispose();
+                
+                if (r.Equals("0") || string.IsNullOrEmpty(r))
+                {
+                    result = 0;
+                }
+                else
+                {
+                  result = Convert.ToDecimal(r);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                {
+                    con.Close();
+                }
+            }
+            return result;
+        }
+        public DataTable MostSaleDish()
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_MostSaleDish")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dataTable);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataTable.Dispose();
+            }
+            return dataTable;
+        }
+        public DataTable MostActiveUser()
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                SqlConnection con = GetConnection();
+                SqlCommand cmd = new SqlCommand("SP_Display_MostActiveUser")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(dataTable);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dataTable.Dispose();
+            }
+            return dataTable;
+        }
     }
 }
