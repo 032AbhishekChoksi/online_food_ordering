@@ -55,7 +55,7 @@
 											<td><%# Eval("zipcode") %></td>
 											<td>
 												<%# Eval("order_status_str") %>
-												<%# CheckOrderStatus(Eval("order_status")) %>
+												<%# CheckOrderStatus(Eval("id"),Eval("order_status"),Eval("payment_status")) %>
 											</td>
 											<td>
 												<div class="payment_status payment_status_<%# Eval("payment_status") %>"><%# Eval("payment_status", "{0:C}") %></div>
