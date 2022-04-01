@@ -116,6 +116,7 @@
     <Content Include="admin\assets\js\vendor.bundle.base.js" />
     <Content Include="admin\banner.aspx" />
     <Content Include="admin\category.aspx" />
+    <Content Include="admin\contact_us.aspx" />
     <Content Include="admin\coupon_code.aspx" />
     <Content Include="admin\delivery_boy.aspx" />
     <Content Include="admin\demo.aspx" />
@@ -125,6 +126,7 @@
     <Content Include="admin\logout.aspx" />
     <Content Include="admin\manage_banner.aspx" />
     <Content Include="admin\manage_category.aspx" />
+    <Content Include="admin\manage_contactus.aspx" />
     <Content Include="admin\manage_coupon_code.aspx" />
     <Content Include="admin\manage_delivery_boy.aspx" />
     <Content Include="admin\manage_dish.aspx" />
@@ -278,6 +280,7 @@
     <Content Include="user\assets\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="user\cart.aspx" />
     <Content Include="user\contact-us.aspx" />
+    <Content Include="user\contact_us_submit.aspx" />
     <Content Include="user\download_invoice.aspx" />
     <Content Include="user\error.aspx" />
     <Content Include="user\forgot_password.aspx" />
@@ -330,6 +333,13 @@
       <DependentUpon>category.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\ClassAdmin.cs" />
+    <Compile Include="admin\contact_us.aspx.cs">
+      <DependentUpon>contact_us.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\contact_us.aspx.designer.cs">
+      <DependentUpon>contact_us.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\coupon_code.aspx.cs">
       <DependentUpon>coupon_code.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -393,6 +403,13 @@
     <Compile Include="admin\manage_category.aspx.designer.cs">
       <DependentUpon>manage_category.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\manage_contactus.aspx.cs">
+      <DependentUpon>manage_contactus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manage_contactus.aspx.designer.cs">
+      <DependentUpon>manage_contactus.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\manage_coupon_code.aspx.cs">
       <DependentUpon>manage_coupon_code.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -453,6 +470,7 @@
     <Compile Include="bussinesslogic\AdminBL.cs" />
     <Compile Include="bussinesslogic\BannerBL.cs" />
     <Compile Include="bussinesslogic\CategoryBL.cs" />
+    <Compile Include="bussinesslogic\Contact_UsBL.cs" />
     <Compile Include="bussinesslogic\Coupon_CodeBL.cs" />
     <Compile Include="bussinesslogic\CustomerBL.cs" />
     <Compile Include="bussinesslogic\Delivery_BoyBL.cs" />
@@ -464,6 +482,7 @@
     <Compile Include="bussinesslogic\Order_StatusBL.cs" />
     <Compile Include="bussinesslogic\RefundMoneyBL.cs" />
     <Compile Include="bussinesslogic\SettingBL.cs" />
+    <Compile Include="dao\Contact_UsDAO.cs" />
     <Compile Include="dao\Order_DetailDAO.cs" />
     <Compile Include="dao\Order_MasterDAO.cs" />
     <Compile Include="dao\Order_StatusDAO.cs" />
@@ -584,6 +603,13 @@
     </Compile>
     <Compile Include="user\contact-us.aspx.designer.cs">
       <DependentUpon>contact-us.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\contact_us_submit.aspx.cs">
+      <DependentUpon>contact_us_submit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\contact_us_submit.aspx.designer.cs">
+      <DependentUpon>contact_us_submit.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\download_invoice.aspx.cs">
       <DependentUpon>download_invoice.aspx</DependentUpon>

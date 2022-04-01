@@ -133,6 +133,34 @@ jQuery('#frmPassword').on('submit', function (e) {
 	e.preventDefault();
 });
 
+jQuery('#frmContact').on('submit', function (e) {
+	//alert("Hello! I am an alert box!!");
+	jQuery('#contact_submit').attr('disabled', true);
+	jQuery('#form_msg').html('Please Wait ...');
+	jQuery.ajax({
+		url: 'contact_us_submit',
+		type: 'post',
+		data: jQuery('#frmContact').serialize(),
+		dataType: 'json',
+		success: function (result) {
+			jQuery('#contact_submit').attr('disabled', false);
+			jQuery('#form_msg').html('');
+			var data = jQuery.parseJSON(result);
+			if (data.status == 'error') {
+				jQuery('#' + data.field).css("color", "#e02c2b");
+				jQuery('#' + data.field).html(data.msg);
+				grecaptcha.reset();
+			}
+			if (data.status == 'success') {
+				jQuery('#' + data.field).css("color", "green");
+				jQuery('#' + data.field).html(data.msg);
+				jQuery('#frmContact')[0].reset();
+				grecaptcha.reset();
+			}
+		}
+	});
+	e.preventDefault();
+});
 
 function add_to_cart(id, type) {
 	var qty = jQuery('#qty' + id).val();

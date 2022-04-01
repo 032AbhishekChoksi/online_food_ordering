@@ -14,7 +14,7 @@ namespace online_food_ordering.model
         private string subject;
         private string message;
         private DateTime added_on;
-
+        private byte status;
         public Contact_Us()
         {
             id = 0;
@@ -23,8 +23,9 @@ namespace online_food_ordering.model
             mobile = 0;
             subject = string.Empty;
             message = string.Empty;
+            status = 1;
         }
-        public Contact_Us(int id, string name, string email, long mobile, string subject, string message, DateTime added_on)
+        public Contact_Us(int id, string name, string email, long mobile, string subject, string message, DateTime added_on, byte status)
         {
             this.id = id;
             this.name = name;
@@ -33,8 +34,9 @@ namespace online_food_ordering.model
             this.subject = subject;
             this.message = message;
             this.added_on = added_on;
+            this.status = status;
         }
-        public Contact_Us(string name, string email, long mobile, string subject, string message, DateTime added_on)
+        public Contact_Us(string name, string email, long mobile, string subject, string message, DateTime added_on, byte status)
         {
             this.name = name;
             this.email = email;
@@ -42,6 +44,7 @@ namespace online_food_ordering.model
             this.subject = subject;
             this.message = message;
             this.added_on = added_on;
+            this.status = status;
         }
         public int GetId() => id;
         public void SetId(int id) => this.id = id;
@@ -57,5 +60,7 @@ namespace online_food_ordering.model
         public void SetMessage(string message) => this.message = message;
         public DateTime GetAddedOn() => added_on;
         public void SetAddedOn(DateTime added_on) => this.added_on = added_on;
+        public byte GetStatus() => status;
+        public void SetStatus(byte status) => this.status = status;
     }
 }
