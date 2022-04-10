@@ -25,7 +25,7 @@ namespace online_food_ordering.dao
             }
             return connection;
         }
-        public DataTable DisplayDishCategory(string FilterType, string cat_dish_str)
+        public DataTable DisplayDishCategory(string FilterCategory, string cat_dish_str, string FilterDishType,string dishType)
         {
             DataTable dataTable = new DataTable();
             try
@@ -36,8 +36,10 @@ namespace online_food_ordering.dao
                     CommandType = CommandType.StoredProcedure,
                     Connection = con
                 };
-                cmd.Parameters.AddWithValue("@FilterType", FilterType);
+                cmd.Parameters.AddWithValue("@FilterCategory", FilterCategory);
                 cmd.Parameters.AddWithValue("@cat_dish_str", cat_dish_str);
+                cmd.Parameters.AddWithValue("@FilterDishType", FilterDishType);
+                cmd.Parameters.AddWithValue("@dishType", dishType.ToString().Trim(' '));
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 adp.Fill(dataTable);
                 cmd.Dispose();

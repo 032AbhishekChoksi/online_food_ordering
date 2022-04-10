@@ -10,8 +10,8 @@ namespace online_food_ordering.user
     public partial class pgRedirect : System.Web.UI.Page
     {
         //private static readonly string PAYTM_ENVIRONMENT = "TEST";
-        private static readonly string PAYTM_MERCHANT_KEY = "rKFy9v9vGjp7ajt5";  //Change this constant's value with Merchant key received from Paytm.
-        private static readonly string PAYTM_MERCHANT_MID = "TYmwCE61492093834199"; //Change this constant's value with MID (Merchant ID) received from Paytm.
+        private static readonly string PAYTM_MERCHANT_KEY = "jtP70ccHp@Uw3M2P";  //Change this constant's value with Merchant key received from Paytm.
+        private static readonly string PAYTM_MERCHANT_MID = "zVVaTS86143641591091"; //Change this constant's value with MID (Merchant ID) received from Paytm.
         private static readonly string PAYTM_MERCHANT_WEBSITE = "WEBSTAGING"; //Change this constant's value with Website name received from Paytm.
         //private static string PAYTM_STATUS_QUERY_NEW_URL = "https://securegw-stage.paytm.in/merchant-status/getTxnStatus";
         protected string PAYTM_TXN_URL = "https://securegw-stage.paytm.in/theia/processTransaction";

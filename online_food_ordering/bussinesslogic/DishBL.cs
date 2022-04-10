@@ -9,12 +9,12 @@ namespace online_food_ordering.bussinesslogic
 {
     public class DishBL
     {
-        public DataTable DisplayDishCategory(string FilterType, string cat_dish_str)
+        public DataTable DisplayDishCategory(string FilterCategory, string cat_dish_str, string FilterDishType, string dishType)
         {
             DishDAO dishDAO = new DishDAO();
             try
             {
-                return dishDAO.DisplayDishCategory(FilterType, cat_dish_str);
+                return dishDAO.DisplayDishCategory(FilterCategory, cat_dish_str,FilterDishType,dishType);
             }
             catch (Exception)
             {

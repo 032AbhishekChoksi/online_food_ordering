@@ -17,8 +17,9 @@ namespace online_food_ordering
         int id = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-            
+            Page.Title = "Send Coupon Code | Billy Admin Panel";
+
+
             if (Request.QueryString["id"] != null)
             {
                 id = Convert.ToInt32(Request.QueryString["id"]);

@@ -23,10 +23,16 @@ namespace online_food_ordering.user
         public string[] cat_dish_arr;
         public string cat_dish;
         private string cat_dish_str;
-        private string FilterType;
+        private string FilterCategory;
         private SettingBL settingBL;
+        private DataTable dt = null;
         protected string websiteclose = string.Empty;
         protected string websiteclosemsg = string.Empty;
+        private string[] arrType = new string[] { "veg", "non-veg", "both" };
+        protected string dish_type = string.Empty;
+        private string FilterDishType;
+        private string dish_type_str = string.Empty;
+
         protected void Page_Init(object sender, EventArgs e)
         {
             dishBL = new DishBL();
@@ -51,15 +57,20 @@ namespace online_food_ordering.user
             }
 
             lblNoRecords.Text = string.Empty;
-            FilterType = string.Empty;
+            FilterCategory = string.Empty;
             if (Request.QueryString["cat_dish"] != null)
             {
-                FilterType = "cat_dish";
+                FilterCategory = "cat_dish";
                 cat_dish = Request.QueryString["cat_dish"].ToString();
                 cat_dish_arr = cat_dish.Split(':');
                 cat_dish_str = String.Join(",", cat_dish_arr);
             }
-            
+            if (Request.QueryString["dish_type"] != null)
+            {
+                FilterDishType = "dish_type";
+                dish_type = Request.QueryString["dish_type"].ToString();
+            }
+
             cartArr = classFunction.getUserFullCart();
            
             Page.Title = "Shop | Billy";
@@ -73,12 +84,31 @@ namespace online_food_ordering.user
             }
             else
             {
-                FilterType = string.Empty;
+                FilterCategory = string.Empty;
             }
-
-            if (dishBL.DisplayDishCategory(FilterType, cat_dish_str).Rows.Count > 0)
+            if (!string.IsNullOrEmpty(dish_type))
             {
-                rDishCategory.DataSource = dishBL.DisplayDishCategory(FilterType, cat_dish_str);
+                if (dish_type.Equals("both"))
+                {
+                    FilterDishType = string.Empty;
+                    dish_type_str = string.Empty;
+                }
+                else
+                {
+                    dish_type_str = dish_type;
+                }
+                
+            }
+            else
+            {
+                FilterDishType = string.Empty;
+            }
+          
+            dt = dishBL.DisplayDishCategory(FilterCategory, cat_dish_str,FilterDishType, dish_type_str);
+            
+            if (dt.Rows.Count > 0)
+            {
+                rDishCategory.DataSource = dt;
                 rDishCategory.DataBind();
             }
             else
@@ -165,6 +195,22 @@ namespace online_food_ordering.user
                     i++;
                 }
             }
+            return code;
+        }
+        protected string DisplayFoodType()
+        {
+            string code = string.Empty;
+            for (int i = 0; i < arrType.Length; i++)
+            {
+                string type_radio_selected = string.Empty;
+                if (dish_type.Equals(arrType[i]))
+                {
+                    type_radio_selected = "checked='checked'";
+                }
+                string strtoupper = char.ToUpper(arrType[i][0]) + arrType[i].Substring(1);
+                code += strtoupper + "<input type='radio' name='dish_type' " + type_radio_selected + " value='"+ arrType[i] + "' style='width: 16px;height: 12px;margin-right: 5px;margin-left: 5px;' onclick=\"setFoodType('" + arrType[i] + "')\" />&nbsp;&nbsp ";
+            }
+
             return code;
         }
     }

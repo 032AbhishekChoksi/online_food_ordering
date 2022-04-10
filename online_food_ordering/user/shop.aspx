@@ -17,6 +17,15 @@
                     <div class="banner-area pb-30">
                         <img alt="Billy Banner" src="assets/img/banner/banner-49.jpg">
                     </div>
+                    <div class="shop-topbar-wrapper">
+                        <div class="product-sorting-wrapper">
+                            <div class="product-show shorting-style">
+                                <%= DisplayFoodType() %>
+                                <%--<input class="search_box" type="textbox" id="search" value="<?php echo $search_str ?>" />
+                                <input class="search_box seahc_box_btn" type="button" class="submit btn-style" value="Search" onclick="setSearch()" />--%>
+                            </div>
+                        </div>
+                    </div>
                     <div class="grid-list-product-wrapper">
                         <div class="product-grid product-view pb-20">
                             <div class="row">
@@ -127,8 +136,8 @@
     </div>
     <form method="get" id="frmCatDish">
         <input type="hidden" name="cat_dish" id="cat_dish" value='<%= cat_dish %>' />
- <%--       <input type="hidden" name="dish_type" id="dish_type" value='<?php echo  $dish_type; ?>' />
-        <input type="hidden" name="search_str" id="search_str" value='<?php echo $search_str ?>' />--%>
+        <input type="hidden" name="dish_type" id="dish_type" value='<%= dish_type %>' />
+         <%--<input type="hidden" name="search_str" id="search_str" value='<?php echo $search_str ?>' />--%>
     </form>
     <script>
     function set_checkbox(id) {

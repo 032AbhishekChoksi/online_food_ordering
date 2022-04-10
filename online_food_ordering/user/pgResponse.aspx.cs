@@ -12,7 +12,7 @@ namespace online_food_ordering.user
 {
     public partial class pgResponse : System.Web.UI.Page
     {
-        private static readonly string PAYTM_MERCHANT_KEY = "rKFy9v9vGjp7ajt5";  //Change this constant's value with Merchant key received from Paytm.
+        private static readonly string PAYTM_MERCHANT_KEY = "jtP70ccHp@Uw3M2P";  //Change this constant's value with Merchant key received from Paytm.
         private Dictionary<string, string> paramList = new Dictionary<string, string>();
         private ClassUser objUser;
         private CustomerBL customerBL;
