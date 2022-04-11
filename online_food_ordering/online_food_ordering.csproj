@@ -299,6 +299,7 @@
     <Content Include="user\profile.aspx" />
     <Content Include="user\shop.aspx" />
     <Content Include="user\success.aspx" />
+    <Content Include="user\updaterating.aspx" />
     <Content Include="user\update_profile.aspx" />
     <Content Include="user\verify.aspx" />
     <Content Include="user\wallet.aspx" />
@@ -482,6 +483,7 @@
     <Compile Include="bussinesslogic\Order_DetailBL.cs" />
     <Compile Include="bussinesslogic\Order_MasterBL.cs" />
     <Compile Include="bussinesslogic\Order_StatusBL.cs" />
+    <Compile Include="bussinesslogic\RatingBL.cs" />
     <Compile Include="bussinesslogic\RefundMoneyBL.cs" />
     <Compile Include="bussinesslogic\SettingBL.cs" />
     <Compile Include="bussinesslogic\WalletBL.cs" />
@@ -489,6 +491,7 @@
     <Compile Include="dao\Order_DetailDAO.cs" />
     <Compile Include="dao\Order_MasterDAO.cs" />
     <Compile Include="dao\Order_StatusDAO.cs" />
+    <Compile Include="dao\RatingDAO.cs" />
     <Compile Include="dao\RefundMoneyDAO.cs" />
     <Compile Include="dao\WalletDAO.cs" />
     <Compile Include="deliveryboy\index.aspx.cs">
@@ -734,6 +737,13 @@
     </Compile>
     <Compile Include="user\success.aspx.designer.cs">
       <DependentUpon>success.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\updaterating.aspx.cs">
+      <DependentUpon>updaterating.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\updaterating.aspx.designer.cs">
+      <DependentUpon>updaterating.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\update_profile.aspx.cs">
       <DependentUpon>update_profile.aspx</DependentUpon>

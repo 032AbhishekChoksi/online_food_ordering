@@ -67,7 +67,8 @@
                                                              </div>
                                                              <div class="item-detail">
                                                                  <img src='assets/img/icon-img/<%# Eval("dishtype").ToString().Trim(' ')%>.png' alt="" class="imge" style="height: 25px; width: 25px;" />
-                                                                 <a href="#" class="item-name"><%# Eval("dish_name") %></a>
+                                                                 <%# DisplayRating(Eval("did")) %>
+                                                                 <a href="javascript:void(0)" class="item-name"><%# Eval("dish_name") %></a>
                                                                  <div class="item-radio" style="margin-top: 5px;">
                                                                      <asp:HiddenField ID="hdid" runat="server" Value='<%# Eval("did") %>' />
                                                                      <asp:Repeater ID="rDishDetails" runat="server">

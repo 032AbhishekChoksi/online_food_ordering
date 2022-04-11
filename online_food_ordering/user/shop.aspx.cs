@@ -32,7 +32,7 @@ namespace online_food_ordering.user
         protected string dish_type = string.Empty;
         private string FilterDishType;
         private string dish_type_str = string.Empty;
-
+        private RatingBL ratingBL;
         protected void Page_Init(object sender, EventArgs e)
         {
             dishBL = new DishBL();
@@ -43,6 +43,7 @@ namespace online_food_ordering.user
             cat_dish = string.Empty;
             cat_dish_str = string.Empty;
             settingBL = new SettingBL();
+            ratingBL = new RatingBL();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -212,6 +213,16 @@ namespace online_food_ordering.user
             }
 
             return code;
+        }
+        protected string DisplayRating(object p_did)
+        {
+            string html = string.Empty;
+            int did = Convert.ToInt32(p_did);
+            Dish dish = new Dish();
+            dish.SetId(did);
+
+            html = ratingBL.getRatingByDishId(dish);
+            return html;
         }
     }
 }

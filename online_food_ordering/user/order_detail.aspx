@@ -41,17 +41,7 @@
 									<td><%=getOrderDetails[key]["qty"] %></td>
 									<td>₹ <%= item_price %></td>
 									<td id="rating<%=getOrderDetails[key]["dish_detail_id"] %>">
-									<%
-                                        if (Convert.ToInt32(getOrderById["order_status"]) == 4)
-                                        {
-
-                                        }
-									%>
-									<%--<?php
-									if ($getOrderById[0]['order_status'] == 4) {
-										echo getRating($list['dish_details_id'], $id);
-									}
-									?>--%>
+									<%= DisplayRating(getOrderById["order_status"],getOrderDetails[key]["dish_detail_id"]) %>
 									</td>
 								</tr>
 							<% } %>

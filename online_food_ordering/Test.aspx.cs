@@ -1,4 +1,6 @@
-﻿using System;
+﻿using online_food_ordering.bussinesslogic;
+using online_food_ordering.model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,8 +14,13 @@ namespace online_food_ordering
     {
         ClassFunction fun = new ClassFunction();
         protected void Page_Load(object sender, EventArgs e)
-        {
-            Response.Redirect("https://localhost:44350/email_body/orderemail.aspx?id=" + 19 + "&oid=" + 1016);
+        {           
+            RatingBL ratingBL = new RatingBL();
+            Dish dish = new Dish();
+            dish.SetId(6);
+            ratingBL.getRatingByDishId(dish);
+
+            // Response.Redirect("https://localhost:44350/email_body/orderemail.aspx?id=" + 19 + "&oid=" + 1016);
             //if (Request.Form["btnSubmit"] != null)
             //{
             //    string name = Request.Form["fname"].ToString();

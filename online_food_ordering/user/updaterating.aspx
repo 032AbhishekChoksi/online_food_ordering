@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="updaterating.aspx.cs" Inherits="online_food_ordering.user.updaterating" %>

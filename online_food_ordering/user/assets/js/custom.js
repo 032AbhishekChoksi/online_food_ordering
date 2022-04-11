@@ -252,7 +252,7 @@ function apply_coupon() {
 					swal("Warning Message", data.msg, "warning");
 				}
 			}
-		})
+		});
 	}
 }
 
@@ -264,14 +264,15 @@ function updaterating(id, oid) {
 		//jQuery('#coupon_code_msg').html('Please enter coupon code');
 	} else {
 		jQuery.ajax({
-			url: FRONT_SITE_PATH + 'updaterating',
+			url: 'updaterating',
 			type: 'post',
 			data: 'id=' + id + '&rate=' + rate + '&oid=' + oid,
+			dataType: 'json',
 			success: function (result) {
 				// console.log(result);
 				jQuery('#rating' + id).html("<div class='set_rating'>" + rate_str + "</div>");
 			}
-		})
+		});
 	}
 }
 function pay_now() {

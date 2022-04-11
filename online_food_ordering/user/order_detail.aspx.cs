@@ -16,10 +16,13 @@ namespace online_food_ordering.user
         private Order_MasterBL order_MasterBL;
         protected Dictionary<int, Dictionary<string, string>> getOrderDetails;
         private Order_DetailBL order_DetailBL;
+        private RatingBL ratingBL;
         protected void Page_Init(object sender, EventArgs e)
         {
             order_MasterBL = new Order_MasterBL();
             order_DetailBL = new Order_DetailBL();
+            ratingBL = new RatingBL();
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -49,6 +52,21 @@ namespace online_food_ordering.user
             Order_Master orderMaster = new Order_Master();
             orderMaster.SetId(oid);
             getOrderDetails = order_DetailBL.getOrderDetails(orderMaster);
+        }
+        protected string DisplayRating(object p_ostatus,object p_ddid)
+        {
+            string html = string.Empty;
+            int order_status = Convert.ToInt32(p_ostatus);
+            if(order_status == 4)
+            { 
+                int ddid = Convert.ToInt32(p_ddid);
+                Order_Detail order_Detail = new Order_Detail();
+                order_Detail.SetDishDetailId(ddid);
+                order_Detail.SetOrderId(oid);
+
+                html = ratingBL.getRating(order_Detail);
+            }
+            return html;
         }
     }
 }
