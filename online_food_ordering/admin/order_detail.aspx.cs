@@ -188,8 +188,11 @@ namespace online_food_ordering.admin
                             {
                                 string email = dr["email"].ToString();
                                 string from_referral_code = dr["from_referral_code"].ToString();
+                                customer = new Customer();
+                                customer.SetReferralCode(from_referral_code);
+                                int uid = customerBL.DisplayCustomerIdByReferralCode(customer);
                                 string msg = "Referral Amt from " + email;
-                                objUser.manageWallet(user_id, referral_amt, msg, "in", "", added_on);
+                                objUser.manageWallet(uid, referral_amt, msg, "in", "", added_on);
                             }                            
                         }
                     }
