@@ -250,5 +250,21 @@ namespace online_food_ordering.bussinesslogic
                 order_MasterDAO = null;
             }
         }
+        public Int32 DisplayTotalOrderByUidAndOStatus(Order_Master order_Master)
+        {
+            Order_MasterDAO order_MasterDAO = new Order_MasterDAO();
+            try
+            {
+                return order_MasterDAO.DisplayTotalOrderByUidAndOStatus(order_Master);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                order_MasterDAO = null;
+            }
+        }
     }
 }

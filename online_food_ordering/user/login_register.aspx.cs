@@ -30,6 +30,12 @@ namespace online_food_ordering.user
                 websiteclose = setting.GetWebsiteClose();
                 websiteclosemsg = setting.GetWebsiteCloseMsg();
             }
+
+            if (Request.QueryString["referral_code"] != null)
+            {
+                string referral_code = Request.QueryString["referral_code"].ToString();
+                Session["FROM_REFERRAL_CODE"] = referral_code;
+            }
         }
     }
 }

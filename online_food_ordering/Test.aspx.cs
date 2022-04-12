@@ -14,11 +14,17 @@ namespace online_food_ordering
     {
         ClassFunction fun = new ClassFunction();
         protected void Page_Load(object sender, EventArgs e)
-        {           
-            RatingBL ratingBL = new RatingBL();
-            Dish dish = new Dish();
-            dish.SetId(6);
-            ratingBL.getRatingByDishId(dish);
+        {
+            //RatingBL ratingBL = new RatingBL();
+            //Dish dish = new Dish();
+            //dish.SetId(6);
+            //ratingBL.getRatingByDishId(dish);
+
+            //Order_Master order_Master = new Order_Master();
+            //Order_MasterBL order_MasterBL = new Order_MasterBL();
+            //order_Master.SetUserId(16);
+            //order_Master.SetOrderStatus(4);
+            //order_MasterBL.DisplayTotalOrderByUidAndOStatus(order_Master);
 
             // Response.Redirect("https://localhost:44350/email_body/orderemail.aspx?id=" + 19 + "&oid=" + 1016);
             //if (Request.Form["btnSubmit"] != null)

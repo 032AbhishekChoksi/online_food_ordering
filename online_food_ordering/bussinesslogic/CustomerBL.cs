@@ -90,5 +90,21 @@ namespace online_food_ordering.bussinesslogic
                 customerDAO = null;
             }
         }
+        public Int32 DisplayCustomerIdByReferralCode(Customer customer)
+        {
+            CustomerDAO customerDAO = new CustomerDAO();
+            try
+            {
+                return customerDAO.DisplayCustomerIdByReferralCode(customer);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                customerDAO = null;
+            }
+        }
     }
 }

@@ -217,5 +217,46 @@ namespace online_food_ordering.dao
                 }
             }
         }
+        public Int32 DisplayCustomerIdByReferralCode(Customer customer)
+        {
+            int result;
+            SqlConnection con = GetConnection();
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_Display_UserIdByReferralCode")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@referral_code", customer.GetReferralCode());
+
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                result = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.Dispose();
+                if (result > 0)
+                {
+
+                    return result;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                {
+                    con.Close();
+                }
+            }
+        }
     }
 }

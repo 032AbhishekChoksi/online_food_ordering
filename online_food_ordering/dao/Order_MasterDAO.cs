@@ -562,5 +562,46 @@ namespace online_food_ordering.dao
             }
             return dataTable;
         }
+
+        public Int32 DisplayTotalOrderByUidAndOStatus(Order_Master order_Master)
+        {
+            SqlConnection con = GetConnection();
+            int result;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_Display_TotalOrderByUidAndOStatus")
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = con
+                };
+                cmd.Parameters.AddWithValue("@uid", order_Master.GetUserId());
+                cmd.Parameters.AddWithValue("@orderstatus", order_Master.GetOrderStatus());
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                result = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.Dispose();
+                if (result > 0)
+                {
+                    return result;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                {
+                    con.Close();
+                }
+            }
+        }
     }
 }

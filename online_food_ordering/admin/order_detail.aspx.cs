@@ -1,5 +1,6 @@
 ﻿using online_food_ordering.bussinesslogic;
 using online_food_ordering.model;
+using online_food_ordering.user;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,12 +21,21 @@ namespace online_food_ordering.admin
         private Order_StatusBL order_StatusBL;
         protected string deliveryBoy = string.Empty;
         private Delivery_BoyBL delivery_BoyBL;
+        private SettingBL settingBL;
+        private Dictionary<string, string> getOrderById;
+        private CustomerBL customerBL;
+        private DataTable dt;
+        private ClassUser objUser;
+        private DateTime added_on = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
         protected void Page_Init(object sender, EventArgs e)
         {
             order_MasterBL = new Order_MasterBL();
             order_DetailBL = new Order_DetailBL();
             order_StatusBL = new Order_StatusBL();
             delivery_BoyBL = new Delivery_BoyBL();
+            settingBL = new SettingBL();
+            customerBL = new CustomerBL();
+            objUser = new ClassUser();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -131,7 +141,8 @@ namespace online_food_ordering.admin
             else
             {
                 order_MasterBL.UpdateOrderStatusById(order_Master);
-            }            
+            }
+            ReferralAmount(status);
         }
 
         protected void ddldeliveryboy_SelectedIndexChanged(object sender, EventArgs e)
@@ -144,6 +155,46 @@ namespace online_food_ordering.admin
             order_Master.SetId(oid);
             order_Master.SetDeliveryBoyId(did);
             order_MasterBL.UpdateDeliveryBoyStatusByOid(order_Master);
+        }
+        private void ReferralAmount(int p_status)
+        {
+            decimal referral_amt = 0;
+            Setting setting = new Setting();
+            setting.SetId(1);
+            setting = settingBL.DisplaySettingById(setting);
+
+            referral_amt = setting.GetReferralAmt();
+
+            if(referral_amt > 0)
+            {
+                if (p_status == 4)
+                {
+                    Order_Master order_Master = new Order_Master();
+                    order_Master.SetId(oid);
+                    getOrderById = order_MasterBL.GetOrderByIdFunction(order_Master);
+                    int user_id = Convert.ToInt32(getOrderById["user_id"]);
+                    
+                    order_Master.SetUserId(user_id);
+                    order_Master.SetOrderStatus(4);
+                    int total_order = order_MasterBL.DisplayTotalOrderByUidAndOStatus(order_Master);
+                    if (total_order == 1)
+                    {
+                        Customer customer = new Customer();
+                        customer.SetId(user_id);                       
+                        dt = customerBL.DisplayCustomerByCid(customer);
+                        if(dt.Rows.Count > 0)
+                        {
+                            foreach(DataRow dr in dt.Rows)
+                            {
+                                string email = dr["email"].ToString();
+                                string from_referral_code = dr["from_referral_code"].ToString();
+                                string msg = "Referral Amt from " + email;
+                                objUser.manageWallet(user_id, referral_amt, msg, "in", "", added_on);
+                            }                            
+                        }
+                    }
+                }
+            }
         }
     }
 }

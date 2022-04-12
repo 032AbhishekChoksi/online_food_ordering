@@ -56,6 +56,12 @@ namespace online_food_ordering.user
                         string from_referral_code = String.Empty;
                         string hashpassaword = fun.SecurePassword(password);
 
+                        if(Session["FROM_REFERRAL_CODE"] != null)
+                        {
+                            from_referral_code = Session["FROM_REFERRAL_CODE"].ToString();
+                            Session.Remove("FROM_REFERRAL_CODE");
+                        }
+
                         // Insert record in Customer Table
                         Customer customer = new Customer(name, email, mobile, hashpassaword, 1, 0, rand_str, referral_code, from_referral_code, added_on);
                         lastinsertedid = customerBL.InsertCustomer(customer);
