@@ -14,14 +14,19 @@ namespace online_food_ordering.admin
     {
         private AdminBL adminBL;
         private SettingBL settingBL;
+        private MaintenanceBL maintenanceBL;
+        private DataTable dt;
         protected void Page_Init(object sender, EventArgs e)
         {
             adminBL = new AdminBL();
             settingBL = new SettingBL();
+            maintenanceBL = new MaintenanceBL();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Login | Billy Admin Panel";
+            UnderMaintenance();
+
             if (Session["ADMIN_USER"] != null)
             {
                 Response.Redirect("index");
@@ -72,6 +77,27 @@ namespace online_food_ordering.admin
             catch (Exception ex)
             {
                 Response.Write("Oops! error occured :" + ex.Message.ToString());
+            }
+        }
+        private void UnderMaintenance()
+        {
+            // Fill Record For Customer Toggle Button
+            Maintenance maintenance = new Maintenance();
+            maintenance.SetName("Admin");
+            dt = maintenanceBL.DisplayMaintenanceByName(maintenance);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dr["name"].ToString().Equals("Admin"))
+                    {
+                        bool status = Convert.ToBoolean(dr["status"]);
+                        if (status)
+                        {
+                            Response.Redirect("~/page/underconstructor.html", false);
+                        }
+                    }
+                }
             }
         }
     }

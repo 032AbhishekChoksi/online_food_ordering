@@ -2,6 +2,7 @@
 using online_food_ordering.model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -20,14 +21,19 @@ namespace online_food_ordering.user
         private SettingBL settingBL;
         protected string websiteclose = string.Empty;
         protected string websiteclosemsg = string.Empty;
+        private MaintenanceBL maintenanceBL;
+        private DataTable dt;
+
         protected void Page_Init(object sender, EventArgs e)
         {
             classFunction = new ClassFunction();
             objUser = new ClassUser();
             settingBL = new SettingBL();
+            maintenanceBL = new MaintenanceBL();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            UnderMaintenance();
             Setting setting = new Setting();
             setting.SetId(1);
             setting = settingBL.DisplaySettingById(setting);
@@ -48,6 +54,27 @@ namespace online_food_ordering.user
                 lblUsreName.Text = Session["FOOD_USER_NAME"].ToString();
             }
             lblWalletAmount.Text = "₹" + Math.Round(amt).ToString();
+        }
+        private void UnderMaintenance()
+        {
+            // Fill Record For Customer Toggle Button
+            Maintenance maintenance = new Maintenance();
+            maintenance.SetName("Customer");
+            dt = maintenanceBL.DisplayMaintenanceByName(maintenance);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dr["name"].ToString().Equals("Customer"))
+                    {
+                        bool status = Convert.ToBoolean(dr["status"]);
+                        if (status)
+                        {
+                            Response.Redirect("~/page/underconstructor.html",false);
+                        }
+                    }
+                }
+            }
         }
     }
 }

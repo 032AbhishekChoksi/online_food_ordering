@@ -141,6 +141,9 @@
     <Content Include="deliveryboy\index.aspx" />
     <Content Include="deliveryboy\login.aspx" />
     <Content Include="deliveryboy\logout.aspx" />
+    <Content Include="developer\index.aspx" />
+    <Content Include="developer\login.aspx" />
+    <Content Include="developer\logout.aspx" />
     <Content Include="email_body\forgotpassword.html" />
     <Content Include="email_body\orderemail.aspx" />
     <Content Include="lib\itextsharp.dll" />
@@ -477,9 +480,11 @@
     <Compile Include="bussinesslogic\Coupon_CodeBL.cs" />
     <Compile Include="bussinesslogic\CustomerBL.cs" />
     <Compile Include="bussinesslogic\Delivery_BoyBL.cs" />
+    <Compile Include="bussinesslogic\DeveloperBL.cs" />
     <Compile Include="bussinesslogic\DishBL.cs" />
     <Compile Include="bussinesslogic\Dish_CartBL.cs" />
     <Compile Include="bussinesslogic\Dish_DetailsBL.cs" />
+    <Compile Include="bussinesslogic\MaintenanceBL.cs" />
     <Compile Include="bussinesslogic\Order_DetailBL.cs" />
     <Compile Include="bussinesslogic\Order_MasterBL.cs" />
     <Compile Include="bussinesslogic\Order_StatusBL.cs" />
@@ -488,6 +493,8 @@
     <Compile Include="bussinesslogic\SettingBL.cs" />
     <Compile Include="bussinesslogic\WalletBL.cs" />
     <Compile Include="dao\Contact_UsDAO.cs" />
+    <Compile Include="dao\DeveloperDAO.cs" />
+    <Compile Include="dao\MaintenanceDAO.cs" />
     <Compile Include="dao\Order_DetailDAO.cs" />
     <Compile Include="dao\Order_MasterDAO.cs" />
     <Compile Include="dao\Order_StatusDAO.cs" />
@@ -515,6 +522,27 @@
     <Compile Include="deliveryboy\logout.aspx.designer.cs">
       <DependentUpon>logout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="developer\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="developer\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="developer\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="developer\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="developer\logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="developer\logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="email_body\orderemail.aspx.cs">
       <DependentUpon>orderemail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -522,6 +550,8 @@
     <Compile Include="email_body\orderemail.aspx.designer.cs">
       <DependentUpon>orderemail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="model\Developer.cs" />
+    <Compile Include="model\Maintenance.cs" />
     <Compile Include="user\apply_coupon.aspx.cs">
       <DependentUpon>apply_coupon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

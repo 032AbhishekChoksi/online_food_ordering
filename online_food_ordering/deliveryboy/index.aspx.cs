@@ -20,16 +20,19 @@ namespace online_food_ordering.deliveryboy
         private DataTable dt;
         private ClassUser objUser;
         private DateTime added_on = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
+        private MaintenanceBL maintenanceBL;
         protected void Page_Init(object sender, EventArgs e)
         {
             order_MasterBL = new Order_MasterBL();
             settingBL = new SettingBL();
             customerBL = new CustomerBL();
             objUser = new ClassUser();
+            maintenanceBL = new MaintenanceBL();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Index | Billy Delivery Boy Panel";
+            UnderMaintenance();
             if (Session["DELIVERY_BOY_USER_LOGIN"] == null)
             {
                 Response.Redirect("login");
@@ -109,6 +112,27 @@ namespace online_food_ordering.deliveryboy
             DataTable dt = order_MasterBL.DisplayOrderDeliveryByDeliveryBoyId(delivery_Boy);
             r1.DataSource = dt;
             r1.DataBind();
+        }
+        private void UnderMaintenance()
+        {
+            // Fill Record For Customer Toggle Button
+            Maintenance maintenance = new Maintenance();
+            maintenance.SetName("DeliveryBoy");
+            dt = maintenanceBL.DisplayMaintenanceByName(maintenance);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dr["name"].ToString().Equals("DeliveryBoy"))
+                    {
+                        bool status = Convert.ToBoolean(dr["status"]);
+                        if (status)
+                        {
+                            Response.Redirect("~/page/underconstructor.html", false);
+                        }
+                    }
+                }
+            }
         }
     }
 }

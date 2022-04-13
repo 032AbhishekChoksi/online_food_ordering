@@ -14,19 +14,24 @@ namespace online_food_ordering.deliveryboy
     {
         private SettingBL settingBL;
         private Delivery_BoyBL deliveryBoyBL;
+        private MaintenanceBL maintenanceBL;
+        private DataTable dt;
         protected void Page_Init(object sender, EventArgs e)
         {
             settingBL = new SettingBL();
             deliveryBoyBL = new Delivery_BoyBL();
+            maintenanceBL = new MaintenanceBL();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Login | Billy Delivery Boy Panel";
+            UnderMaintenance();
             if (Session["DELIVERY_BOY_USER_LOGIN"] != null)
             {
                 Response.Redirect("index");
             }
             FetchThemeColor(1);
+            
         }
 
         protected void bttnsubmit_Click(object sender, EventArgs e)
@@ -87,6 +92,27 @@ namespace online_food_ordering.deliveryboy
             catch (Exception ex)
             {
                 Response.Write("Oops! error occured :" + ex.Message.ToString());
+            }
+        }
+        private void UnderMaintenance()
+        {
+            // Fill Record For Customer Toggle Button
+            Maintenance maintenance = new Maintenance();
+            maintenance.SetName("DeliveryBoy");
+            dt = maintenanceBL.DisplayMaintenanceByName(maintenance);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dr["name"].ToString().Equals("DeliveryBoy"))
+                    {
+                        bool status = Convert.ToBoolean(dr["status"]);
+                        if (status)
+                        {
+                            Response.Redirect("~/page/underconstructor.html", false);
+                        }
+                    }
+                }
             }
         }
     }
