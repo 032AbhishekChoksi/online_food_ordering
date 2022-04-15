@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user/user.Master" AutoEventWireup="true" CodeBehind="order_detail.aspx.cs" Inherits="online_food_ordering.user.order_detail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="c2" runat="server">
+<script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
 <div class="breadcrumb-area gray-bg">
 <div class="container">
     <div class="breadcrumb-content">
@@ -16,7 +17,7 @@
 		<h3 class="page-title">Order Detail</h3>
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-12">
-				<form method="post">
+				<form method="post" id="f1" runat="server">
 					<div class="table-content table-responsive">
 						<table style="border:1px solid #e9e8ef;">
 							<tr>
@@ -25,7 +26,7 @@
 								<th width="15%">Unit Price</th>
 								<th width="5%">Qty</th>
 								<th width="15%">Total Price</th>
-								<th width="15%"></th>
+								<th width="15%">Rating</th>
 							</tr>
 							<% 
                                 int total_price = 0;
@@ -46,7 +47,24 @@
 								</tr>
 							<% } %>
 							<tr>
-								<td colspan="3"></td>
+								<td colspan="3">
+                                    <div class="track">
+                                        <%if (getOrderById["order_status"].Equals("5"))
+                                            {%>
+                                        <div id="FoodCancel" runat="server" class="step active"><span class="icon"><i class="fa fa-times"></i></span><span class="text">Cancel</span></div>
+                                        <%
+                                        }
+                                        else
+                                        {
+                                        %>
+                                        <div id="FoodPending" runat="server" class="step"><span class="icon"><i class="fa fa-clock"></i></span><span class="text">Pending</span></div>
+                                        <div id="FoodCooking" runat="server" class="step"><span class="icon"><i class="fa fa-user"></i></span><span class="text">Cooking</span> </div>
+                                        <div id="FoodOnTheWay" runat="server" class="step"><span class="icon"><i class="fa fa-truck"></i></span><span class="text">On The Way</span> </div>
+                                        <div id="FoodDelivered" runat="server" class="step"><span class="icon"><i class="fas fa-box"></i></span><span class="text">Food Delivered</span> </div>
+                                        <%} %>
+                                    </div>
+
+								</td>
 								<td><strong>Total</strong></td>
 								<td><strong>₹ <%= total_price %></strong></td>
 								<td></td>
@@ -76,4 +94,5 @@
 		</div>
 	</div>
 </div>
+
 </asp:Content>

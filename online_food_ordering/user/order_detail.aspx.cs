@@ -38,8 +38,34 @@ namespace online_food_ordering.user
                 Order_Master order_Master = new Order_Master();
                 order_Master.SetId(oid);
                 getOrderById = order_MasterBL.GetOrderByIdFunction(order_Master);
-
-                if(Convert.ToInt32(getOrderById["user_id"]) != Convert.ToInt32(Session["FOOD_USER_ID"]))
+             
+                int orderstatus  = Convert.ToInt32(getOrderById["order_status"]);
+                if (orderstatus != 5)
+                { 
+                    if (orderstatus == 1)
+                    {
+                        FoodPending.Attributes.Add("class", "step active");
+                    }
+                    else if (orderstatus == 2)
+                    {
+                        FoodPending.Attributes.Add("class", "step active");
+                        FoodCooking.Attributes.Add("class", "step active");
+                    }
+                    else if (orderstatus == 3)
+                    {
+                        FoodPending.Attributes.Add("class", "step active");
+                        FoodCooking.Attributes.Add("class", "step active");
+                        FoodOnTheWay.Attributes.Add("class", "step active");
+                    }
+                    else if (orderstatus == 4)
+                    {
+                        FoodPending.Attributes.Add("class", "step active");
+                        FoodCooking.Attributes.Add("class", "step active");
+                        FoodOnTheWay.Attributes.Add("class", "step active");
+                        FoodDelivered.Attributes.Add("class", "step active");
+                    }
+                }
+                if (Convert.ToInt32(getOrderById["user_id"]) != Convert.ToInt32(Session["FOOD_USER_ID"]))
                 {
                     Response.Redirect("shop");
                 }
