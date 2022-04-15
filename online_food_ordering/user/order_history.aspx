@@ -16,19 +16,20 @@
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-12">
 				<form method="post">
-					<div class="table-content table-responsive">
+					<div class="table-responsive">
 						<asp:Repeater ID="r1" runat="server">
 								<HeaderTemplate>
-						<table>
+						<table id="order-listing" class="table" style="text-align:center;vertical-align: middle;">
 							<thead>
 								<tr>
-									<th>Order No</th>
-									<th>Price</th>
-									<th>Coupon</th>
-									<th>Address</th>
-									<th>Zipcode</th>
-									<th>Order Status</th>
-									<th>Payment Status</th>
+									<th width="10%">Order No</th>
+									<th width="10%">Price</th>
+									<th width="15%">Coupon</th>
+									<th width="20%">Address</th>
+									<th width="10%">Zipcode</th>
+									<th width="10%">Order Status</th>
+									<th width="15%">Delivery Boy</th>
+									<th width="10%">Payment Status</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -57,6 +58,7 @@
 												<%# Eval("order_status_str") %>
 												<%# CheckOrderStatus(Eval("id"),Eval("order_status"),Eval("payment_status")) %>
 											</td>
+											<td><%# DisplayDeliveryBoyDetails(Eval("delivery_boy_id")) %></td>
 											<td>
 												<div class="payment_status payment_status_<%# Eval("payment_status") %>"><%# Eval("payment_status", "{0:C}") %></div>
 											</td>

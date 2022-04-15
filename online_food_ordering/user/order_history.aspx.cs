@@ -2,6 +2,7 @@
 using online_food_ordering.model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,9 +16,12 @@ namespace online_food_ordering.user
         private int uid = 0;
         private int oid = 0;
         private string paymentstatus = string.Empty;
+        private Delivery_BoyBL delivery_BoyBL;
+        private DataTable dt;
         protected void Page_Init(object sender, EventArgs e)
         {
             order_MasterBL = new Order_MasterBL();
+            delivery_BoyBL = new Delivery_BoyBL();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -100,6 +104,25 @@ namespace online_food_ordering.user
             order_MasterBL.UpdateOrderStatusAndCancelStatusById(order_Master);
            
             Response.Redirect("order_history");
+        }
+        protected string DisplayDeliveryBoyDetails(object delivery_boy_id)
+        {
+            string html = "-";
+            string deliveryBoyId = delivery_boy_id.ToString();
+            if (!string.IsNullOrEmpty(deliveryBoyId))
+            {
+                Delivery_Boy delivery_Boy = new Delivery_Boy();
+                delivery_Boy.SetId(Convert.ToInt32(deliveryBoyId));
+                dt = delivery_BoyBL.DisplayDeliveyBoyById(delivery_Boy);
+                if(dt.Rows.Count > 0)
+                {
+                    foreach(DataRow dr in dt.Rows)
+                    {
+                        html = "<a href='https://wa.me/"+dr["mobile"].ToString()+ "?text=Hi' target='_blank' style='color:#e02c2b;font-size: 14px;font-weight: 500;'>" + dr["name"].ToString() + " ( " + dr["mobile"] + " ) " + "<a>";
+                    }
+                }
+            }
+            return html;
         }
     }
 }
