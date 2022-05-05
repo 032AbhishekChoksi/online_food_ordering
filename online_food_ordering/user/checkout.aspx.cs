@@ -131,9 +131,9 @@ namespace online_food_ordering
                     string checkout_address = Request.Form["checkout_address"];
                     string payment_type = Request.Form["payment_type"];
                     string coupon_code = string.Empty;
-                    
+                    string temp_coupon_code = Request.Form["coupon_code"];
 
-                    if (Session["COUPON_CODE"] != null)
+                    if (Session["COUPON_CODE"] != null && !String.IsNullOrEmpty(temp_coupon_code))
                     {
                         coupon_code = Session["COUPON_CODE"].ToString();
                         final_price = Convert.ToDecimal(Session["FINAL_PRICE"]);
