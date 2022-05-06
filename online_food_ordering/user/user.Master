@@ -172,8 +172,8 @@
 														</span></h4>
 												</div>
 												<div class="shopping-cart-btn">
-													<a href="cart">view cart</a>
-													<a href="checkout">checkout</a>
+													<a href="cart" onclick="window.location.href='cart'">view cart</a>
+													<a href="checkout" onclick="window.location.href='checkout'">checkout</a>
 												</div>
 											</div>
 										 <%}						%>

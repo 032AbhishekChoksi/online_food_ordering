@@ -50,11 +50,11 @@ namespace online_food_ordering.user
                         expired_on = Convert.ToDateTime(dr["expired_on"].ToString());
                     }
 
-                    if(getcartTotalPrice > cart_min_value)
+                    if(getcartTotalPrice > cart_min_value && getcartTotalPrice > coupon_value)
                     {
                         if(DateTime.Compare(cur_time, expired_on) > 0 || DateTime.Compare(cur_time, expired_on) == 0)
                         {
-                            json = js.Serialize(new { status = "error", msg = "Coupon code expired" });
+                            json = js.Serialize(new { status = "error", msg = "Coupon code expired"});
                         }
                         else
                         {
