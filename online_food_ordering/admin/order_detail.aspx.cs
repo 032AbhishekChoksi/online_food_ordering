@@ -138,10 +138,34 @@ namespace online_food_ordering.admin
                 }                
                 order_MasterBL.UpdateOrderStatusAndCancelStatusById(order_Master);
             }
+            else if (status == 4)
+            {
+                order_Master = new Order_Master();
+                order_Master.SetId(oid);
+                order_Master.SetOrderStatus(status);
+                string payment_status = order_MasterBL.GetOrderByIdFunction(order_Master)["payment_status"].ToLower();
+                string deliveryBoyId_str = order_MasterBL.GetOrderByIdFunction(order_Master)["delivery_boy_id"];
+                
+                if (String.IsNullOrEmpty(deliveryBoyId_str))
+                {
+                    error.InnerHtml = "<strong>Delivery Boy Not Assign!</strong>";
+                    error.Style.Add("display", "block");
+                }
+                else if (payment_status.Equals("pending"))
+                {
+                    error.InnerHtml = "<strong>Payment is Pending!</strong>";
+                    error.Style.Add("display", "block");
+                }
+                else
+                {
+                    order_MasterBL.UpdateOrderStatusById(order_Master);
+                }
+            }
             else
             {
                 order_MasterBL.UpdateOrderStatusById(order_Master);
-            }
+            }            
+
             ReferralAmount(status);
         }
 

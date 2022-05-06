@@ -103,9 +103,11 @@
 					<h4>Order Status:- <%=orderRow["order_status_str"] %></h4>					
 					<asp:DropDownList ID="ddlorderstatus" runat="server" class="form-control wSelect200" name="order_status" AutoPostBack="True" OnSelectedIndexChanged="ddlorderstatus_SelectedIndexChanged">
 					</asp:DropDownList>
+					<div class="login_msg" id="error" runat="server"  style="margin-top:10px; display:none" >
+				  </div>
 					<br />						
 					<h4>Delivery Boy:- <%=deliveryBoy %></h4>
-					<asp:DropDownList ID="ddldeliveryboy" runat="server" class="form-control wSelect200" name="delivery_boy" AutoPostBack="True" OnSelectedIndexChanged="ddldeliveryboy_SelectedIndexChanged"></asp:DropDownList>	
+					<asp:DropDownList ID="ddldeliveryboy" runat="server" class="form-control wSelect200" name="delivery_boy" AutoPostBack="True" OnSelectedIndexChanged="ddldeliveryboy_SelectedIndexChanged"></asp:DropDownList>
 				</div>
 			</div>
 		</div>
