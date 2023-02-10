@@ -12,12 +12,12 @@ namespace online_food_ordering.user
 {
     public partial class pgResponse : System.Web.UI.Page
     {
-        private static readonly string PAYTM_MERCHANT_KEY = "jtP70ccHp@Uw3M2P";  //Change this constant's value with Merchant key received from Paytm.
+        private static readonly string PAYTM_MERCHANT_KEY = "rKFy9v9vGjp7ajt5";  //Change this constant's value with Merchant key received from Paytm.
         private Dictionary<string, string> paramList = new Dictionary<string, string>();
         private ClassUser objUser;
         private CustomerBL customerBL;
         private Order_MasterBL order_MasterBL;
-        
+
         protected void Page_Init(object sender, EventArgs e)
         {
             objUser = new ClassUser();
@@ -49,17 +49,17 @@ namespace online_food_ordering.user
             }
             string oid = paramList["ORDERID"];
             Session["ORDER_ID"] = oid;
-            
+
             string[] oArr = oid.Split('_');
             string ORDER_ID = oArr[1];
             int uid = Convert.ToInt32(oArr[2]);
             Order_Master order_Master = new Order_Master();
-           
-            if(Session["FOOD_USER_ID"] == null)
+
+            if (Session["FOOD_USER_ID"] == null)
             {
-                Customer  customer = new Customer();
+                Customer customer = new Customer();
                 customer.SetId(uid);
-                foreach (DataRow dr in customerBL.DisplayCustomerByCid(customer) .Rows)
+                foreach (DataRow dr in customerBL.DisplayCustomerByCid(customer).Rows)
                 {
                     Session["FOOD_USER_ID"] = uid;
                     Session["FOOD_USER_NAME"] = dr["name"].ToString();

@@ -23,7 +23,7 @@ namespace online_food_ordering
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential("abhishekmeet032015@gmail.com", "bmiit032015");
+            smtp.Credentials = new System.Net.NetworkCredential("SENDER EMAIL ID", "APP PASSWORD");
             smtp.EnableSsl = true;
             MailMessage msg = new MailMessage();
             msg.Subject = subject;
@@ -31,7 +31,7 @@ namespace online_food_ordering
             msg.IsBodyHtml = true;
             string toaddress = email;
             msg.To.Add(toaddress);
-            string fromaddress = "Billy Admin <abhishekmeet032015@gmail.com>";
+            string fromaddress = "Billy Admin <SENDER EMAIL ID>";
             msg.From = new MailAddress(fromaddress);
             try
             {
@@ -45,13 +45,14 @@ namespace online_food_ordering
             }
             return message;
         }
-        public string SecurePassword(string password){
+        public string SecurePassword(string password)
+        {
             using (SHA1Managed sha1 = new SHA1Managed())
             {
                 var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(password));
                 var sb = new StringBuilder(hash.Length * 2);
 
-                foreach(byte b in hash)
+                foreach (byte b in hash)
                 {
                     sb.Append(b.ToString("X2"));
                 }
@@ -62,7 +63,7 @@ namespace online_food_ordering
         public Dictionary<int, Dictionary<string, string>> getUserFullCart()
         {
             var cartArr = new Dictionary<int, Dictionary<string, string>>();
-            
+
             int uid = Convert.ToInt32(HttpContext.Current.Session["FOOD_USER_ID"]);
             if (HttpContext.Current.Session["FOOD_USER_ID"] != null)
             {
@@ -73,19 +74,19 @@ namespace online_food_ordering
                     int dish_detail_id = Convert.ToInt32(dr["dish_detail_id"]);
                     var arr1 = new Dictionary<string, string>();
                     arr1.Add("qty", dr["qty"].ToString());
-                   
+
                     Dish_Details dish_Details = new Dish_Details();
                     dish_Details.SetId(dish_detail_id);
                     foreach (DataRow getDishDetailById in dish_DetailsBL.DisplayDishAndDishDetailsByDDId(dish_Details).Rows)
                     {
-                        arr1.Add("price", getDishDetailById["dishPrice"].ToString());                       
-                        arr1.Add("dish", getDishDetailById["dishName"].ToString());                       
+                        arr1.Add("price", getDishDetailById["dishPrice"].ToString());
+                        arr1.Add("dish", getDishDetailById["dishName"].ToString());
                         arr1.Add("image", getDishDetailById["dishImage"].ToString());
                     }
                     cartArr.Add(dish_detail_id, arr1);
                 }
             }
-            else 
+            else
             {
                 if (HttpContext.Current.Session["cart"] != null)
                 {
@@ -96,13 +97,13 @@ namespace online_food_ordering
                         {
                             var arr1 = new Dictionary<string, string>();
                             arr1.Add("qty", sessionAtrr[key]["qty"].ToString());
-                            
+
                             Dish_Details dish_Details = new Dish_Details();
                             dish_Details.SetId(key);
                             foreach (DataRow getDishDetailById in dish_DetailsBL.DisplayDishAndDishDetailsByDDId(dish_Details).Rows)
                             {
-                                arr1.Add("price", getDishDetailById["dishPrice"].ToString());                                
-                                arr1.Add("dish", getDishDetailById["dishName"].ToString());                           
+                                arr1.Add("price", getDishDetailById["dishPrice"].ToString());
+                                arr1.Add("dish", getDishDetailById["dishName"].ToString());
                                 arr1.Add("image", getDishDetailById["dishImage"].ToString());
                             }
                             cartArr.Add(key, arr1);
@@ -116,15 +117,15 @@ namespace online_food_ordering
             //}
             return cartArr;
         }
-        public void manageUserCart(int uid,int qty,int attr)
+        public void manageUserCart(int uid, int qty, int attr)
         {
             int cartid = 0;
             Customer customer = new Customer();
             customer.SetId(uid);
             Dish_Details dish_Details = new Dish_Details();
-            dish_Details.SetId(attr);            
+            dish_Details.SetId(attr);
 
-            if (dish_CartBL.DisplayDishDetailsByDdidAndUid(customer,dish_Details).Rows.Count > 0)
+            if (dish_CartBL.DisplayDishDetailsByDdidAndUid(customer, dish_Details).Rows.Count > 0)
             {
                 Dish_Cart dish_Cart = new Dish_Cart();
                 foreach (DataRow dr in dish_CartBL.DisplayDishDetailsByDdidAndUid(customer, dish_Details).Rows)
@@ -218,14 +219,14 @@ namespace online_food_ordering
                 customer.SetId(uid);
             }
             else
-            { 
+            {
                 uid = customer.GetId();
             }
             if (uid > 0)
             {
-                if(customerBL.DisplayCustomerByCid(customer).Rows.Count > 0)
+                if (customerBL.DisplayCustomerByCid(customer).Rows.Count > 0)
                 {
-                    foreach(DataRow dr in customerBL.DisplayCustomerByCid(customer).Rows)
+                    foreach (DataRow dr in customerBL.DisplayCustomerByCid(customer).Rows)
                     {
                         data.Add("name", dr["name"].ToString());
                         data.Add("email", dr["email"].ToString());
